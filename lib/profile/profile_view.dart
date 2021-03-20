@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pet_care/profile/edit_profile_view.dart';
+import 'package:pet_care/style.dart';
 import 'package:pet_care/widgets/appBar.dart';
 
 class ProfileView extends StatefulWidget {
@@ -32,14 +33,14 @@ class _ProfileViewState extends State<ProfileView> {
                   children: [
                     Icon(
                       Icons.edit,
-                      color: Colors.orange[800],
+                      color: AppTheme.appPrimary,
                       size: 20,
                     ),
                     SizedBox(width: 5),
                     Text(
                       'Edit',
                       style: TextStyle(
-                        color: Colors.orange[800],
+                        color: AppTheme.appPrimary,
                         fontFamily: 'coRegular',
                         fontSize: 14,
                       ),
@@ -115,7 +116,7 @@ class _ProfileViewState extends State<ProfileView> {
                       padding: const EdgeInsets.all(8.0),
                       child: Image.asset(
                         'assets/images/paw.png',
-                        color: Colors.orange[800],
+                        color: AppTheme.appPrimary,
                       ),
                     ),
                   ),
@@ -123,21 +124,21 @@ class _ProfileViewState extends State<ProfileView> {
                       'Add Pet Details',
                       Icon(
                         Icons.description_rounded,
-                        color: Colors.orange[800],
+                        color: AppTheme.appPrimary,
                         size: 20,
                       )),
                   buildColumn(
                       'Help',
                       Icon(
                         Icons.help_outline_rounded,
-                        color: Colors.orange[800],
+                        color: AppTheme.appPrimary,
                         size: 20,
                       )),
                   buildColumn(
                       'Log Out',
                       Icon(
                         Icons.exit_to_app_rounded,
-                        color: Colors.orange[800],
+                        color: AppTheme.appPrimary,
                         size: 20,
                       )),
                 ],
@@ -157,7 +158,7 @@ class _ProfileViewState extends State<ProfileView> {
               children: [
                 CircleAvatar(
                   radius: 16,
-                  backgroundColor: Colors.deepOrange[100],
+                  backgroundColor: AppTheme.appSecondary,
                   child: icon,
                 ),
                 SizedBox(

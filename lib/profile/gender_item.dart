@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pet_care/style.dart';
 
 class GenderItem extends StatefulWidget {
   @override
@@ -31,7 +32,7 @@ class _GenderItemState extends State<GenderItem> {
                       images[index],
                       height: 16,
                       color:
-                          _value == index ? Colors.white : Colors.orange[800],
+                          _value == index ? Colors.white : AppTheme.appPrimary,
                     ),
                     SizedBox(
                       width: 10,
@@ -48,7 +49,7 @@ class _GenderItemState extends State<GenderItem> {
                 ),
               ),
               selected: _value == index,
-              selectedColor: Colors.orange[800],
+              selectedColor: AppTheme.appPrimary,
               onSelected: (bool value) {
                 setState(() {
                   _value = value ? index : null;
@@ -60,7 +61,7 @@ class _GenderItemState extends State<GenderItem> {
                   side: BorderSide(
                       width: 1,
                       color: _value == index
-                          ? Colors.orange[800]
+                          ? AppTheme.appPrimary
                           : Colors.grey[300])),
             );
           },

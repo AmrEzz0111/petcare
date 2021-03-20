@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pet_care/style.dart';
 
 class AuthInput extends StatelessWidget {
   TextEditingController controller;
@@ -28,7 +29,7 @@ class AuthInput extends StatelessWidget {
       keyboardType: inputType != null ? inputType : null,
       // minLines: 1,
       maxLines: maxLines != null ? maxLines : null,
-      cursorColor: Colors.orange[800],
+      cursorColor: AppTheme.appPrimary,
       style: TextStyle(
         color: Colors.black87,
         fontSize: 16.0,
@@ -37,7 +38,7 @@ class AuthInput extends StatelessWidget {
       decoration: InputDecoration(
         focusedBorder: OutlineInputBorder(
             borderSide: BorderSide(
-          color: Colors.orange[800],
+          color: AppTheme.appPrimary,
           width: 1.0,
         )),
         enabledBorder: OutlineInputBorder(
