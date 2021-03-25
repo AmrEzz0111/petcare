@@ -62,7 +62,7 @@ class _GenderItemState extends State<GenderItem> {
                       width: 1,
                       color: _value == index
                           ? AppTheme.appPrimary
-                          : Colors.grey[300])),
+                          : Colors.grey[350])),
             );
           },
         ),

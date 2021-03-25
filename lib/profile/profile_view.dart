@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pet_care/profile/add_pet_details.dart';
 import 'package:pet_care/profile/edit_profile_view.dart';
 import 'package:pet_care/style.dart';
 import 'package:pet_care/widgets/appBar.dart';
@@ -120,13 +121,23 @@ class _ProfileViewState extends State<ProfileView> {
                       ),
                     ),
                   ),
-                  buildColumn(
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  AddPetDetails()));
+                    },
+                    child: buildColumn(
                       'Add Pet Details',
                       Icon(
                         Icons.description_rounded,
                         color: AppTheme.appPrimary,
                         size: 20,
-                      )),
+                      ),
+                    ),
+                  ),
                   buildColumn(
                       'Help',
                       Icon(
@@ -158,7 +169,7 @@ class _ProfileViewState extends State<ProfileView> {
               children: [
                 CircleAvatar(
                   radius: 16,
-                  backgroundColor: AppTheme.appSecondary,
+                  backgroundColor: AppTheme.appColor,
                   child: icon,
                 ),
                 SizedBox(

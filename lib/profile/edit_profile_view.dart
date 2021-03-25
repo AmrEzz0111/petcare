@@ -30,13 +30,6 @@ class _EditProfileViewState extends State<EditProfileView> {
             Padding(
               padding: const EdgeInsets.only(right: 15),
               child: InkWell(
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (BuildContext context) =>
-                              EditProfileView()));
-                },
                 child: Row(
                   children: [
                     Text(
