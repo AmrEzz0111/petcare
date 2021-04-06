@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pet_care/style.dart';
 
+// ignore: must_be_immutable
 class AuthInput extends StatelessWidget {
   TextEditingController controller;
   Widget suffixIcon;
