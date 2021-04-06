@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pet_care/style.dart';
+import 'file:///E:/ITI/Flutter/pet_care_ITI/lib/colors/style.dart';
 
 class GenderItem extends StatefulWidget {
   @override

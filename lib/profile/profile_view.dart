@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pet_care/profile/add_pet_details.dart';
 import 'package:pet_care/profile/edit_profile_view.dart';
-import 'package:pet_care/style.dart';
+import 'file:///E:/ITI/Flutter/pet_care_ITI/lib/colors/style.dart';
 import 'package:pet_care/widgets/appBar.dart';
 
 class ProfileView extends StatefulWidget {

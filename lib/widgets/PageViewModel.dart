@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:intro_views_flutter/Models/page_view_model.dart';
-import '../colors/AppTheme.dart';
+import 'file:///E:/ITI/Flutter/pet_care_ITI/lib/colors/style.dart';
 final pages = [
   PageViewModel(
-    pageColor: AppTheme.bgColor,
+    pageColor: AppTheme.appSecondary,
     iconColor: null,
-    bubbleBackgroundColor: AppTheme.bubbleBg,
+    bubbleBackgroundColor: AppTheme.appDark ,
     title: Container(),
     body: Column(
       children: <Widget>[
@@ -23,9 +23,9 @@ final pages = [
     textStyle: TextStyle(color: Colors.black),
   ),
   PageViewModel(
-    pageColor: AppTheme.bgColor,
+    pageColor: AppTheme.appSecondary,
     iconColor: null,
-    bubbleBackgroundColor: AppTheme.bubbleBg,
+    bubbleBackgroundColor: AppTheme.appDark,
     title: Container(),
     body: Column(
       children: <Widget>[
@@ -43,9 +43,9 @@ final pages = [
     textStyle: TextStyle(color: Colors.black,fontFamily: "coRegular",),
   ),
   PageViewModel(
-    pageColor: AppTheme.bgColor,
+    pageColor: AppTheme.appSecondary,
     iconColor: null,
-    bubbleBackgroundColor: AppTheme.bubbleBg,
+    bubbleBackgroundColor: AppTheme.appDark,
     title: Container(),
     body: Column(
       children: <Widget>[
