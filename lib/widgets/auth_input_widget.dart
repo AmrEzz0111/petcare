@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'file:///E:/ITI/Flutter/pet_care_ITI/lib/colors/style.dart';
+import 'package:pet_care/colors/style.dart';
 
 // ignore: must_be_immutable
 class AuthInput extends StatelessWidget {
