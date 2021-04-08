@@ -31,8 +31,7 @@ class _GenderItemState extends State<GenderItem> {
                     Image.asset(
                       images[index],
                       height: 16,
-                      color:
-                          _value == index ? Colors.white : AppTheme.appPrimary,
+                      color: _value == index ? Colors.white : AppTheme.appDark,
                     ),
                     SizedBox(
                       width: 10,
@@ -49,7 +48,7 @@ class _GenderItemState extends State<GenderItem> {
                 ),
               ),
               selected: _value == index,
-              selectedColor: AppTheme.appPrimary,
+              selectedColor: AppTheme.appDark,
               onSelected: (bool value) {
                 setState(() {
                   _value = value ? index : null;
@@ -61,7 +60,7 @@ class _GenderItemState extends State<GenderItem> {
                   side: BorderSide(
                       width: 1,
                       color: _value == index
-                          ? AppTheme.appPrimary
+                          ? AppTheme.appDark
                           : Colors.grey[350])),
             );
           },

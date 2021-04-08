@@ -37,7 +37,7 @@ class _AddPetDetailsState extends State<AddPetDetails> {
                     Text(
                       'Skip',
                       style: TextStyle(
-                        color: AppTheme.appPrimary,
+                        color: AppTheme.appDark,
                         fontFamily: 'coRegular',
                         fontSize: 14,
                       ),
@@ -241,7 +241,7 @@ class _AddPetDetailsState extends State<AddPetDetails> {
               fontSize: 16, fontFamily: 'coRegular', color: Colors.black87),
         ),
         CupertinoSwitch(
-          activeColor: AppTheme.appPrimary,
+          activeColor: AppTheme.appDark,
           value: ligth,
           onChanged: (bool value) {
             setState(() {

@@ -34,14 +34,14 @@ class _ProfileViewState extends State<ProfileView> {
                   children: [
                     Icon(
                       Icons.edit,
-                      color: AppTheme.appPrimary,
+                      color: AppTheme.appDark,
                       size: 20,
                     ),
                     SizedBox(width: 5),
                     Text(
                       'Edit',
                       style: TextStyle(
-                        color: AppTheme.appPrimary,
+                        color: AppTheme.appDark,
                         fontFamily: 'coRegular',
                         fontSize: 14,
                       ),
@@ -117,7 +117,7 @@ class _ProfileViewState extends State<ProfileView> {
                       padding: const EdgeInsets.all(8.0),
                       child: Image.asset(
                         'assets/images/paw.png',
-                        color: AppTheme.appPrimary,
+                        color: AppTheme.appDark,
                       ),
                     ),
                   ),
@@ -133,7 +133,7 @@ class _ProfileViewState extends State<ProfileView> {
                       'Add Pet Details',
                       Icon(
                         Icons.description_rounded,
-                        color: AppTheme.appPrimary,
+                        color: AppTheme.appDark,
                         size: 20,
                       ),
                     ),
@@ -142,14 +142,14 @@ class _ProfileViewState extends State<ProfileView> {
                       'Help',
                       Icon(
                         Icons.help_outline_rounded,
-                        color: AppTheme.appPrimary,
+                        color: AppTheme.appDark,
                         size: 20,
                       )),
                   buildColumn(
                       'Log Out',
                       Icon(
                         Icons.exit_to_app_rounded,
-                        color: AppTheme.appPrimary,
+                        color: AppTheme.appDark,
                         size: 20,
                       )),
                 ],
