@@ -7,7 +7,30 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-class Booking extends StatelessWidget {
+class Booking extends StatefulWidget {
+  CalendarController _calController;
+
+  Booking() {
+    _calController = new CalendarController();
+  }
+
+  @override
+  _BookingState createState() => _BookingState();
+}
+
+class _BookingState extends State<Booking> {
+  Map<DateTime, List<dynamic>> _events = {};
+  Completer<GoogleMapController> _controller = Completer();
+  static final CameraPosition _kGooglePlex = CameraPosition(
+    target: LatLng(37.42796133580664, -122.085749655962),
+    zoom: 14.4746,
+  );
+
+  static final CameraPosition _kLake = CameraPosition(
+      bearing: 192.8334901395799,
+      target: LatLng(37.43296265331129, -122.08832357078792),
+      tilt: 59.440717697143555,
+      zoom: 19.151926040649414);
   @override
   Widget build(BuildContext context) {
     Completer<GoogleMapController> _controller = Completer();
@@ -223,59 +246,71 @@ class Booking extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: TableCalendar(
-                          eventLoader: (s) {
-                            if (s.day % 2 == 0) {
-                              return [""];
-                            }
-                          },
+                          events: _events,
                           weekendDays: [],
-                          daysOfWeekHeight: 20,
-                          daysOfWeekStyle: DaysOfWeekStyle(
-                              weekdayStyle: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black54),
+                          calendarStyle: CalendarStyle(),
+                          builders: CalendarBuilders(
+                            todayDayBuilder: (context, date, events) {
+                              if (date.day % 2 == 0) {
+                                _events.addAll({
+                                  date: [""]
+                                });
+                              }
+
+                              return Padding(
+                                padding: const EdgeInsets.all(5.0),
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                      color: Color(0xFFc25e3c),
+                                      borderRadius: BorderRadius.circular(15)),
+                                  alignment: Alignment.center,
+                                  child: (Text(
+                                    date.day.toString(),
+                                    style: TextStyle(
+                                        fontSize: 17,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white),
+                                  )),
+                                ),
+                              );
+                            },
+                            dayBuilder: (context, date, events) {
+                              if (date.day % 2 == 0) {
+                                _events.addAll({
+                                  date: [""]
+                                });
+                              }
+                              return Container(
+                                alignment: Alignment.center,
+                                child: Text(
+                                  date.day.toString(),
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w600,
+                                      color: Colors.black38),
+                                ),
+                              );
+                            },
+                            dowWeekdayBuilder: (context, weekday) => Container(
+                              alignment: Alignment.center,
                               decoration: BoxDecoration(
                                   border: Border(
-                                      top: BorderSide(
-                                          width: 1, color: Colors.black38)))),
-                          calendarStyle: CalendarStyle(
-                            selectedDecoration: BoxDecoration(
-                                border: Border(
-                                    right: BorderSide(color: Colors.red))),
-                            todayDecoration: BoxDecoration(
-                                color: Color(0xCCc25e3c),
-                                borderRadius: BorderRadius.circular(10)),
-                            todayTextStyle: TextStyle(
-                                fontSize: 17,
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold),
-                            cellMargin: EdgeInsets.all(5),
-                            defaultTextStyle: TextStyle(
-                                color: Colors.black26,
-                                fontSize: 17,
-                                fontWeight: FontWeight.bold),
+                                      top: BorderSide(color: Colors.black54))),
+                              child: Text(
+                                weekday,
+                                style: TextStyle(color: Colors.black54),
+                              ),
+                            ),
                           ),
+                          initialCalendarFormat: CalendarFormat.week,
+                          calendarController: widget._calController,
                           headerStyle: HeaderStyle(
-                              leftChevronIcon: FaIcon(
-                                FontAwesomeIcons.calendarAlt,
-                                color: Colors.black54,
-                              ),
-                              rightChevronMargin:
-                                  EdgeInsets.fromLTRB(0, 0, 170, 0),
-                              rightChevronIcon: FaIcon(
-                                FontAwesomeIcons.chevronRight,
-                                color: Colors.black38,
-                                size: 20,
-                              ),
                               formatButtonVisible: false,
-                              formatButtonPadding: EdgeInsets.all(5),
-                              titleTextStyle: TextStyle(
-                                  fontWeight: FontWeight.w600, fontSize: 16)),
-                          firstDay: DateTime.utc(2010, 10, 16),
-                          lastDay: DateTime.utc(2030, 3, 14),
-                          focusedDay: DateTime.now(),
-                          calendarFormat: CalendarFormat.week,
-                          startingDayOfWeek: StartingDayOfWeek.sunday,
+                              rightChevronPadding:
+                                  EdgeInsets.fromLTRB(0, 0, 150, 0),
+                              centerHeaderTitle: false,
+                              leftChevronIcon:
+                                  Icon(Icons.calendar_today_rounded)),
                         ),
                       ),
                     ),
@@ -296,3 +331,57 @@ class Booking extends StatelessWidget {
             )));
   }
 }
+
+// eventLoader: (s) {
+//   if (s.day % 2 == 0) {
+//     return [""];
+//   }
+// },
+// builders: CalendarBuilders(),
+// weekendDays: [],
+// daysOfWeekHeight: 20,
+// daysOfWeekStyle: DaysOfWeekStyle(
+//     weekdayStyle: TextStyle(
+//         fontWeight: FontWeight.bold,
+//         color: Colors.black54),
+//     decoration: BoxDecoration(
+//         border: Border(
+//             top: BorderSide(
+//                 width: 1, color: Colors.black38)))),
+// calendarStyle: CalendarStyle(
+
+// selectedDecoration: BoxDecoration(
+//     border: Border(
+//         right: BorderSide(color: Colors.red))),
+//   todayStyle: ,
+//   todayDecoration: BoxDecoration(
+//       color: Color(0xCCc25e3c),
+//       borderRadius: BorderRadius.circular(10)),
+//   todayTextStyle: TextStyle(
+//       fontSize: 17,
+//       color: Colors.white,
+//       fontWeight: FontWeight.bold),
+//   cellMargin: EdgeInsets.all(5),
+//   weekdayStyle: TextStyle(
+//       color: Colors.black26,
+//       fontSize: 17,
+//       fontWeight: FontWeight.bold),
+// ),
+// headerStyle: HeaderStyle(
+//     leftChevronIcon: Icon(Icons.arrow_right_alt),
+//     rightChevronMargin:
+//         EdgeInsets.fromLTRB(0, 0, 170, 0),
+// rightChevronIcon: FaIcon(
+//   FontAwesomeIcons.chevronRight,
+//   color: Colors.black38,
+//   size: 20,
+// ),
+// formatButtonVisible: false,
+// formatButtonPadding: EdgeInsets.all(5),
+// titleTextStyle: TextStyle(
+//     fontWeight: FontWeight.w600, fontSize: 16)),
+// firstDay: DateTime.utc(2010, 10, 16),
+// lastDay: DateTime.utc(2030, 3, 14),
+// focusedDay: DateTime.now(),
+// calendarFormat: CalendarFormat.week,
+// startingDayOfWeek: StartingDayOfWeek.sunday,

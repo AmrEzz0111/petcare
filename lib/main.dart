@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:pet_care/authentication/auth_ways.dart';
+import 'package:pet_care/authentication/booking.dart';
 import 'package:pet_care/profile/profile_view.dart';
 
 import 'on_boarding/on_boarding_slides.dart';
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: AuthenticationScreen(),
+      home: Booking(),
     );
   }
 }
