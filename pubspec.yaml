@@ -30,6 +30,7 @@ dependencies:
   cupertino_icons: ^1.0.0
   chips_choice: ^2.0.1
   intro_views_flutter: ^2.9.0
+  flutter_rating_bar: ^3.2.0+1
 
 
 dev_dependencies:
