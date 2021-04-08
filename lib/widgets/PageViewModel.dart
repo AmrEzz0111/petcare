@@ -1,18 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:intro_views_flutter/Models/page_view_model.dart';
-import 'file:///E:/ITI/Flutter/pet_care_ITI/lib/colors/style.dart';
+import 'package:pet_care/colors/style.dart';
+
 final pages = [
   PageViewModel(
     pageColor: AppTheme.appSecondary,
     iconColor: null,
-    bubbleBackgroundColor: AppTheme.appDark ,
+    bubbleBackgroundColor: AppTheme.appDark,
     title: Container(),
     body: Column(
       children: <Widget>[
-        Text('Welcome to DR.Vet',style: TextStyle(fontFamily: "coRegular"),),
+        Text(
+          'Welcome to DR.Vet',
+          style: TextStyle(fontFamily: "coRegular"),
+        ),
         Text(
           'All types of services for your pet in one place, instantly searchable',
-          style: TextStyle(color: Colors.black54,fontFamily: "coRegular", fontSize: 16.0),
+          style: TextStyle(
+              color: Colors.black54, fontFamily: "coRegular", fontSize: 16.0),
         ),
       ],
     ),
@@ -29,10 +34,14 @@ final pages = [
     title: Container(),
     body: Column(
       children: <Widget>[
-        Text('Proven Experts',style: TextStyle(fontFamily: "coRegular"),),
+        Text(
+          'Proven Experts',
+          style: TextStyle(fontFamily: "coRegular"),
+        ),
         Text(
           'You can easily find the needed specialist with an advanced search',
-          style: TextStyle(color: Colors.black54, fontSize: 16.0,fontFamily: "coRegular"),
+          style: TextStyle(
+              color: Colors.black54, fontSize: 16.0, fontFamily: "coRegular"),
         ),
       ],
     ),
@@ -40,7 +49,10 @@ final pages = [
       'assets/images/2.png',
       alignment: Alignment.center,
     ),
-    textStyle: TextStyle(color: Colors.black,fontFamily: "coRegular",),
+    textStyle: TextStyle(
+      color: Colors.black,
+      fontFamily: "coRegular",
+    ),
   ),
   PageViewModel(
     pageColor: AppTheme.appSecondary,
@@ -49,10 +61,14 @@ final pages = [
     title: Container(),
     body: Column(
       children: <Widget>[
-        Text('All about your pet is here',style: TextStyle(fontFamily: "coRegular"),),
+        Text(
+          'All about your pet is here',
+          style: TextStyle(fontFamily: "coRegular"),
+        ),
         Text(
           'The application stores useful information about the pet and sends it to the vet',
-          style: TextStyle(color: Colors.black54,fontFamily: "coRegular", fontSize: 16.0),
+          style: TextStyle(
+              color: Colors.black54, fontFamily: "coRegular", fontSize: 16.0),
         ),
       ],
     ),
@@ -60,6 +76,9 @@ final pages = [
       'assets/images/3.png',
       alignment: Alignment.center,
     ),
-    textStyle: TextStyle(color: Colors.black,fontFamily: "coRegular",),
+    textStyle: TextStyle(
+      color: Colors.black,
+      fontFamily: "coRegular",
+    ),
   ),
 ];
