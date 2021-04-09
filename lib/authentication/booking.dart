@@ -20,9 +20,7 @@ class Booking extends StatefulWidget {
 
 class _BookingState extends State<Booking> {
   Map<DateTime, List<dynamic>> _events = {};
-  var myMarker = Marker(
-    markerId: MarkerId("1"),
-  );
+
 
   @override
   Widget build(BuildContext context) {
