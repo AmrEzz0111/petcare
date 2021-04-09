@@ -227,9 +227,23 @@ class _BookingState extends State<Booking> {
                 ],
               ),
             )),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Container(height: 120, child: CalenderWidget()),
+        Container(
+          width: MediaQuery.of(context).size.width,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Card(
+              elevation: 3,
+              color: Colors.white,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  children: [
+                    CalenderWidget(),
+                  ],
+                ),
+              ),
+            ),
+          ),
         ),
         // Container(
         //   child: Padding(
