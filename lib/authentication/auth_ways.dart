@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:pet_care/authentication/sign_in_screen.dart';
 
 class AuthenticationScreen extends StatelessWidget {
   @override
@@ -165,13 +166,13 @@ class AuthenticationScreen extends StatelessWidget {
                     style: TextStyle(fontSize: 15, color: Colors.white)),
                 GestureDetector(
                   onTap: () {
-                    // Navigator.push(context,
-                    //     MaterialPageRoute(builder: (context) => Sign_In()));
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Sign_In()));
                   },
                   child: GestureDetector(
                     onTap: () {
-                      // Navigator.push(context,
-                      //     MaterialPageRoute(builder: (context) => Sign_In()));
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Sign_In()));
                     },
                     child: Text(
                       "Sign in",
