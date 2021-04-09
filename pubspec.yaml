@@ -31,8 +31,7 @@ dependencies:
   chips_choice: ^2.0.1
   intro_views_flutter: ^2.9.0
   flutter_rating_bar: ^3.2.0+1
-
-  font_awesome_flutter: ^9.0.0
+  font_awesome_flutter: ^8.12.0
 
 dev_dependencies:
   flutter_test:
