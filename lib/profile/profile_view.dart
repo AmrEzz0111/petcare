@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pet_care/profile/add_pet_details.dart';
 import 'package:pet_care/profile/edit_profile_view.dart';
 import 'package:pet_care/colors/style.dart';
+import 'package:pet_care/profile/my_pet_view.dart';
 import 'package:pet_care/widgets/appBar.dart';
 
 class ProfileView extends StatefulWidget {
@@ -111,13 +112,21 @@ class _ProfileViewState extends State<ProfileView> {
               padding: const EdgeInsets.only(left: 16, right: 16),
               child: Column(
                 children: [
-                  buildColumn(
-                    'My Pets',
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Image.asset(
-                        'assets/images/paw.png',
-                        color: AppTheme.appDark,
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) => MyPetView()));
+                    },
+                    child: buildColumn(
+                      'My Pets',
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Image.asset(
+                          'assets/images/paw.png',
+                          color: AppTheme.appDark,
+                        ),
                       ),
                     ),
                   ),

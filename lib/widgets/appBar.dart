@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pet_care/colors/style.dart';
 
 class AppBarWidget extends StatelessWidget {
   final double evaluation;
@@ -18,7 +19,7 @@ class AppBarWidget extends StatelessWidget {
         title: Text(
           title,
           style: TextStyle(
-            color: Colors.black87,
+            color: AppTheme.bgColor,
             fontFamily: 'coRegular',
             fontSize: 24,
           ),
