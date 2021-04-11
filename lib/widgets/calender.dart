@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:intl/intl.dart';
 import 'package:pet_care/colors/style.dart';
 import 'package:table_calendar/table_calendar.dart';
 
@@ -11,14 +10,14 @@ class CalenderWidget extends StatefulWidget {
 
 class _CalenderWidgetState extends State<CalenderWidget> {
   CalendarController _calendarController;
-  DateTime _headerDate;
+  DateTime headerDate;
   Map<DateTime, List<dynamic>> _events = {};
 
   @override
   void initState() {
     super.initState();
     _calendarController = CalendarController();
-    _headerDate = DateTime.now();
+    headerDate = DateTime.now();
   }
 
   @override
@@ -89,7 +88,7 @@ class _CalenderWidgetState extends State<CalenderWidget> {
           headerVisible: false,
           onVisibleDaysChanged: (_, __, ___) {
             setState(() {
-              _headerDate = _calendarController.focusedDay;
+              headerDate = _calendarController.focusedDay;
             });
           },
           weekendDays: [],

@@ -167,12 +167,12 @@ class AuthenticationScreen extends StatelessWidget {
                 GestureDetector(
                   onTap: () {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Sign_In()));
+                        MaterialPageRoute(builder: (context) => SignIn()));
                   },
                   child: GestureDetector(
                     onTap: () {
                       Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Sign_In()));
+                          MaterialPageRoute(builder: (context) => SignIn()));
                     },
                     child: Text(
                       "Sign in",

@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:pet_care/authentication/auth_ways.dart';
 import 'package:pet_care/authentication/booking.dart';
-import 'package:pet_care/profile/profile_view.dart';
-
-import 'on_boarding/on_boarding_slides.dart';
 
 void main() {
   runApp(MyApp());

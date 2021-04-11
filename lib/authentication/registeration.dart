@@ -205,7 +205,7 @@ class _RegisteraionState extends State<Registeraion> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => Sign_In()));
+                                      builder: (context) => SignIn()));
                             },
                             child: Text(
                               "Sign In",
