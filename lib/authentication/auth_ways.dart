@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:pet_care/authentication/registeration.dart';
 import 'package:pet_care/authentication/sign_in_screen.dart';
 
 class AuthenticationScreen extends StatelessWidget {
@@ -142,10 +143,10 @@ class AuthenticationScreen extends StatelessWidget {
                     children: [
                       GestureDetector(
                         onTap: () {
-                          // Navigator.push(
-                          //     context,
-                          //     MaterialPageRoute(
-                          //         builder: (context) => Registeraion()));
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Registeraion()));
                         },
                         child: Text('Register With Email ',
                             style:
