@@ -11,19 +11,23 @@ class AppBarWidget extends StatelessWidget {
       : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return AppBar(
-        centerTitle: true,
-        backgroundColor: Colors.white,
-        elevation: evaluation,
-        title: Text(
-          title,
-          style: TextStyle(
-            color: Colors.black87,
-            fontFamily: 'coRegular',
-            fontSize: 24,
+    return PreferredSize(
+      preferredSize: Size.fromHeight(50),
+      child: AppBar(
+          centerTitle: true,
+          backgroundColor: Colors.white,
+          elevation: evaluation,
+          title: Text(
+            title != null ? title : 'no title',
+            softWrap: false,
+            style: TextStyle(
+              color: Colors.black87,
+              fontFamily: 'coRegular',
+              fontSize: 24,
+            ),
           ),
-        ),
-        leading: leading != null ? leading : Container(),
-        actions: actions);
+          leading: leading != null ? leading : Container(),
+          actions: actions),
+    );
   }
 }
