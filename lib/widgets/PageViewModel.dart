@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intro_views_flutter/Models/page_view_model.dart';
-import '../colors/style.dart';
+import 'package:pet_care/colors/style.dart';
 
 final pages = [
   PageViewModel(
@@ -13,6 +13,9 @@ final pages = [
         Text(
           'Welcome to DR.Vet',
           style: TextStyle(fontFamily: "coRegular"),
+        ),
+        SizedBox(
+          height: 10,
         ),
         Text(
           'All types of services for your pet in one place, instantly searchable',
@@ -37,6 +40,9 @@ final pages = [
         Text(
           'Proven Experts',
           style: TextStyle(fontFamily: "coRegular"),
+        ),
+        SizedBox(
+          height: 10,
         ),
         Text(
           'You can easily find the needed specialist with an advanced search',
@@ -64,6 +70,9 @@ final pages = [
         Text(
           'All about your pet is here',
           style: TextStyle(fontFamily: "coRegular"),
+        ),
+        SizedBox(
+          height: 10,
         ),
         Text(
           'The application stores useful information about the pet and sends it to the vet',

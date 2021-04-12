@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../colors/style.dart';
+import 'package:pet_care/colors/style.dart';
 
 class MainScreen extends StatelessWidget {
   @override
@@ -8,7 +7,7 @@ class MainScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         // appBar: AppBar(),
-        // backgroundColor: AppTheme.appSecondary,
+        backgroundColor: AppTheme.bgMain,
         body: SingleChildScrollView(
           child: Container(
             padding: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
@@ -32,12 +31,7 @@ class MainScreen extends StatelessWidget {
                       const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                   child: Text(
                     'What are you looking for, Lila ? ',
-                    style: TextStyle(
-                      color: Color(0xff0f0fff),
-                      fontFamily: 'coRegular',
-                      fontSize: 35,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: Theme.of(context).textTheme.headline1,
                   ),
                 ),
                 Container(
@@ -138,27 +132,30 @@ class MainScreen extends StatelessWidget {
         bottomNavigationBar: SizedBox(
           height: 80,
           child: BottomNavigationBar(
+            selectedLabelStyle: TextStyle(
+              fontSize: 20,
+              color: AppTheme.appDark,
+            ),
+            iconSize: 30,
+            selectedIconTheme: Theme.of(context).iconTheme,
             // backgroundColor: AppTheme.appSecondary,
             currentIndex: 0,
             items: [
               BottomNavigationBarItem(
                 icon: Icon(
                   Icons.search,
-                  size: 30,
                 ),
                 label: 'Search',
               ),
               BottomNavigationBarItem(
                 icon: Icon(
                   Icons.timer,
-                  size: 30,
                 ),
                 label: 'Appointments',
               ),
               BottomNavigationBarItem(
                 icon: Icon(
                   Icons.account_circle_outlined,
-                  size: 30,
                 ),
                 label: 'Profile',
               ),

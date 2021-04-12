@@ -30,7 +30,7 @@ class AuthInput extends StatelessWidget {
       keyboardType: inputType != null ? inputType : null,
       // minLines: 1,
       maxLines: maxLines != null ? maxLines : null,
-      cursorColor: AppTheme.appPrimary,
+      cursorColor: AppTheme.appDark,
       style: TextStyle(
         color: Colors.black87,
         fontSize: 16.0,
@@ -39,7 +39,7 @@ class AuthInput extends StatelessWidget {
       decoration: InputDecoration(
         focusedBorder: OutlineInputBorder(
             borderSide: BorderSide(
-          color: AppTheme.appPrimary,
+          color: AppTheme.appDark,
           width: 1.0,
         )),
         enabledBorder: OutlineInputBorder(

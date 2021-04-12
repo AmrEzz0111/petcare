@@ -35,7 +35,7 @@ class _EditProfileViewState extends State<EditProfileView> {
                     Text(
                       'Skip',
                       style: TextStyle(
-                        color: AppTheme.appPrimary,
+                        color: AppTheme.appDark,
                         fontFamily: 'coRegular',
                         fontSize: 14,
                       ),
@@ -153,7 +153,7 @@ class _EditProfileViewState extends State<EditProfileView> {
                 height: 50,
                 width: double.infinity,
                 decoration: BoxDecoration(
-                    color: AppTheme.appPrimary,
+                    color: AppTheme.appDark,
                     borderRadius: BorderRadius.circular(25)),
                 child: Center(
                   child: Text(

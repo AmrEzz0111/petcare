@@ -30,7 +30,11 @@ dependencies:
   cupertino_icons: ^1.0.0
   chips_choice: ^2.0.1
   intro_views_flutter: ^2.9.0
-
+  font_awesome_flutter: ^8.12.0
+  flutter_rating_bar: ^3.2.0+1
+  google_maps_flutter: ^1.2.0
+  table_calendar: ^2.3.3
+  modal_bottom_sheet: ^1.0.0+1
 
 dev_dependencies:
   flutter_test:
@@ -64,26 +68,18 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-   - family: headline
+   - family: Co
      fonts:
-       - asset: assets/fonts/Co Headline Bold.ttf
-   - family: coLight
-     fonts:
-       - asset: assets/fonts/Co Text Corp Light.ttf
-   - family: coRegular
-     fonts:
-       - asset: assets/fonts/Co Text Regular.ttf
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
-  #       - asset: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
-  #
+       - asset: assets/fonts/Co-Bold.ttf
+       - asset: assets/fonts/Co-Light.ttf
+       - asset: assets/fonts/Co-Regular.ttf
+         weight: 700
+  #  - family: coLight
+  #    fonts:
+       
+  #  - family: coRegular
+  #    fonts:
+      
+  
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

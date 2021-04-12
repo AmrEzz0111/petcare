@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pet_care/colors/style.dart';
 
 class AppBarWidget extends StatelessWidget {
   final double evaluation;
@@ -11,23 +12,20 @@ class AppBarWidget extends StatelessWidget {
       : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return PreferredSize(
-      preferredSize: Size.fromHeight(50),
-      child: AppBar(
-          centerTitle: true,
-          backgroundColor: Colors.white,
-          elevation: evaluation,
-          title: Text(
-            title != null ? title : 'no title',
-            softWrap: false,
-            style: TextStyle(
-              color: Colors.black87,
-              fontFamily: 'coRegular',
-              fontSize: 24,
-            ),
-          ),
-          leading: leading != null ? leading : Container(),
-          actions: actions),
+    return AppBar(
+      centerTitle: true,
+      backgroundColor: Colors.white,
+      elevation: evaluation,
+      title: Text(
+        title,
+        style: TextStyle(
+          color: AppTheme.bgMain,
+          fontFamily: 'coRegular',
+          fontSize: 24,
+        ),
+      ),
+      leading: leading != null ? leading : Container(),
+      actions: actions,
     );
   }
 }
