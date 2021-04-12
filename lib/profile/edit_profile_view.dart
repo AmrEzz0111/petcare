@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'file:///E:/ITI/Flutter/pet_care_ITI/lib/colors/style.dart';
+import 'package:pet_care/colors/style.dart';
 import 'package:pet_care/widgets/appBar.dart';
 import 'package:pet_care/widgets/auth_input_widget.dart';
 import 'package:pet_care/profile/gender_item.dart';
@@ -35,7 +35,7 @@ class _EditProfileViewState extends State<EditProfileView> {
                     Text(
                       'Skip',
                       style: TextStyle(
-                        color: AppTheme.appPrimary,
+                        color: AppTheme.appDark,
                         fontFamily: 'coRegular',
                         fontSize: 14,
                       ),
@@ -153,7 +153,7 @@ class _EditProfileViewState extends State<EditProfileView> {
                 height: 50,
                 width: double.infinity,
                 decoration: BoxDecoration(
-                    color: AppTheme.appPrimary,
+                    color: AppTheme.appDark,
                     borderRadius: BorderRadius.circular(25)),
                 child: Center(
                   child: Text(

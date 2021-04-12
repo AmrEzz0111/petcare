@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:pet_care/bottom_sheet/bottom_sheet_model.dart';
-
+import 'package:pet_care/slpash_screen/splash_view.dart';
 
 void main() {
   runApp(MyApp());
   SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle(statusBarColor: Colors.white));
+      SystemUiOverlayStyle(statusBarColor: Colors.transparent));
 }
 
 class MyApp extends StatelessWidget {
@@ -18,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: ShowBottomSheet(),
+      home: SplashScreen(),
     );
   }
 }
