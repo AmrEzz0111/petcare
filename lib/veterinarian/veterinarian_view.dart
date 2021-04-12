@@ -92,14 +92,14 @@ class _VeterinarianViewState extends State<VeterinarianView>
                           )),
                           hintText: 'Veterinarian',
                           hintStyle: TextStyle(
-                            color: AppTheme.bgColor,
+                            color: AppTheme.bgMain,
                             fontSize: 14.0,
                             fontFamily: 'coRegular',
                             fontWeight: FontWeight.bold,
                           ),
                           prefixIcon: Icon(
                             Icons.search,
-                            color: AppTheme.bgColor,
+                            color: AppTheme.bgMain,
                           ))),
                 ),
               ),
@@ -121,7 +121,7 @@ class _VeterinarianViewState extends State<VeterinarianView>
       child: TabBar(
           isScrollable: true,
           controller: controller,
-          unselectedLabelColor: AppTheme.bgColor,
+          unselectedLabelColor: AppTheme.bgMain,
           indicatorSize: TabBarIndicatorSize.tab,
           indicator: BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(50)),
