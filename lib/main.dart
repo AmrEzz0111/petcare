@@ -1,14 +1,10 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:pet_care/authentication/sign_in_screen.dart';
 import 'package:pet_care/colors/style.dart';
 import 'package:pet_care/pet_services/grooming/grooming_screen.dart';
 import 'package:pet_care/slpash_screen/splash_view.dart';
 
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+void main() {
   runApp(MyApp());
   SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle(statusBarColor: Colors.transparent));
@@ -50,7 +46,7 @@ class MyApp extends StatelessWidget {
           iconTheme: IconThemeData(
             color: AppTheme.appDark,
           )),
-      home: SignIn(),
+      home: GroomingScreen(),
     );
   }
 }
