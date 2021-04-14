@@ -214,7 +214,7 @@ class _BookingState extends State<Booking> {
             ),
           ),
         ),
-        GoogleMapWidget(),
+        Container(height: 500, width: 500, child: GoogleMapWidget()),
       ],
     ));
   }

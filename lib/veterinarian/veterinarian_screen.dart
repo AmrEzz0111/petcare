@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pet_care/colors/style.dart';
+import 'package:pet_care/veterinarian/specialists_screen.dart';
 import 'package:pet_care/widgets/veterinarian_item.dart';
 
 class VeterinarianView extends StatefulWidget {
@@ -161,7 +162,7 @@ class _VeterinarianViewState extends State<VeterinarianView>
     return TabBarView(
       controller: controller,
       children: <Widget>[
-        VeterinarianItem(),
+        SpecialistScreen(),
         VeterinarianItem(),
       ],
     );
