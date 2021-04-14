@@ -40,7 +40,7 @@ class _GenderItemState extends State<GenderItem> {
                       gender[index],
                       style: TextStyle(
                         color: _value == index ? Colors.white : Colors.black87,
-                        fontFamily: 'coRegular',
+                        fontFamily: 'Co',
                         fontSize: 16,
                       ),
                     ),

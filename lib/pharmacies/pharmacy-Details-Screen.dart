@@ -227,7 +227,10 @@ class _BookingState extends State<PharmacyDetails> {
             ),
           ),
         ),
-        GoogleMapWidget(),
+        Container(
+          height: 500,
+            width: 500,
+            child: GoogleMapWidget()),
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Container(

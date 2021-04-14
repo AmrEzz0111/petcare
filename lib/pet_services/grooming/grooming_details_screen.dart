@@ -63,8 +63,8 @@ class _GroomingDetailScreenState extends State<GroomingDetailScreen>
                               Text(
                                 'Grooming Studio Ltd',
                                 style: TextStyle(
-                                    color: AppTheme.bgColor,
-                                    fontFamily: 'coRegular',
+                                    color: AppTheme.headLine1Color,
+                                    fontFamily: 'Co',
                                     fontSize: 20,
                                     fontWeight: FontWeight.bold),
                               ),
@@ -79,7 +79,7 @@ class _GroomingDetailScreenState extends State<GroomingDetailScreen>
                                     'Pet Groomer',
                                     style: TextStyle(
                                         color: AppTheme.appDark,
-                                        fontFamily: 'coRegular',
+                                        fontFamily: 'Co',
                                         fontSize: 14,
                                         fontWeight: FontWeight.bold),
                                   ),
@@ -87,7 +87,7 @@ class _GroomingDetailScreenState extends State<GroomingDetailScreen>
                                     '99 Battersea Park Rd',
                                     style: TextStyle(
                                         color: Colors.grey[600],
-                                        fontFamily: 'coRegular',
+                                        fontFamily: 'Co',
                                         fontSize: 12,
                                         fontWeight: FontWeight.w600),
                                   ),
@@ -134,7 +134,7 @@ class _GroomingDetailScreenState extends State<GroomingDetailScreen>
                                         '125 Reviews',
                                         style: TextStyle(
                                             color: Colors.grey[400],
-                                            fontFamily: 'coRegular',
+                                            fontFamily: 'Co',
                                             fontSize: 12,
                                             fontWeight: FontWeight.w600),
                                       ),
@@ -160,7 +160,7 @@ class _GroomingDetailScreenState extends State<GroomingDetailScreen>
                                         '2.4 km',
                                         style: TextStyle(
                                             color: Colors.grey[400],
-                                            fontFamily: 'coRegular',
+                                            fontFamily: 'Co',
                                             fontSize: 12,
                                             fontWeight: FontWeight.w600),
                                       ),
@@ -193,11 +193,11 @@ class _GroomingDetailScreenState extends State<GroomingDetailScreen>
       height: 33,
       child: TabBar(
           indicatorWeight: 2.5,
-          labelColor: AppTheme.bgColor,
+          labelColor: AppTheme.headLine1Color,
           indicatorColor: AppTheme.appDark,
           labelStyle: TextStyle(
             fontWeight: FontWeight.w600,
-            fontFamily: 'coRegular',
+            fontFamily: 'Co',
             fontSize: 14,
           ),
           isScrollable: true,

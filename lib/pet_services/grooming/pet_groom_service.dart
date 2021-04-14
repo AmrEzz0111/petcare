@@ -46,8 +46,8 @@ class _PetGroomServiceState extends State<PetGroomService> {
                   Text(
                     'Bath & Dry',
                     style: TextStyle(
-                        color: AppTheme.bgColor,
-                        fontFamily: 'coRegular',
+                        color: AppTheme.headLine1Color,
+                        fontFamily: 'Co',
                         fontSize: 20,
                         fontWeight: FontWeight.w600),
                   ),

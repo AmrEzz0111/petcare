@@ -43,7 +43,7 @@ class _ProfileViewState extends State<ProfileView> {
                       'Edit',
                       style: TextStyle(
                         color: AppTheme.appDark,
-                        fontFamily: 'coRegular',
+                        fontFamily: 'Co',
                         fontSize: 14,
                       ),
                     ),
@@ -86,7 +86,7 @@ class _ProfileViewState extends State<ProfileView> {
                     'Alaa S. Elmaghraby',
                     style: TextStyle(
                       color: Colors.black87,
-                      fontFamily: 'coRegular',
+                      fontFamily: 'Co',
                       fontSize: 20,
                     ),
                   ),
@@ -97,7 +97,7 @@ class _ProfileViewState extends State<ProfileView> {
                     'alaa.sobhy193',
                     style: TextStyle(
                       color: Colors.grey,
-                      fontFamily: 'coRegular',
+                      fontFamily: 'Co',
                       fontSize: 16,
                     ),
                   ),
@@ -188,7 +188,7 @@ class _ProfileViewState extends State<ProfileView> {
                   title,
                   style: TextStyle(
                     color: Colors.black54,
-                    fontFamily: 'coRegular',
+                    fontFamily: 'Co',
                     fontSize: 18,
                   ),
                 ),

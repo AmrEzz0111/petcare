@@ -14,7 +14,7 @@ class AppointmentBtn extends CustomRaisedButton {
             style: TextStyle(
                 color: txtColor,
                 fontSize: 20.0,
-                fontFamily: "coRegular",
+                fontFamily: "Co",
                 fontWeight: FontWeight.bold),
           ),
           color: color,

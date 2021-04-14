@@ -43,8 +43,8 @@ class VeterinarianItem extends StatelessWidget {
                       Text(
                         'Peternko Julia',
                         style: TextStyle(
-                            color: AppTheme.bgColor,
-                            fontFamily: 'coRegular',
+                            color: AppTheme.headLine1Color,
+                            fontFamily: 'Co',
                             fontSize: 20,
                             fontWeight: FontWeight.bold),
                       ),
@@ -55,7 +55,7 @@ class VeterinarianItem extends StatelessWidget {
                         'Veterinarian',
                         style: TextStyle(
                             color: AppTheme.appDark,
-                            fontFamily: 'coRegular',
+                            fontFamily: 'Co',
                             fontSize: 14,
                             fontWeight: FontWeight.bold),
                       ),
@@ -96,7 +96,7 @@ class VeterinarianItem extends StatelessWidget {
                             '125 Reviews',
                             style: TextStyle(
                                 color: Colors.grey[400],
-                                fontFamily: 'coRegular',
+                                fontFamily: 'Co',
                                 fontSize: 12,
                                 fontWeight: FontWeight.w600),
                           ),
@@ -115,7 +115,7 @@ class VeterinarianItem extends StatelessWidget {
                     '10 year of experience ',
                     style: TextStyle(
                         color: Colors.grey[400],
-                        fontFamily: 'coRegular',
+                        fontFamily: 'Co',
                         fontSize: 12,
                         fontWeight: FontWeight.w600),
                   ),
@@ -140,7 +140,7 @@ class VeterinarianItem extends StatelessWidget {
                     '2.4 km',
                     style: TextStyle(
                         color: Colors.grey[600],
-                        fontFamily: 'coRegular',
+                        fontFamily: 'Co',
                         fontSize: 12,
                         fontWeight: FontWeight.w600),
                   ),
@@ -165,7 +165,7 @@ class VeterinarianItem extends StatelessWidget {
                     '\$20',
                     style: TextStyle(
                         color: Colors.grey[600],
-                        fontFamily: 'coRegular',
+                        fontFamily: 'Co',
                         fontSize: 12,
                         fontWeight: FontWeight.w600),
                   ),

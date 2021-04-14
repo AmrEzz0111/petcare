@@ -46,7 +46,7 @@ class GroomPlaceDetails extends StatelessWidget {
                             maxLines: 2,
                             style: TextStyle(
                                 color: Colors.grey[600],
-                                fontFamily: 'coRegular',
+                                fontFamily: 'Co',
                                 fontSize: 12,
                                 fontWeight: FontWeight.w600),
                           ),
@@ -98,7 +98,7 @@ class GroomPlaceDetails extends StatelessWidget {
                         maxLines: 2,
                         style: TextStyle(
                             color: Colors.grey[600],
-                            fontFamily: 'coRegular',
+                            fontFamily: 'Co',
                             fontSize: 12,
                             fontWeight: FontWeight.w600),
                       ),
@@ -145,7 +145,7 @@ class GroomPlaceDetails extends StatelessWidget {
                         maxLines: 2,
                         style: TextStyle(
                             color: Colors.grey[600],
-                            fontFamily: 'coRegular',
+                            fontFamily: 'Co',
                             fontSize: 12,
                             fontWeight: FontWeight.w600),
                       ),

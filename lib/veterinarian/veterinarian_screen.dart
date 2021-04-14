@@ -55,7 +55,7 @@ class _VeterinarianViewState extends State<VeterinarianView>
                           'Map',
                           style: TextStyle(
                             color: AppTheme.appDark,
-                            fontFamily: 'coRegular',
+                            fontFamily: 'Co',
                             fontSize: 14,
                           ),
                         ),
@@ -75,7 +75,7 @@ class _VeterinarianViewState extends State<VeterinarianView>
                       style: TextStyle(
                         color: Colors.black87,
                         fontSize: 14.0,
-                        fontFamily: 'coRegular',
+                        fontFamily: 'Co',
                       ),
                       decoration: InputDecoration(
                           fillColor: Colors.grey[200],
@@ -95,7 +95,7 @@ class _VeterinarianViewState extends State<VeterinarianView>
                           hintStyle: TextStyle(
                             color: AppTheme.bgMain,
                             fontSize: 14.0,
-                            fontFamily: 'coRegular',
+                            fontFamily: 'Co',
                             fontWeight: FontWeight.bold,
                           ),
                           prefixIcon: Icon(
@@ -134,7 +134,7 @@ class _VeterinarianViewState extends State<VeterinarianView>
                 child: Text(
                   'Specialists',
                   style: TextStyle(
-                    fontFamily: 'coRegular',
+                    fontFamily: 'Co',
                     fontSize: 14,
                     fontWeight: FontWeight.bold,
                   ),
@@ -147,7 +147,7 @@ class _VeterinarianViewState extends State<VeterinarianView>
                 child: Text(
                   'Clinics',
                   style: TextStyle(
-                    fontFamily: 'coRegular',
+                    fontFamily: 'Co',
                     fontSize: 14,
                     fontWeight: FontWeight.bold,
                   ),

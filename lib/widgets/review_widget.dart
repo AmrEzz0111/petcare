@@ -44,8 +44,8 @@ class ReviewWidget extends StatelessWidget {
                       Text(
                         'Peternko Julia',
                         style: TextStyle(
-                            color: AppTheme.bgColor,
-                            fontFamily: 'coRegular',
+                            color: AppTheme.headLine1Color,
+                            fontFamily: 'Co',
                             fontSize: 14,
                             fontWeight: FontWeight.bold),
                       ),
@@ -88,7 +88,7 @@ class ReviewWidget extends StatelessWidget {
                 'Rude people with very bad service from the call center to the grooming team. Also they are always late from 1 to 2 hrs. One day they were showering my dog and the doctor told me “ i will trim small part of his hair” i found out later that the dog got injured badly and was not able to walk for days . Not recommended at all.',
                 style: TextStyle(
                     color: Colors.grey,
-                    fontFamily: 'coRegular',
+                    fontFamily: 'Co',
                     fontSize: 12,
                     fontWeight: FontWeight.w500),
               ),
@@ -101,7 +101,7 @@ class ReviewWidget extends StatelessWidget {
                   '12/04/2021',
                   style: TextStyle(
                       color: AppTheme.appDark,
-                      fontFamily: 'coRegular',
+                      fontFamily: 'Co',
                       fontSize: 12,
                       fontWeight: FontWeight.w500),
                 ),

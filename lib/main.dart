@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:pet_care/authentication/booking.dart';
 import 'package:pet_care/colors/style.dart';
+import 'package:pet_care/pet_services/grooming/grooming_screen.dart';
 import 'package:pet_care/pharmacies/pharmacy-Details-Screen.dart';
-import 'package:pet_care/screens/home_screen.dart';
-import 'package:pet_care/veterinarian/veterinarian_view.dart';
 
-import 'authentication/auth_ways.dart';
 
 void main() {
   runApp(MyApp());
@@ -50,7 +47,7 @@ class MyApp extends StatelessWidget {
           iconTheme: IconThemeData(
             color: AppTheme.appDark,
           )),
-      home: PharmacyDetails(),
+      home: GroomingScreen(),
     );
   }
 }
