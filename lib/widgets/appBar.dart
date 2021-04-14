@@ -19,7 +19,7 @@ class AppBarWidget extends StatelessWidget {
       title: Text(
         title,
         style: TextStyle(
-          color: AppTheme.bgMain,
+          color: AppTheme.headLine1Color,
           fontFamily: 'coRegular',
           fontSize: 24,
         ),

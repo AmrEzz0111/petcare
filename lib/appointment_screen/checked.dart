@@ -7,7 +7,7 @@ class AppointmentChecked extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppTheme.bgMain,
+      backgroundColor: AppTheme.kAppointmentCheckedBg,
       body: SafeArea(
         child: Center(
           child: Padding(

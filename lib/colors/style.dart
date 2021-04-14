@@ -8,4 +8,5 @@ class AppTheme {
   static const Color headLine1Color = Color.fromARGB(255, 38, 37, 71);
   static Color bgMain = Colors.grey.shade100;
   static const Color kUnselectedItemColor = Color(0xffbec2cb);
+  static const Color kAppointmentCheckedBg = Color.fromARGB(255, 31, 34, 69);
 }

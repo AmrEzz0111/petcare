@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:pet_care/appointment_screen/appointment.dart';
 import 'package:pet_care/colors/style.dart';
-import 'package:pet_care/screens/main_screen.dart';
+import 'package:pet_care/screens/home_screen.dart';
+
+import 'appointment_screen/checked.dart';
 
 void main() {
   runApp(MyApp());
@@ -17,6 +20,20 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       // darkTheme: ThemeData.dark(),
       theme: Theme.of(context).copyWith(
+          primaryColor: AppTheme.appPrimary,
+          accentColor: Colors.deepOrange,
+          tabBarTheme: TabBarTheme(
+            labelColor: AppTheme.headLine1Color,
+            indicator: BoxDecoration(
+              border: Border(),
+              borderRadius: BorderRadius.circular(50),
+              color: Colors.deepOrange,
+            ),
+          ),
+          fixTextFieldOutlineLabel: true,
+          inputDecorationTheme: InputDecorationTheme(
+            border: InputBorder.none,
+          ),
           bottomNavigationBarTheme: BottomNavigationBarThemeData(
             backgroundColor: AppTheme.bgMain,
             selectedItemColor: AppTheme.appDark,
@@ -32,20 +49,20 @@ class MyApp extends StatelessWidget {
           ),
           textTheme: TextTheme(
             headline1: TextStyle(
-              fontSize: 33,
+              fontSize: 27,
               color: AppTheme.headLine1Color,
               fontFamily: 'Co',
               fontWeight: FontWeight.w700,
             ),
             caption: TextStyle(
-              fontSize: 12,
+              fontSize: 5,
               color: AppTheme.headLine1Color,
             ),
           ),
           iconTheme: IconThemeData(
             color: AppTheme.appDark,
           )),
-      home: MainScreen(),
+      home: HomeScreen(),
     );
   }
 }
