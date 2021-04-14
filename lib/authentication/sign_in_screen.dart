@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:pet_care/authentication/registeration.dart';
+import 'package:pet_care/screens/home_screen.dart';
 
 class SignIn extends StatelessWidget {
   @override
@@ -91,7 +92,12 @@ class SignIn extends StatelessWidget {
                         padding: const EdgeInsets.all(15.0),
                         child: RaisedButton(
                           color: Color(0xFFc25e3c),
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => HomeScreen()));
+                          },
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(30)),
                           child: Padding(
