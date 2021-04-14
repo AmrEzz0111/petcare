@@ -71,10 +71,7 @@ flutter:
   fonts:
    - family: Co
      fonts:
-       - asset: assets/fonts/Co-Bold.ttf
-       - asset: assets/fonts/Co-Light.ttf
        - asset: assets/fonts/Co-Regular.ttf
-         weight: 700
   #  - family: coLight
   #    fonts:
        

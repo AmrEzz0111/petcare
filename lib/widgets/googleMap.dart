@@ -10,6 +10,9 @@ class GoogleMapWidget extends StatelessWidget {
     target: LatLng(37.42796133580664, -122.085749655962),
     zoom: 14.4746,
   );
+  var myMarker = Marker(
+    markerId: MarkerId("1"),
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -19,6 +22,11 @@ class GoogleMapWidget extends StatelessWidget {
       onMapCreated: (GoogleMapController controller) {
         _controller.complete(controller);
       },
+      myLocationButtonEnabled: true,
+      myLocationEnabled: true,
+      markers: Set.of(
+        [myMarker],
+      ),
     );
   }
 }
