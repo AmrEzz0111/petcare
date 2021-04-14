@@ -19,7 +19,7 @@ class _MyPetViewState extends State<MyPetView> {
           title: Text(
             'My pets',
             style: TextStyle(
-              color: AppTheme.bgColor,
+              color: AppTheme.bgMain,
               fontFamily: 'coRegular',
               fontSize: 24,
             ),

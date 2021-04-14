@@ -47,7 +47,7 @@ class MyPetItem extends StatelessWidget {
               Text(
                 'Shani',
                 style: TextStyle(
-                  color: AppTheme.bgColor,
+                  color: AppTheme.bgMain,
                   fontFamily: 'coRegular',
                   fontSize: 18,
                   fontWeight: FontWeight.bold,

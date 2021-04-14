@@ -12,7 +12,7 @@ class _ShowBottomSheetState extends State<ShowBottomSheet> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: AppTheme.bgColor,
+        backgroundColor: AppTheme.bgMain,
         body: Builder(
           builder: (context) => Center(
             child: AppointmentBtn(

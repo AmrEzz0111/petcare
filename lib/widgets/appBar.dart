@@ -13,18 +13,19 @@ class AppBarWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-        centerTitle: true,
-        backgroundColor: Colors.white,
-        elevation: evaluation,
-        title: Text(
-          title,
-          style: TextStyle(
-            color: AppTheme.bgColor,
-            fontFamily: 'coRegular',
-            fontSize: 20,
-          ),
+      centerTitle: true,
+      backgroundColor: Colors.white,
+      elevation: evaluation,
+      title: Text(
+        title,
+        style: TextStyle(
+          color: AppTheme.bgMain,
+          fontFamily: 'coRegular',
+          fontSize: 24,
         ),
-        leading: leading != null ? leading : Container(),
-        actions: actions);
+      ),
+      leading: leading != null ? leading : Container(),
+      actions: actions,
+    );
   }
 }
