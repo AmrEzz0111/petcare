@@ -2,6 +2,7 @@ import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:pet_care/colors/style.dart';
+import 'package:pet_care/pet_services/grooming/grooming_screen.dart';
 import 'package:pet_care/slpash_screen/splash_view.dart';
 
 // void main() {
@@ -14,9 +15,10 @@ import 'package:pet_care/slpash_screen/splash_view.dart';
 //   SystemChrome.setSystemUIOverlayStyle(
 //       SystemUiOverlayStyle(statusBarColor: Colors.transparent));
 // }
-void main() {
+void main() async {
   runApp(MyApp());
-
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle(statusBarColor: Colors.transparent));
 }
