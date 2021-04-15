@@ -7,7 +7,7 @@ class MyPetItem extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(bottom: 8),
       child: Container(
-        height: 220,
+        //  height: 220,
         decoration: BoxDecoration(
             color: Colors.white, borderRadius: BorderRadius.circular(10)),
         child: Padding(
@@ -47,7 +47,7 @@ class MyPetItem extends StatelessWidget {
               Text(
                 'Shani',
                 style: TextStyle(
-                  color: AppTheme.bgMain,
+                  color: AppTheme.headLine1Color,
                   fontFamily: 'Co',
                   fontSize: 18,
                   fontWeight: FontWeight.bold,

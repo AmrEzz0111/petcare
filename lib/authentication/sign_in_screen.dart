@@ -1,9 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:pet_care/authentication/registeration.dart';
 import 'package:pet_care/screens/home_screen.dart';
 
-class SignIn extends StatelessWidget {
+class SignIn extends StatefulWidget {
+  @override
+  _SignInState createState() => _SignInState();
+}
+
+class _SignInState extends State<SignIn> {
+  String name;
+  String email;
+  String image;
+  String accessToken;
+  String id;
+
+  final GoogleSignIn _googleSignIn = GoogleSignIn(
+    scopes: [
+      'email',
+    ],
+  );
+
+  Future<GoogleSignInAuthentication> _handleSignInGoogle() async {
+    {
+      await _googleSignIn.signIn();
+      return await _googleSignIn.currentUser.authentication;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -138,10 +163,27 @@ class SignIn extends StatelessWidget {
                             size: 50,
                           ),
                           SizedBox(width: 50),
-                          FaIcon(
-                            FontAwesomeIcons.google,
-                            color: Color(0xFFc25e3c),
-                            size: 50,
+                          InkWell(
+                            onTap: () {
+                              _handleSignInGoogle().then((auth) async {
+                                var idToken = (await auth.accessToken);
+                                name = _googleSignIn.currentUser.displayName;
+                                print(
+                                    "------------------${_googleSignIn.currentUser.displayName}");
+                                print(
+                                    "------------------${_googleSignIn.currentUser.email}");
+
+                                image = _googleSignIn.currentUser.photoUrl;
+                                email = _googleSignIn.currentUser.email;
+                                setState(() {});
+                                // this.widget.viewModel.loginWithGmail(idToken);
+                              });
+                            },
+                            child: FaIcon(
+                              FontAwesomeIcons.google,
+                              color: Color(0xFFc25e3c),
+                              size: 50,
+                            ),
                           )
                         ],
                       ),

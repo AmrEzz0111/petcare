@@ -1,11 +1,22 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:pet_care/colors/style.dart';
-import 'package:pet_care/pet_services/grooming/grooming_screen.dart';
 import 'package:pet_care/slpash_screen/splash_view.dart';
 
+// void main() {
+//   runApp(
+//     DevicePreview(
+//       enabled: true,
+//       builder: (context) => MyApp(),
+//     ),
+//   );
+//   SystemChrome.setSystemUIOverlayStyle(
+//       SystemUiOverlayStyle(statusBarColor: Colors.transparent));
+// }
 void main() {
   runApp(MyApp());
+
   SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle(statusBarColor: Colors.transparent));
 }
@@ -15,6 +26,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Pet Care',
+      locale: DevicePreview.locale(context), // Add the locale here
+      builder: DevicePreview.appBuilder,
       debugShowCheckedModeBanner: false,
       // darkTheme: ThemeData.dark(),
       theme: Theme.of(context).copyWith(
@@ -46,7 +59,7 @@ class MyApp extends StatelessWidget {
           iconTheme: IconThemeData(
             color: AppTheme.appDark,
           )),
-      home: GroomingScreen(),
+      home: SplashScreen(),
     );
   }
 }

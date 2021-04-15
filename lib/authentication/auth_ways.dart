@@ -1,11 +1,77 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:pet_care/authentication/registeration.dart';
 import 'package:pet_care/authentication/sign_in_screen.dart';
+import 'package:pet_care/screens/home_screen.dart';
 
-class AuthenticationScreen extends StatelessWidget {
+class AuthenticationScreen extends StatefulWidget {
+  @override
+  _AuthenticationScreenState createState() => _AuthenticationScreenState();
+}
+
+class _AuthenticationScreenState extends State<AuthenticationScreen> {
+  String name;
+  String email;
+  String image;
+  String accessToken;
+  String id;
+
+  final GoogleSignIn _googleSignIn = GoogleSignIn(
+    scopes: [
+      'email',
+    ],
+  );
+
+  // Future<GoogleSignInAuthentication> _handleSignInGoogle() async {
+  //   {
+  //     await _googleSignIn.signIn();
+  //     return await _googleSignIn.currentUser.authentication;
+  //   }
+  // }
+
+  static Future<User> signInWithGoogle() async {
+    FirebaseAuth auth = FirebaseAuth.instance;
+    User user;
+
+    final GoogleSignIn googleSignIn = GoogleSignIn();
+
+    final GoogleSignInAccount googleSignInAccount = await googleSignIn.signIn();
+
+    if (googleSignInAccount != null) {
+      final GoogleSignInAuthentication googleSignInAuthentication =
+          await googleSignInAccount.authentication;
+
+      final AuthCredential credential = GoogleAuthProvider.credential(
+        accessToken: googleSignInAuthentication.accessToken,
+        idToken: googleSignInAuthentication.idToken,
+      );
+
+      try {
+        final UserCredential userCredential =
+            await auth.signInWithCredential(credential);
+
+        user = userCredential.user;
+      } on FirebaseAuthException catch (e) {
+        if (e.code == 'account-exists-with-different-credential') {
+          // handle the error here
+        } else if (e.code == 'invalid-credential') {
+          // handle the error here
+        }
+      } catch (e) {
+        // handle the error here
+      }
+    }
+
+    return user;
+  }
+
   @override
   Widget build(BuildContext context) {
+    bool _isSigningIn = false;
+
     return Scaffold(
       body: Container(
         color: Color(0xFF2e2b43),
@@ -96,33 +162,69 @@ class AuthenticationScreen extends StatelessWidget {
             SizedBox(
               height: 20,
             ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-              child: RaisedButton(
-                onPressed: () {},
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30)),
-                child: Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      FaIcon(
-                        FontAwesomeIcons.google,
-                        color: Color(0xFFc25e3c),
-                      ),
-                      Text('  Continue with ',
-                          style: TextStyle(
-                              fontSize: 17, color: Color(0xDDc25e3c))),
-                      Text(' Google',
-                          style: TextStyle(
-                            color: Color(0xFFc25e3c),
-                            fontSize: 17,
-                          ))
-                    ],
-                  ),
-                ),
-              ),
+            FutureBuilder(
+              future: Firebase.initializeApp(),
+              builder: (context, snapshot) {
+                if (snapshot.hasError) {
+                  return Text('Error initializing Firebase');
+                } else if (snapshot.connectionState == ConnectionState.done) {
+                  return Padding(
+                    padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                    child: _isSigningIn
+                        ? CircularProgressIndicator(
+                            valueColor:
+                                AlwaysStoppedAnimation<Color>(Colors.white),
+                          )
+                        : RaisedButton(
+                            onPressed: () async {
+                              setState(() {
+                                _isSigningIn = true;
+                              });
+
+                              User user = await signInWithGoogle();
+
+                              setState(() {
+                                _isSigningIn = false;
+                              });
+
+                              if (user != null) {
+                                Navigator.of(context).pushReplacement(
+                                  MaterialPageRoute(
+                                    builder: (context) => HomeScreen(
+                                      user: user,
+                                    ),
+                                  ),
+                                );
+                              }
+                            },
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30)),
+                            child: Padding(
+                              padding: const EdgeInsets.all(10.0),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  FaIcon(
+                                    FontAwesomeIcons.google,
+                                    color: Color(0xFFc25e3c),
+                                  ),
+                                  Text('  Continue with ',
+                                      style: TextStyle(
+                                          fontSize: 17,
+                                          color: Color(0xDDc25e3c))),
+                                  Text(' Google',
+                                      style: TextStyle(
+                                        color: Color(0xFFc25e3c),
+                                        fontSize: 17,
+                                      ))
+                                ],
+                              ),
+                            ),
+                          ),
+                  );
+                }
+                return CircularProgressIndicator();
+              },
             ),
             SizedBox(
               height: 40,

@@ -21,7 +21,7 @@ class AppBarWidget extends StatelessWidget {
         style: TextStyle(
           color: AppTheme.headLine1Color,
           fontFamily: 'Co',
-          fontSize: 24,
+          fontSize: 20,
         ),
       ),
       leading: leading != null ? leading : Container(),

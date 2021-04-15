@@ -40,6 +40,8 @@ dependencies:
   firebase_auth: "^0.18.1+2"
   firebase_messaging: ^5.0.2
   firebase_database:
+  google_sign_in: ^4.5.9
+  device_preview: ^0.5.5
 
 
 dev_dependencies:

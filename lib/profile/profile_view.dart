@@ -54,116 +54,119 @@ class _ProfileViewState extends State<ProfileView> {
           ],
         ),
       ),
-      body: Column(
-        children: [
-          Container(
-            height: 220,
-            width: double.infinity,
-            decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(25),
-                    bottomRight: Radius.circular(25)),
-                boxShadow: <BoxShadow>[
-                  BoxShadow(
-                      color: Colors.grey[400],
-                      blurRadius: 10,
-                      offset: Offset(0.0, 0.75)),
-                ]),
-            child: Padding(
-              padding: const EdgeInsets.only(top: 16),
-              child: Column(
-                children: [
-                  CircleAvatar(
-                    radius: 55,
-                    backgroundColor: Colors.white,
-                    backgroundImage: AssetImage('assets/images/user.jpg'),
-                  ),
-                  SizedBox(
-                    height: 15,
-                  ),
-                  Text(
-                    'Alaa S. Elmaghraby',
-                    style: TextStyle(
-                      color: Colors.black87,
-                      fontFamily: 'Co',
-                      fontSize: 20,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
+              height: 220,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(25),
+                      bottomRight: Radius.circular(25)),
+                  boxShadow: <BoxShadow>[
+                    BoxShadow(
+                        color: Colors.grey[400],
+                        blurRadius: 10,
+                        offset: Offset(0.0, 0.75)),
+                  ]),
+              child: Padding(
+                padding: const EdgeInsets.only(top: 16),
+                child: Column(
+                  children: [
+                    CircleAvatar(
+                      radius: 55,
+                      backgroundColor: Colors.white,
+                      backgroundImage: AssetImage('assets/images/user.jpg'),
                     ),
-                  ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  Text(
-                    'alaa.sobhy193',
-                    style: TextStyle(
-                      color: Colors.grey,
-                      fontFamily: 'Co',
-                      fontSize: 16,
+                    SizedBox(
+                      height: 15,
                     ),
-                  ),
-                ],
+                    Text(
+                      'Alaa S. Elmaghraby',
+                      style: TextStyle(
+                        color: Colors.black87,
+                        fontFamily: 'Co',
+                        fontSize: 20,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Text(
+                      'alaa.sobhy193',
+                      style: TextStyle(
+                        color: Colors.grey,
+                        fontFamily: 'Co',
+                        fontSize: 16,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
-          SizedBox(
-            height: 35,
-          ),
-          Padding(
-              padding: const EdgeInsets.only(left: 16, right: 16),
-              child: Column(
-                children: [
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (BuildContext context) => MyPetView()));
-                    },
-                    child: buildColumn(
-                      'My Pets',
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Image.asset(
-                          'assets/images/paw.png',
-                          color: AppTheme.appDark,
+            SizedBox(
+              height: 35,
+            ),
+            Padding(
+                padding: const EdgeInsets.only(left: 16, right: 16),
+                child: Column(
+                  children: [
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (BuildContext context) =>
+                                    MyPetView()));
+                      },
+                      child: buildColumn(
+                        'My Pets',
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Image.asset(
+                            'assets/images/paw.png',
+                            color: AppTheme.appDark,
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (BuildContext context) =>
-                                  AddPetDetails()));
-                    },
-                    child: buildColumn(
-                      'Add Pet Details',
-                      Icon(
-                        Icons.description_rounded,
-                        color: AppTheme.appDark,
-                        size: 20,
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (BuildContext context) =>
+                                    AddPetDetails()));
+                      },
+                      child: buildColumn(
+                        'Add Pet Details',
+                        Icon(
+                          Icons.description_rounded,
+                          color: AppTheme.appDark,
+                          size: 20,
+                        ),
                       ),
                     ),
-                  ),
-                  buildColumn(
-                      'Help',
-                      Icon(
-                        Icons.help_outline_rounded,
-                        color: AppTheme.appDark,
-                        size: 20,
-                      )),
-                  buildColumn(
-                      'Log Out',
-                      Icon(
-                        Icons.exit_to_app_rounded,
-                        color: AppTheme.appDark,
-                        size: 20,
-                      )),
-                ],
-              ))
-        ],
+                    buildColumn(
+                        'Help',
+                        Icon(
+                          Icons.help_outline_rounded,
+                          color: AppTheme.appDark,
+                          size: 20,
+                        )),
+                    buildColumn(
+                        'Log Out',
+                        Icon(
+                          Icons.exit_to_app_rounded,
+                          color: AppTheme.appDark,
+                          size: 20,
+                        )),
+                  ],
+                ))
+          ],
+        ),
       ),
     );
   }

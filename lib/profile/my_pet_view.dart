@@ -19,14 +19,17 @@ class _MyPetViewState extends State<MyPetView> {
           title: Text(
             'My pets',
             style: TextStyle(
-              color: AppTheme.bgMain,
+              color: AppTheme.headLine1Color,
               fontFamily: 'Co',
-              fontSize: 24,
+              fontSize: 20,
             ),
           ),
-          leading: Icon(
-            Icons.arrow_back,
-            color: Colors.grey,
+          leading: InkWell(
+            onTap: () => Navigator.pop(context),
+            child: Icon(
+              Icons.arrow_back,
+              color: Colors.grey,
+            ),
           ),
           actions: [
             Padding(
