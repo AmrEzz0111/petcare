@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:pet_care/authentication/sign_in_screen.dart';
+import 'package:pet_care/colors/style.dart';
 
 class Registeraion extends StatefulWidget {
   @override
@@ -30,7 +31,8 @@ class _RegisteraionState extends State<Registeraion> {
                   padding: const EdgeInsets.fromLTRB(20, 0, 10, 20),
                   child: Text(
                     'Registeration',
-                    style: TextStyle(color: Colors.white, fontSize: 30),
+                    style: TextStyle(
+                        color: Colors.white, fontSize: 30, fontFamily: 'Co'),
                   ),
                 ),
               ),
@@ -61,10 +63,13 @@ class _RegisteraionState extends State<Registeraion> {
                                 ),
                               ),
                               hintStyle: TextStyle(
-                                  fontSize: 14, color: Colors.black54),
+                                  fontSize: 14,
+                                  color: Colors.black54,
+                                  fontFamily: 'Co'),
                               hintText: 'Enter Your Full Name',
                               labelText: 'Full Name',
-                              labelStyle: TextStyle(color: Colors.black26),
+                              labelStyle: TextStyle(
+                                  color: Colors.black26, fontFamily: 'Co'),
                               focusedBorder: OutlineInputBorder(
                                   borderSide:
                                       BorderSide(color: Color(0xFFc25e3c))),
@@ -86,10 +91,13 @@ class _RegisteraionState extends State<Registeraion> {
                                 ),
                               ),
                               hintStyle: TextStyle(
-                                  fontSize: 14, color: Colors.black54),
+                                  fontSize: 14,
+                                  color: Colors.black54,
+                                  fontFamily: 'Co'),
                               hintText: 'enter your email',
                               labelText: 'Email',
-                              labelStyle: TextStyle(color: Colors.black26),
+                              labelStyle: TextStyle(
+                                  color: Colors.black26, fontFamily: 'Co'),
                               focusedBorder: OutlineInputBorder(
                                   borderSide:
                                       BorderSide(color: Color(0xFFc25e3c))),
@@ -113,9 +121,12 @@ class _RegisteraionState extends State<Registeraion> {
                               ),
                               hintText: 'enter your Password',
                               hintStyle: TextStyle(
-                                  fontSize: 14, color: Colors.black54),
+                                  fontSize: 14,
+                                  color: Colors.black54,
+                                  fontFamily: 'Co'),
                               labelText: 'Password',
-                              labelStyle: TextStyle(color: Colors.black26),
+                              labelStyle: TextStyle(
+                                  color: Colors.black26, fontFamily: 'Co'),
                               focusedBorder: OutlineInputBorder(
                                   borderSide:
                                       BorderSide(color: Color(0xFFc25e3c))),
@@ -124,19 +135,8 @@ class _RegisteraionState extends State<Registeraion> {
                                       BorderSide(color: Color(0xFFc25e3c)))),
                         ),
                       ),
-                      CheckboxListTile(
-                        value: isChecked,
-                        activeColor: Color(0xFFc25e3c),
-                        title: Text(
-                          "I agree with polices",
-                          style: TextStyle(color: Colors.black38, fontSize: 12),
-                        ),
-                        controlAffinity: ListTileControlAffinity.leading,
-                        onChanged: (newVal) {
-                          setState(() {
-                            isChecked = newVal;
-                          });
-                        },
+                      SizedBox(
+                        height: 20,
                       ),
                       Padding(
                         padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
@@ -150,7 +150,9 @@ class _RegisteraionState extends State<Registeraion> {
                               child: Text(
                                 'Sign Up',
                                 style: TextStyle(
-                                    color: Colors.white, fontSize: 17),
+                                    color: Colors.white,
+                                    fontSize: 16,
+                                    fontFamily: 'Co'),
                               )),
                         ),
                       ),
@@ -168,10 +170,11 @@ class _RegisteraionState extends State<Registeraion> {
                     children: [
                       Text(
                         'or continue with',
-                        style: TextStyle(color: Colors.black54),
+                        style:
+                            TextStyle(color: Colors.black54, fontFamily: 'Co'),
                       ),
                       SizedBox(
-                        height: 10,
+                        height: 20,
                       ),
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
@@ -180,13 +183,13 @@ class _RegisteraionState extends State<Registeraion> {
                           FaIcon(
                             FontAwesomeIcons.facebook,
                             color: Color(0xFF4267B2),
-                            size: 50,
+                            size: 35,
                           ),
                           SizedBox(width: 50),
                           FaIcon(
                             FontAwesomeIcons.google,
                             color: Color(0xFFc25e3c),
-                            size: 50,
+                            size: 35,
                           )
                         ],
                       ),
@@ -198,7 +201,8 @@ class _RegisteraionState extends State<Registeraion> {
                         children: [
                           Text(
                             "Already have account? ",
-                            style: TextStyle(color: Colors.black54),
+                            style: TextStyle(
+                                color: Colors.black54, fontFamily: 'Co'),
                           ),
                           GestureDetector(
                             onTap: () {
@@ -210,7 +214,8 @@ class _RegisteraionState extends State<Registeraion> {
                             child: Text(
                               "Sign In",
                               style: TextStyle(
-                                  color: Color(0xFFc25e3c),
+                                  color: AppTheme.appDark,
+                                  fontFamily: 'Co',
                                   fontWeight: FontWeight.bold,
                                   decoration: TextDecoration.underline),
                             ),

@@ -27,7 +27,7 @@ class OnBoardingScreen extends StatelessWidget {
             pageButtonsColor: AppTheme.appDark,
             pageButtonTextStyles: new TextStyle(
               fontSize: 16.0,
-              fontFamily: "coRegular",
+              fontFamily: "Co",
             ),
           ),
         ],

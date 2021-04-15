@@ -1,8 +1,8 @@
 import 'package:device_preview/device_preview.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:pet_care/colors/style.dart';
-import 'package:pet_care/pet_services/grooming/grooming_screen.dart';
 import 'package:pet_care/slpash_screen/splash_view.dart';
 
 // void main() {
@@ -31,7 +31,6 @@ class MyApp extends StatelessWidget {
       locale: DevicePreview.locale(context), // Add the locale here
       builder: DevicePreview.appBuilder,
       debugShowCheckedModeBanner: false,
-      // darkTheme: ThemeData.dark(),
       theme: Theme.of(context).copyWith(
           bottomNavigationBarTheme: BottomNavigationBarThemeData(
             backgroundColor: AppTheme.bgMain,

@@ -5,4 +5,8 @@ class AuthRepository {
   Future getSignInEmailAndPassword(String username, String password) {
     return _authService.signInEmailAndPassword(username, password);
   }
+
+  Future signInWithGoogle() {
+    return _authService.signInWithGoogle();
+  }
 }
