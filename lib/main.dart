@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:pet_care/appointment_screen/appointment.dart';
 import 'package:pet_care/colors/style.dart';
-import 'package:pet_care/screens/home_screen.dart';
 
-import 'appointment_screen/checked.dart';
+import 'widgets/bottom_navigation_bar.dart';
 
 void main() {
   runApp(MyApp());
@@ -18,16 +16,37 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Pet Care',
       debugShowCheckedModeBanner: false,
+
       // darkTheme: ThemeData.dark(),
       theme: Theme.of(context).copyWith(
           primaryColor: AppTheme.appPrimary,
-          accentColor: Colors.deepOrange,
+          accentColor: AppTheme.appDark,
+          buttonColor: AppTheme.appDark,
+          elevatedButtonTheme: ElevatedButtonThemeData(
+            style: ElevatedButton.styleFrom(
+              primary: AppTheme.appDark,
+
+              onPrimary: Colors.grey.shade300,
+              // onSurface: Colors.grey.shade300,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20),
+              ),
+            ),
+          ),
+          textButtonTheme: TextButtonThemeData(
+            style: ButtonStyle(),
+          ),
+          buttonTheme: ButtonThemeData(
+            buttonColor: Colors.white,
+          ),
           tabBarTheme: TabBarTheme(
-            labelColor: AppTheme.headLine1Color,
-            indicator: BoxDecoration(
-              border: Border(),
-              borderRadius: BorderRadius.circular(50),
-              color: Colors.deepOrange,
+            labelStyle: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.w700,
+            ),
+            unselectedLabelStyle: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.w700,
             ),
           ),
           fixTextFieldOutlineLabel: true,
@@ -54,15 +73,49 @@ class MyApp extends StatelessWidget {
               fontFamily: 'Co',
               fontWeight: FontWeight.w700,
             ),
-            caption: TextStyle(
-              fontSize: 5,
+            headline2: Theme.of(context).textTheme.headline1.copyWith(
+                  fontSize: 23,
+                  fontWeight: FontWeight.w700,
+                  color: AppTheme.headLine1Color,
+                ),
+            headline3: Theme.of(context).textTheme.headline1.copyWith(
+                  fontSize: 17,
+                  fontWeight: FontWeight.w700,
+                  color: AppTheme.headLine1Color,
+                ),
+            subtitle1: Theme.of(context).textTheme.headline1.copyWith(
+                  fontSize: 15,
+                  fontWeight: FontWeight.w600,
+                  color: AppTheme.appDark,
+                ),
+            bodyText1: TextStyle(
+              fontSize: 18,
               color: AppTheme.headLine1Color,
+              fontFamily: 'Co',
+            ),
+            bodyText2: TextStyle(
+              fontSize: 18,
+              color: AppTheme.headLine1Color,
+              fontFamily: 'Co',
+            ),
+            headline4: TextStyle(
+                fontSize: 12,
+                color: Colors.grey.shade400,
+                fontWeight: FontWeight.w500),
+            caption: TextStyle(
+              fontSize: 13,
+              fontWeight: FontWeight.w500,
+              color: Colors.grey.shade500,
+            ),
+            button: TextStyle(
+              fontSize: 20,
+              color: Colors.white,
             ),
           ),
           iconTheme: IconThemeData(
             color: AppTheme.appDark,
           )),
-      home: HomeScreen(),
+      home: BottomNav(),
     );
   }
 }

@@ -20,7 +20,7 @@ class _MyPetViewState extends State<MyPetView> {
             'My pets',
             style: TextStyle(
               color: AppTheme.bgMain,
-              fontFamily: 'coRegular',
+              fontFamily: 'Co',
               fontSize: 24,
             ),
           ),
@@ -71,7 +71,7 @@ class _MyPetViewState extends State<MyPetView> {
                       'Add another pet ',
                       style: TextStyle(
                         color: AppTheme.appDark,
-                        fontFamily: 'coRegular',
+                        fontFamily: 'Co',
                         fontSize: 16,
                       ),
                     )

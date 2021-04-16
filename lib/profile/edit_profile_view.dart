@@ -36,7 +36,7 @@ class _EditProfileViewState extends State<EditProfileView> {
                       'Skip',
                       style: TextStyle(
                         color: AppTheme.appDark,
-                        fontFamily: 'coRegular',
+                        fontFamily: 'Co',
                         fontSize: 14,
                       ),
                     ),
@@ -104,7 +104,7 @@ class _EditProfileViewState extends State<EditProfileView> {
                 'Owner',
                 style: TextStyle(
                   color: Colors.grey,
-                  fontFamily: 'coRegular',
+                  fontFamily: 'Co',
                   fontSize: 12,
                 ),
               ),
@@ -160,7 +160,7 @@ class _EditProfileViewState extends State<EditProfileView> {
                     'Get Started',
                     style: TextStyle(
                       color: Colors.white,
-                      fontFamily: 'coRegular',
+                      fontFamily: 'Co',
                       fontSize: 16,
                     ),
                   ),

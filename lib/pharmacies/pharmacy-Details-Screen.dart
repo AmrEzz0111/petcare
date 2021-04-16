@@ -1,17 +1,45 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:pet_care/widgets/calender.dart';
 import 'package:pet_care/widgets/googleMap.dart';
+import 'package:table_calendar/table_calendar.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:pet_care/widgets/calender.dart';
 
-class Booking extends StatefulWidget {
+class PharmacyDetails extends StatefulWidget {
+  CalendarController _calController;
+
+  Booking() {
+    _calController = new CalendarController();
+  }
+
   @override
   _BookingState createState() => _BookingState();
 }
 
-class _BookingState extends State<Booking> {
+class _BookingState extends State<PharmacyDetails> {
+  Map<DateTime, List<dynamic>> _events = {};
+  Completer<GoogleMapController> _controller = Completer();
+  static final CameraPosition _kGooglePlex = CameraPosition(
+    target: LatLng(37.42796133580664, -122.085749655962),
+    zoom: 14.4746,
+  );
+
+  static final CameraPosition _kLake = CameraPosition(
+      bearing: 192.8334901395799,
+      target: LatLng(37.43296265331129, -122.08832357078792),
+      tilt: 59.440717697143555,
+      zoom: 19.151926040649414);
   @override
   Widget build(BuildContext context) {
+    Completer<GoogleMapController> _controller = Completer();
+    const CameraPosition _kGooglePlex = CameraPosition(
+      target: LatLng(37.42796133580664, -122.085749655962),
+      zoom: 14.4746,
+    );
+
     return Scaffold(
         body: ListView(
       shrinkWrap: true,
@@ -31,9 +59,8 @@ class _BookingState extends State<Booking> {
                     height: MediaQuery.of(context).size.height * .55,
                     child: FittedBox(
                       fit: BoxFit.fill,
-                      child: Image.network(
-                        "https://image.tmdb.org/t/p/w500/6NsMbJXRlDZuDzatN2akFdGuTvx.jpg",
-                        height: MediaQuery.of(context).size.height * 0.8,
+                      child: Image.asset(
+                        "assets/images/main_imgs/Pharmacy.jpg",
                       ),
                     )),
               ),
@@ -59,26 +86,19 @@ class _BookingState extends State<Booking> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    'Scarlett Johansson',
+                                    'Pharmacy Name',
                                     style: TextStyle(
                                         fontSize: 18,
+                                        color: Colors.black,
                                         fontWeight: FontWeight.bold),
                                   ),
                                   Padding(
                                     padding:
                                         const EdgeInsets.fromLTRB(0, 5, 0, 5),
-                                    child: Text('Veterinaian',
+                                    child: Text('Location',
                                         style: TextStyle(
                                             color: Color(0xFFc25e3c),
                                             fontWeight: FontWeight.bold)),
-                                  ),
-                                  Padding(
-                                    padding:
-                                        const EdgeInsets.fromLTRB(0, 0, 0, 5),
-                                    child: Text(
-                                      '10 years of experience',
-                                      style: TextStyle(color: Colors.black26),
-                                    ),
                                   ),
                                   Row(
                                     children: [
@@ -87,22 +107,11 @@ class _BookingState extends State<Booking> {
                                         color: Colors.black54,
                                       ),
                                       Text(
-                                        "  \$20",
+                                        "  01159130853",
                                         style: TextStyle(
                                           color: Colors.black54,
                                         ),
                                       ),
-                                      Text('    '),
-                                      FaIcon(
-                                        FontAwesomeIcons.searchLocation,
-                                        color: Colors.black54,
-                                      ),
-                                      Text(
-                                        '  1.5km',
-                                        style: TextStyle(
-                                          color: Colors.black54,
-                                        ),
-                                      )
                                     ],
                                   )
                                 ],
@@ -209,12 +218,92 @@ class _BookingState extends State<Booking> {
               color: Colors.white,
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: CalenderWidget(),
+                child: Column(
+                  children: [
+                    //CalenderWidget(),
+                  ],
+                ),
               ),
             ),
           ),
         ),
-        Container(height: 500, width: 500, child: GoogleMapWidget()),
+        Container(
+          height: 500,
+            width: 500,
+            child: GoogleMapWidget()),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Container(
+            decoration: BoxDecoration(
+                border: Border(top: BorderSide(color: Colors.grey))),
+            child: Text(
+              'Products',
+              style: TextStyle(
+                  color: Color(0xFFc25e3c),
+                  fontSize: 20,
+                  fontWeight: FontWeight.w600),
+            ),
+          ),
+        ),
+        Container(
+          height: MediaQuery.of(context).size.height * .90,
+          width: MediaQuery.of(context).size.width,
+          child: ListView.builder(
+            itemCount: 4,
+            itemBuilder: (context, index) {
+              return Padding(
+                padding: const EdgeInsets.all(4.0),
+                child: Card(
+                  elevation: 4,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(10))),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          children: [
+                            Row(
+                              children: [
+                                Text(
+                                  'Product Name',
+                                  style: TextStyle(
+                                      color: Colors.black54,
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                Text(
+                                  "         20\$",
+                                  style: TextStyle(color: Colors.green),
+                                ),
+                              ],
+                            ),
+                            Text(
+                              "\nsmall description about this product up to 150 char",
+                              style: TextStyle(color: Colors.black),
+                            )
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Container(
+                            width: MediaQuery.of(context).size.width * .9,
+                            height: 250,
+                            child: FittedBox(
+                                fit: BoxFit.fill,
+                                child: Image.asset(
+                                    "assets/images/main_imgs/pharmacy_product.jpg"))),
+                      )
+                    ],
+                  ),
+                ),
+              );
+            },
+          ),
+        )
       ],
     ));
   }

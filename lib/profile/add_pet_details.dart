@@ -38,7 +38,7 @@ class _AddPetDetailsState extends State<AddPetDetails> {
                       'Skip',
                       style: TextStyle(
                         color: AppTheme.appDark,
-                        fontFamily: 'coRegular',
+                        fontFamily: 'Co',
                         fontSize: 14,
                       ),
                     ),
@@ -95,7 +95,7 @@ class _AddPetDetailsState extends State<AddPetDetails> {
                 'General Information',
                 style: TextStyle(
                     color: Colors.black87,
-                    fontFamily: 'coRegular',
+                    fontFamily: 'Co',
                     fontSize: 16,
                     fontWeight: FontWeight.w600),
               ),
@@ -150,7 +150,7 @@ class _AddPetDetailsState extends State<AddPetDetails> {
                 'Gender',
                 style: TextStyle(
                   color: Colors.grey,
-                  fontFamily: 'coRegular',
+                  fontFamily: 'Co',
                   fontSize: 12,
                 ),
               ),
@@ -177,7 +177,7 @@ class _AddPetDetailsState extends State<AddPetDetails> {
                 style: TextStyle(
                   color: Colors.black87,
                   fontWeight: FontWeight.w600,
-                  fontFamily: 'coRegular',
+                  fontFamily: 'Co',
                   fontSize: 16,
                 ),
               ),
@@ -209,7 +209,7 @@ class _AddPetDetailsState extends State<AddPetDetails> {
                 style: TextStyle(
                   color: Colors.black87,
                   fontWeight: FontWeight.w600,
-                  fontFamily: 'coRegular',
+                  fontFamily: 'Co',
                   fontSize: 16,
                 ),
               ),
@@ -220,7 +220,7 @@ class _AddPetDetailsState extends State<AddPetDetails> {
                 'Add vaccines, haitcuts, pills, estrus, etc.',
                 style: TextStyle(
                   color: Colors.black87,
-                  fontFamily: 'coRegular',
+                  fontFamily: 'Co',
                   fontSize: 14,
                 ),
               ),

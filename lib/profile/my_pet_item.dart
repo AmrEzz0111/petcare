@@ -28,7 +28,7 @@ class MyPetItem extends StatelessWidget {
                     'Edit',
                     style: TextStyle(
                       color: AppTheme.appDark,
-                      fontFamily: 'coRegular',
+                      fontFamily: 'Co',
                       fontSize: 16,
                     ),
                   )
@@ -48,7 +48,7 @@ class MyPetItem extends StatelessWidget {
                 'Shani',
                 style: TextStyle(
                   color: AppTheme.bgMain,
-                  fontFamily: 'coRegular',
+                  fontFamily: 'Co',
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),
@@ -60,7 +60,7 @@ class MyPetItem extends StatelessWidget {
                 'Ragdoll cat',
                 style: TextStyle(
                   color: Colors.grey,
-                  fontFamily: 'coRegular',
+                  fontFamily: 'Co',
                   fontSize: 14,
                 ),
               )
