@@ -93,14 +93,14 @@ class _VeterinarianViewState extends State<VeterinarianView>
                           )),
                           hintText: 'Veterinarian',
                           hintStyle: TextStyle(
-                            color: AppTheme.bgMain,
+                            color: AppTheme.headLine1Color,
                             fontSize: 14.0,
                             fontFamily: 'Co',
                             fontWeight: FontWeight.bold,
                           ),
                           prefixIcon: Icon(
                             Icons.search,
-                            color: AppTheme.bgMain,
+                            color: AppTheme.headLine1Color,
                           ))),
                 ),
               ),

@@ -32,17 +32,14 @@ class Appointments extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(20.0),
               child: ConstrainedBox(
-                constraints: BoxConstraints.tightFor(height: 40),
+                constraints: BoxConstraints.tightFor(height: 30),
                 child: TabBar(
                   labelColor: Colors.white,
                   unselectedLabelColor: AppTheme.headLine1Color,
                   indicator: BoxDecoration(
-                      color: AppTheme.appDark,
-                      borderRadius: BorderRadius.circular(50),
-                      boxShadow: [
-                        BoxShadow(
-                            color: AppTheme.appDark, offset: Offset.infinite),
-                      ]),
+                    color: AppTheme.appDark,
+                    borderRadius: BorderRadius.circular(50),
+                  ),
                   tabs: [
                     Tab(
                       text: 'Upcomming',

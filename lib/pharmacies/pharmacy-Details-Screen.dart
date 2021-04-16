@@ -1,45 +1,16 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:pet_care/widgets/googleMap.dart';
-import 'package:table_calendar/table_calendar.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:pet_care/widgets/calender.dart';
 
 class PharmacyDetails extends StatefulWidget {
-  CalendarController _calController;
-
-  Booking() {
-    _calController = new CalendarController();
-  }
-
   @override
   _BookingState createState() => _BookingState();
 }
 
 class _BookingState extends State<PharmacyDetails> {
-  Map<DateTime, List<dynamic>> _events = {};
-  Completer<GoogleMapController> _controller = Completer();
-  static final CameraPosition _kGooglePlex = CameraPosition(
-    target: LatLng(37.42796133580664, -122.085749655962),
-    zoom: 14.4746,
-  );
-
-  static final CameraPosition _kLake = CameraPosition(
-      bearing: 192.8334901395799,
-      target: LatLng(37.43296265331129, -122.08832357078792),
-      tilt: 59.440717697143555,
-      zoom: 19.151926040649414);
   @override
   Widget build(BuildContext context) {
-    Completer<GoogleMapController> _controller = Completer();
-    const CameraPosition _kGooglePlex = CameraPosition(
-      target: LatLng(37.42796133580664, -122.085749655962),
-      zoom: 14.4746,
-    );
-
     return Scaffold(
         body: ListView(
       shrinkWrap: true,
@@ -227,10 +198,7 @@ class _BookingState extends State<PharmacyDetails> {
             ),
           ),
         ),
-        Container(
-          height: 500,
-            width: 500,
-            child: GoogleMapWidget()),
+        Container(height: 500, width: 500, child: GoogleMapWidget()),
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Container(

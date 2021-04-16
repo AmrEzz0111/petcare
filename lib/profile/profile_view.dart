@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:pet_care/authentication/authentication-provider.dart';
+import 'package:pet_care/models/user_model.dart';
 import 'package:pet_care/profile/add_pet_details.dart';
 import 'package:pet_care/profile/edit_profile_view.dart';
 import 'package:pet_care/colors/style.dart';
 import 'package:pet_care/profile/my_pet_view.dart';
 import 'package:pet_care/widgets/appBar.dart';
+import 'package:provider/provider.dart';
 
 class ProfileView extends StatefulWidget {
+  final UserModel user;
+
+  const ProfileView({Key key, this.user}) : super(key: key);
   @override
   _ProfileViewState createState() => _ProfileViewState();
 }
@@ -26,10 +32,12 @@ class _ProfileViewState extends State<ProfileView> {
               child: InkWell(
                 onTap: () {
                   Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (BuildContext context) =>
-                              EditProfileView()));
+                    context,
+                    MaterialPageRoute(
+                      builder: (BuildContext context) =>
+                          EditProfileView(user: widget.user),
+                    ),
+                  );
                 },
                 child: Row(
                   children: [
@@ -54,116 +62,125 @@ class _ProfileViewState extends State<ProfileView> {
           ],
         ),
       ),
-      body: Column(
-        children: [
-          Container(
-            height: 220,
-            width: double.infinity,
-            decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(25),
-                    bottomRight: Radius.circular(25)),
-                boxShadow: <BoxShadow>[
-                  BoxShadow(
-                      color: Colors.grey[400],
-                      blurRadius: 10,
-                      offset: Offset(0.0, 0.75)),
-                ]),
-            child: Padding(
-              padding: const EdgeInsets.only(top: 16),
-              child: Column(
-                children: [
-                  CircleAvatar(
-                    radius: 55,
-                    backgroundColor: Colors.white,
-                    backgroundImage: AssetImage('assets/images/user.jpg'),
-                  ),
-                  SizedBox(
-                    height: 15,
-                  ),
-                  Text(
-                    'Alaa S. Elmaghraby',
-                    style: TextStyle(
-                      color: Colors.black87,
-                      fontFamily: 'Co',
-                      fontSize: 20,
+      body: ChangeNotifierProvider(
+        create: (context) => AuthenticationProvider(),
+        child: Consumer<AuthenticationProvider>(
+          builder: (context, profileProv, _) => SingleChildScrollView(
+            child: Column(
+              children: [
+                Container(
+                  height: 220,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(25),
+                          bottomRight: Radius.circular(25)),
+                      boxShadow: <BoxShadow>[
+                        BoxShadow(
+                            color: Colors.grey[400],
+                            blurRadius: 10,
+                            offset: Offset(0.0, 0.75)),
+                      ]),
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 16),
+                    child: Column(
+                      children: [
+                        CircleAvatar(
+                          radius: 55,
+                          backgroundColor: Colors.white,
+                          backgroundImage: NetworkImage(widget.user.img),
+                        ),
+                        SizedBox(
+                          height: 15,
+                        ),
+                        Text(
+                          widget.user.name,
+                          style: TextStyle(
+                            color: Colors.black87,
+                            fontFamily: 'Co',
+                            fontSize: 20,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        Text(
+                          widget.user.email,
+                          style: TextStyle(
+                            color: Colors.grey,
+                            fontFamily: 'Co',
+                            fontSize: 16,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  Text(
-                    'alaa.sobhy193',
-                    style: TextStyle(
-                      color: Colors.grey,
-                      fontFamily: 'Co',
-                      fontSize: 16,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          SizedBox(
-            height: 35,
-          ),
-          Padding(
-              padding: const EdgeInsets.only(left: 16, right: 16),
-              child: Column(
-                children: [
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (BuildContext context) => MyPetView()));
-                    },
-                    child: buildColumn(
-                      'My Pets',
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Image.asset(
-                          'assets/images/paw.png',
-                          color: AppTheme.appDark,
+                ),
+                SizedBox(
+                  height: 35,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 16, right: 16),
+                  child: Column(
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (BuildContext context) =>
+                                      MyPetView()));
+                        },
+                        child: buildColumn(
+                          'My Pets',
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Image.asset(
+                              'assets/images/paw.png',
+                              color: AppTheme.appDark,
+                            ),
+                          ),
                         ),
                       ),
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (BuildContext context) =>
-                                  AddPetDetails()));
-                    },
-                    child: buildColumn(
-                      'Add Pet Details',
-                      Icon(
-                        Icons.description_rounded,
-                        color: AppTheme.appDark,
-                        size: 20,
+                      InkWell(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (BuildContext context) =>
+                                      AddPetDetails()));
+                        },
+                        child: buildColumn(
+                          'Add Pet Details',
+                          Icon(
+                            Icons.description_rounded,
+                            color: AppTheme.appDark,
+                            size: 20,
+                          ),
+                        ),
                       ),
-                    ),
+                      buildColumn(
+                          'Help',
+                          Icon(
+                            Icons.help_outline_rounded,
+                            color: AppTheme.appDark,
+                            size: 20,
+                          )),
+                      buildColumn(
+                          'Log Out',
+                          Icon(
+                            Icons.exit_to_app_rounded,
+                            color: AppTheme.appDark,
+                            size: 20,
+                          )),
+                    ],
                   ),
-                  buildColumn(
-                      'Help',
-                      Icon(
-                        Icons.help_outline_rounded,
-                        color: AppTheme.appDark,
-                        size: 20,
-                      )),
-                  buildColumn(
-                      'Log Out',
-                      Icon(
-                        Icons.exit_to_app_rounded,
-                        color: AppTheme.appDark,
-                        size: 20,
-                      )),
-                ],
-              ))
-        ],
+                ),
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }

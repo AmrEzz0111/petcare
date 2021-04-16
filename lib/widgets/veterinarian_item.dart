@@ -8,7 +8,6 @@ class VeterinarianItem extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
       child: Container(
-        height: 150,
         decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(10),
@@ -20,7 +19,7 @@ class VeterinarianItem extends StatelessWidget {
                   spreadRadius: 5),
             ]),
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
           child: Column(
             children: [
               Row(
@@ -110,6 +109,7 @@ class VeterinarianItem extends StatelessWidget {
                 height: 15,
               ),
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
                     '10 year of experience ',
@@ -119,56 +119,65 @@ class VeterinarianItem extends StatelessWidget {
                         fontSize: 12,
                         fontWeight: FontWeight.w600),
                   ),
-                  SizedBox(
-                    width: 25,
-                  ),
-                  CircleAvatar(
-                    radius: 11,
-                    backgroundColor: Colors.grey[100],
-                    child: Center(
-                      child: Icon(
-                        Icons.location_on_outlined,
-                        color: Colors.grey[600],
-                        size: 17,
+                  Row(
+                    children: [
+                      Row(
+                        children: [
+                          CircleAvatar(
+                            radius: 11,
+                            backgroundColor: Colors.grey[100],
+                            child: Center(
+                              child: Icon(
+                                Icons.location_on_outlined,
+                                color: Colors.grey[600],
+                                size: 17,
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            width: 8,
+                          ),
+                          Text(
+                            '2.4 km',
+                            style: TextStyle(
+                                color: Colors.grey[600],
+                                fontFamily: 'Co',
+                                fontSize: 12,
+                                fontWeight: FontWeight.w600),
+                          ),
+                        ],
                       ),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Text(
-                    '2.4 km',
-                    style: TextStyle(
-                        color: Colors.grey[600],
-                        fontFamily: 'Co',
-                        fontSize: 12,
-                        fontWeight: FontWeight.w600),
-                  ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  CircleAvatar(
-                    radius: 11,
-                    backgroundColor: Colors.grey[100],
-                    child: Center(
-                      child: Icon(
-                        Icons.payment_rounded,
-                        color: Colors.grey[600],
-                        size: 17,
+                      SizedBox(
+                        width: 10,
                       ),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Text(
-                    '\$20',
-                    style: TextStyle(
-                        color: Colors.grey[600],
-                        fontFamily: 'Co',
-                        fontSize: 12,
-                        fontWeight: FontWeight.w600),
-                  ),
+                      Row(
+                        children: [
+                          CircleAvatar(
+                            radius: 11,
+                            backgroundColor: Colors.grey[100],
+                            child: Center(
+                              child: Icon(
+                                Icons.payment_rounded,
+                                color: Colors.grey[600],
+                                size: 17,
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            width: 8,
+                          ),
+                          Text(
+                            '\$20',
+                            style: TextStyle(
+                                color: Colors.grey[600],
+                                fontFamily: 'Co',
+                                fontSize: 12,
+                                fontWeight: FontWeight.w600),
+                          ),
+                        ],
+                      )
+                    ],
+                  )
                 ],
               ),
             ],

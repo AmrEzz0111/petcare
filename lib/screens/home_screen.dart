@@ -1,10 +1,13 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import '../colors/style.dart';
+import 'package:pet_care/colors/style.dart';
+import 'package:pet_care/models/user_model.dart';
 
 class HomeScreen extends StatelessWidget {
-  final _elevation = 20.0;
+  final UserModel user;
+  final double _elevation = 5;
 
+  const HomeScreen({Key key, this.user}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     var deviceData = MediaQuery.of(context);
@@ -47,7 +50,7 @@ class HomeScreen extends StatelessWidget {
                             child: ConstrainedBox(
                               constraints: BoxConstraints(maxWidth: 100),
                               child: Text(
-                                'Leila?',
+                                user.name,
                                 style: Theme.of(context)
                                     .textTheme
                                     .headline1

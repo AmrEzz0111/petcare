@@ -1,11 +1,14 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:pet_care/colors/style.dart';
+import 'package:pet_care/slpash_screen/splash_view.dart';
+import 'package:pet_care/widgets/bottom_navigation_bar.dart';
 
-import 'widgets/bottom_navigation_bar.dart';
-
-void main() {
+void main() async {
   runApp(MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   SystemChrome.setSystemUIOverlayStyle(
       SystemUiOverlayStyle(statusBarColor: Colors.transparent));
 }
@@ -15,9 +18,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Pet Care',
+      // locale: DevicePreview.locale(context), // Add the locale here
+      // builder: DevicePreview.appBuilder,
       debugShowCheckedModeBanner: false,
-
-      // darkTheme: ThemeData.dark(),
       theme: Theme.of(context).copyWith(
           primaryColor: AppTheme.appPrimary,
           accentColor: AppTheme.appDark,
