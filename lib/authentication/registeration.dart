@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:pet_care/authentication/authentication-provider.dart';
@@ -29,7 +28,7 @@ class _RegisteraionState extends State<Registeraion> {
       body: ChangeNotifierProvider(
         create: (context) => AuthenticationProvider(),
         child: Consumer<AuthenticationProvider>(
-          builder: (context, signInProv, _) => Stack(
+          builder: (context, signUpProv, _) => Stack(
             alignment: Alignment.center,
             children: <Widget>[
               Positioned(
@@ -168,13 +167,13 @@ class _RegisteraionState extends State<Registeraion> {
                                 email: email.text,
                                 name: username.text,
                               );
-                              await signInProv.signUp(
+                              await signUpProv.signUp(
                                   email.text, password.text, user);
-                              if (signInProv.user != null) {
+                              if (signUpProv.user != null) {
                                 Navigator.of(context).pushReplacement(
                                   MaterialPageRoute(
                                     builder: (context) => HomeScreen(
-                                      user: signInProv.user,
+                                      user: signUpProv.user,
                                     ),
                                   ),
                                 );

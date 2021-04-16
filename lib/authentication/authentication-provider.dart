@@ -14,7 +14,9 @@ class AuthenticationProvider extends ChangeNotifier {
     wrongPassword = false;
     signInClicked = true;
 
-    user = await _authRepository.signInEmailAndPassword(email, password);
+    await _authRepository.signInEmailAndPassword(email, password).then((value) {
+      user = value;
+    });
     if (user == "user-not-found") {
       wrongEmail = true;
     } else if (user == "wrong-password") {
@@ -24,12 +26,17 @@ class AuthenticationProvider extends ChangeNotifier {
   }
 
   signInWithGoogle() async {
-    user = await _authRepository.signInWithGoogle();
+    await _authRepository.signInWithGoogle().then((value) {
+      user = value;
+    });
+    print('====${user.name}');
     notifyListeners();
   }
 
   signUp(String email, String password, UserModel user) async {
-    user = await _authRepository.signUp(email, password, user);
+    await _authRepository.signUp(email, password, user).then((value) {
+      user = value;
+    });
     notifyListeners();
   }
 }

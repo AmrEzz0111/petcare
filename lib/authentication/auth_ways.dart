@@ -4,6 +4,7 @@ import 'package:pet_care/authentication/registeration.dart';
 import 'package:pet_care/authentication/authentication-provider.dart';
 import 'package:pet_care/authentication/sign_in_screen.dart';
 import 'package:pet_care/colors/style.dart';
+import 'package:pet_care/profile/profile_view.dart';
 import 'package:pet_care/screens/home_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -136,7 +137,7 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
                             if (signInProv.user != null) {
                               Navigator.of(context).pushReplacement(
                                 MaterialPageRoute(
-                                  builder: (context) => HomeScreen(
+                                  builder: (context) => ProfileView(
                                     user: signInProv.user,
                                   ),
                                 ),
