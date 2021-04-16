@@ -1,9 +1,9 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:pet_care/colors/style.dart';
+import 'package:pet_care/models/user_model.dart';
 
 class HomeScreen extends StatelessWidget {
-  final User user;
+  final UserModel user;
 
   const HomeScreen({Key key, this.user}) : super(key: key);
   @override
@@ -44,7 +44,7 @@ class HomeScreen extends StatelessWidget {
                             child: ConstrainedBox(
                               constraints: BoxConstraints(maxWidth: 100),
                               child: Text(
-                                user.displayName,
+                                user.name,
                                 style: Theme.of(context)
                                     .textTheme
                                     .headline1

@@ -1,19 +1,20 @@
 import 'package:flutter/widgets.dart';
+import 'package:pet_care/models/user_model.dart';
 import 'package:pet_care/repositories/auth-repository.dart';
 
-class SignInProvider extends ChangeNotifier {
+class AuthenticationProvider extends ChangeNotifier {
   var user;
   bool wrongEmail = false;
   bool wrongPassword = false;
   bool signInClicked = false;
 
   AuthRepository _authRepository = AuthRepository();
-  void getSignIn(String username, String password) async {
+  signIn(String email, String password) async {
     wrongEmail = false;
     wrongPassword = false;
     signInClicked = true;
 
-    user = await _authRepository.getSignInEmailAndPassword(username, password);
+    user = await _authRepository.signInEmailAndPassword(email, password);
     if (user == "user-not-found") {
       wrongEmail = true;
     } else if (user == "wrong-password") {
@@ -24,6 +25,11 @@ class SignInProvider extends ChangeNotifier {
 
   signInWithGoogle() async {
     user = await _authRepository.signInWithGoogle();
+    notifyListeners();
+  }
+
+  signUp(String email, String password, UserModel user) async {
+    user = await _authRepository.signUp(email, password, user);
     notifyListeners();
   }
 }

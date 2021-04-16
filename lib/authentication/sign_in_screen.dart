@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:pet_care/authentication/registeration.dart';
-import 'package:pet_care/authentication/signIn-provider.dart';
+import 'package:pet_care/authentication/authentication-provider.dart';
 import 'package:pet_care/colors/style.dart';
 import 'package:pet_care/screens/home_screen.dart';
 import 'package:provider/provider.dart';
@@ -15,7 +15,7 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
-  String username = "";
+  String email = "";
   String password = "";
   TextEditingController myController = TextEditingController();
 
@@ -27,8 +27,8 @@ class _SignInState extends State<SignIn> {
         elevation: 0,
       ),
       body: ChangeNotifierProvider(
-        create: (context) => SignInProvider(),
-        child: Consumer<SignInProvider>(
+        create: (context) => AuthenticationProvider(),
+        child: Consumer<AuthenticationProvider>(
           builder: (context, signInProv, _) => Stack(
             alignment: Alignment.center,
             children: <Widget>[
@@ -64,9 +64,10 @@ class _SignInState extends State<SignIn> {
                         Padding(
                           padding: const EdgeInsets.all(15.0),
                           child: TextFormField(
+                            keyboardType: TextInputType.emailAddress,
                             controller: myController,
                             onChanged: (value) {
-                              username = value;
+                              email = value;
                             },
                             cursorColor: Colors.red,
                             style: TextStyle(
@@ -140,13 +141,15 @@ class _SignInState extends State<SignIn> {
                           child: RaisedButton(
                             color: Color(0xFFc25e3c),
                             onPressed: () async {
-                              signInProv.getSignIn(username.trim(), password);
-                              if (signInProv.user.runtimeType ==
-                                  UserCredential) {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => HomeScreen()));
+                              await signInProv.signIn(email.trim(), password);
+                              if (signInProv.user != null) {
+                                Navigator.of(context).pushReplacement(
+                                  MaterialPageRoute(
+                                    builder: (context) => HomeScreen(
+                                      user: signInProv.user,
+                                    ),
+                                  ),
+                                );
                               }
                             },
                             shape: RoundedRectangleBorder(

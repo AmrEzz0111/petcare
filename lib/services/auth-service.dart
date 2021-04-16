@@ -1,30 +1,42 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:pet_care/models/user_model.dart';
 
 class AuthService {
-  Future signInEmailAndPassword(String username, String password) async {
+  Future<UserModel> signInEmailAndPassword(
+      String email, String password) async {
+    UserModel user;
     try {
-      UserCredential userCredential = await FirebaseAuth.instance
-          .signInWithEmailAndPassword(
-              email: username.trim(), password: password);
-      return userCredential;
+      await FirebaseAuth.instance
+          .signInWithEmailAndPassword(email: email.trim(), password: password)
+          .then((d) async {
+        var userReference = await FirebaseDatabase.instance
+            .reference()
+            .child("users")
+            .child(d.user.uid)
+            .once();
+        user = UserModel.fromJson(userReference.value);
+        user.id = userReference.key;
+      });
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
-        return e.code;
+        print(e.code);
       } else if (e.code == 'wrong-password') {
-        return e.code;
+        print(e.code);
       }
     }
+    print('----${user.name}');
+    return user;
   }
 
-  Future<User> signInWithGoogle() async {
+  Future<UserModel> signInWithGoogle() async {
     FirebaseAuth auth = FirebaseAuth.instance;
-    User user;
+    UserModel savedUser;
 
     final GoogleSignIn googleSignIn = GoogleSignIn();
 
     final GoogleSignInAccount googleSignInAccount = await googleSignIn.signIn();
-
     if (googleSignInAccount != null) {
       final GoogleSignInAuthentication googleSignInAuthentication =
           await googleSignInAccount.authentication;
@@ -35,20 +47,58 @@ class AuthService {
       );
 
       try {
-        final UserCredential userCredential =
-            await auth.signInWithCredential(credential);
+        await auth.signInWithCredential(credential).then((d) async {
+          savedUser = UserModel(
+              email: d.user.email,
+              id: d.user.uid,
+              name: d.user.displayName,
+              img: d.user.photoURL,
+              address: 'Ismailia',
+              phone: '01100249647',
+              userType: 'user',
+              pending: false);
 
-        user = userCredential.user;
+          DatabaseReference databaseReference = FirebaseDatabase.instance
+              .reference()
+              .child("users")
+              .child(d.user.uid);
+          await databaseReference.set(savedUser.toJson());
+          var userSnapshot = await databaseReference.once();
+          savedUser = UserModel.fromJson(userSnapshot.value);
+          savedUser.id = userSnapshot.key;
+          return;
+        });
       } on FirebaseAuthException catch (e) {
         if (e.code == 'account-exists-with-different-credential') {
-          // handle the error here
+          print(e.code);
         } else if (e.code == 'invalid-credential') {
-          // handle the error here
+          print(e.code);
         }
       } catch (e) {
-        // handle the error here
+        print(e);
       }
     }
-    return user;
+    return savedUser;
+  }
+
+  Future<UserModel> signUp(
+      String email, String password, UserModel user) async {
+    UserModel savedUser;
+    return FirebaseAuth.instance
+        .createUserWithEmailAndPassword(
+      email: email.trim(),
+      password: password,
+    )
+        .then((d) async {
+      DatabaseReference databaseReference = FirebaseDatabase.instance
+          .reference()
+          .child("users")
+          .child(d.user.uid);
+      await databaseReference.set(user.toJson());
+      var userSnapshot = await databaseReference.once();
+      savedUser = UserModel.fromJson(userSnapshot.value);
+      savedUser.id = userSnapshot.key;
+      return savedUser;
+    });
   }
 }

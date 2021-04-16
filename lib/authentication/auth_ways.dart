@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:pet_care/authentication/registeration.dart';
-import 'package:pet_care/authentication/signIn-provider.dart';
+import 'package:pet_care/authentication/authentication-provider.dart';
 import 'package:pet_care/authentication/sign_in_screen.dart';
 import 'package:pet_care/colors/style.dart';
 import 'package:pet_care/screens/home_screen.dart';
@@ -18,8 +18,8 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
     bool _isSigningIn = false;
     return Scaffold(
       body: ChangeNotifierProvider(
-        create: (context) => SignInProvider(),
-        child: Consumer<SignInProvider>(
+        create: (context) => AuthenticationProvider(),
+        child: Consumer<AuthenticationProvider>(
           builder: (context, signInProv, _) => Container(
             color: Color(0xFF2e2b43),
             child: Column(
