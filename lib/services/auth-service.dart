@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:pet_care/models/user_model.dart';
 
@@ -99,5 +102,29 @@ class AuthService {
       savedUser.id = userSnapshot.key;
       return savedUser;
     });
+  }
+
+  Future<UserModel> updateUser(UserModel user, File img) async {
+    String id;
+    id = FirebaseAuth.instance.currentUser.uid;
+    if (img == null) {
+      DatabaseReference databaseReference =
+          FirebaseDatabase.instance.reference().child("users").child(id);
+      await databaseReference.update(user.toJson());
+      var userSnapshot = await databaseReference.once();
+      UserModel updatedUser = UserModel.fromJson(userSnapshot.value);
+      return updatedUser;
+    } else {
+      StorageReference storageReference =
+          FirebaseStorage().ref().child(img.toString());
+      StorageUploadTask uploadTask = storageReference.putFile(img);
+      StorageTaskSnapshot storageSnapshot = await uploadTask.onComplete;
+      user.img = await storageSnapshot.ref.getDownloadURL();
+      DatabaseReference databaseReference =
+          FirebaseDatabase.instance.reference().child("users").push();
+      await databaseReference.set(user.toJson());
+      var userSnapshot = await databaseReference.once();
+      return UserModel.fromJson(userSnapshot.value);
+    }
   }
 }

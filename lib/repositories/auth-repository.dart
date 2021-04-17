@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:pet_care/models/user_model.dart';
 import 'package:pet_care/services/auth-service.dart';
 
@@ -13,5 +15,9 @@ class AuthRepository {
 
   Future signUp(String email, String password, UserModel user) {
     return _authService.signUp(email, password, user);
+  }
+
+  Future updateUser(UserModel user, File img) {
+    return _authService.updateUser(user, img);
   }
 }

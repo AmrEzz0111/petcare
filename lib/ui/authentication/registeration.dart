@@ -3,7 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:pet_care/colors/style.dart';
 import 'package:pet_care/models/user_model.dart';
 import 'package:pet_care/ui/authentication/sign_in_screen.dart';
-import 'package:pet_care/ui/screens/home_screen.dart';
+import 'package:pet_care/widgets/bottom_navigation_bar.dart';
 import 'package:provider/provider.dart';
 
 import 'authentication-provider.dart';
@@ -174,7 +174,7 @@ class _RegisteraionState extends State<Registeraion> {
                               if (signUpProv.user != null) {
                                 Navigator.of(context).pushReplacement(
                                   MaterialPageRoute(
-                                    builder: (context) => HomeScreen(
+                                    builder: (context) => BottomNav(
                                       user: signUpProv.user,
                                     ),
                                   ),

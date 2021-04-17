@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pet_care/colors/style.dart';
-import 'package:pet_care/ui/profile/gender_item.dart';
 import 'package:pet_care/widgets/appBar.dart';
 import 'package:pet_care/widgets/auth_input_widget.dart';
 
@@ -12,6 +11,12 @@ class AddPetDetails extends StatefulWidget {
 
 class _AddPetDetailsState extends State<AddPetDetails> {
   bool ligth = false;
+  var images = [
+    'assets/images/male.png',
+    'assets/images/female.png',
+  ];
+  var gender = ['Male', 'Female'];
+  int _value = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -157,7 +162,62 @@ class _AddPetDetailsState extends State<AddPetDetails> {
               SizedBox(
                 height: 5,
               ),
-              GenderItem(),
+              SizedBox(
+                height: 50,
+                child: Wrap(
+                  spacing: 40,
+                  children: List<Widget>.generate(
+                    gender.length,
+                    (int index) {
+                      return ChoiceChip(
+                        label: Container(
+                          width: 118,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Image.asset(
+                                images[index],
+                                height: 16,
+                                color: _value == index
+                                    ? Colors.white
+                                    : AppTheme.appDark,
+                              ),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Text(
+                                gender[index],
+                                style: TextStyle(
+                                  color: _value == index
+                                      ? Colors.white
+                                      : Colors.black87,
+                                  fontFamily: 'Co',
+                                  fontSize: 16,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        selected: _value == index,
+                        selectedColor: AppTheme.appDark,
+                        onSelected: (bool value) {
+                          setState(() {
+                            _value = value ? index : null;
+                          });
+                        },
+                        backgroundColor: Colors.white,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(50),
+                            side: BorderSide(
+                                width: 1,
+                                color: _value == index
+                                    ? AppTheme.appDark
+                                    : Colors.grey[350])),
+                      );
+                    },
+                  ),
+                ),
+              ),
               SizedBox(
                 height: 15,
               ),
