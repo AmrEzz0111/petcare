@@ -5,7 +5,6 @@ import 'package:pet_care/authentication/sign_in_screen.dart';
 import 'package:pet_care/colors/style.dart';
 import 'package:pet_care/models/user_model.dart';
 import 'package:pet_care/profile/profile_view.dart';
-import 'package:pet_care/screens/home_screen.dart';
 import 'package:provider/provider.dart';
 
 class Registeraion extends StatefulWidget {
@@ -171,13 +170,12 @@ class _RegisteraionState extends State<Registeraion> {
                               await signUpProv.signUp(
                                   email.text, password.text, user);
 
-                              if (user.runtimeType == UserModel) {
-                                print("UserModel ---->>>>> ${signUpProv.user}");
+                              if (signUpProv.user != null) {
                                 Navigator.of(context).pushReplacement(
                                   MaterialPageRoute(
-                                    builder: (context) => HomeScreen(
-                                        // user: signUpProv.user,
-                                        ),
+                                    builder: (context) => ProfileView(
+                                      user: signUpProv.user,
+                                    ),
                                   ),
                                 );
                               }

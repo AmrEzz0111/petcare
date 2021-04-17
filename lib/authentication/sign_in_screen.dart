@@ -4,7 +4,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:pet_care/authentication/registeration.dart';
 import 'package:pet_care/authentication/authentication-provider.dart';
 import 'package:pet_care/colors/style.dart';
-import 'package:pet_care/models/user_model.dart';
 import 'package:pet_care/profile/profile_view.dart';
 import 'package:provider/provider.dart';
 
@@ -143,7 +142,7 @@ class _SignInState extends State<SignIn> {
                             color: Color(0xFFc25e3c),
                             onPressed: () async {
                               await signInProv.signIn(email.trim(), password);
-                              if (signInProv.user.runtimeType == UserModel) {
+                              if (signInProv.user != null) {
                                 Navigator.of(context).pushReplacement(
                                   MaterialPageRoute(
                                     builder: (context) => ProfileView(

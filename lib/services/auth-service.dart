@@ -21,10 +21,8 @@ class AuthService {
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         return e.code;
-        print(e.code);
       } else if (e.code == 'wrong-password') {
         return e.code;
-        print(e.code);
       }
     }
     print('----${user.name}');
