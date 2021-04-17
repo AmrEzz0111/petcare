@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:pet_care/appointment_screen/appointment-btn.dart';
-import 'package:pet_care/appointment_screen/appointment-card.dart';
 import 'package:pet_care/colors/style.dart';
+import 'package:pet_care/ui/appointment_screen/appointment-btn.dart';
+import 'package:pet_care/ui/appointment_screen/appointment-card.dart';
 
 class AppointmentChecked extends StatelessWidget {
   @override

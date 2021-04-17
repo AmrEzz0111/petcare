@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pet_care/colors/style.dart';
-import 'package:pet_care/veterinarian/specialists_screen.dart';
+import 'package:pet_care/ui/veterinarian/specialists_screen.dart';
 import 'package:pet_care/widgets/veterinarian_item.dart';
 
 class VeterinarianView extends StatefulWidget {

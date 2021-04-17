@@ -1,22 +1,23 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:pet_care/authentication/authentication-provider.dart';
-import 'package:pet_care/authentication/sign_in_screen.dart';
 import 'package:pet_care/colors/style.dart';
-import 'package:pet_care/models/user_model.dart';
-import 'package:pet_care/profile/profile_view.dart';
+import 'package:pet_care/ui/authentication/authentication-provider.dart';
+import 'package:pet_care/ui/authentication/registeration.dart';
+import 'package:pet_care/ui/screens/home_screen.dart';
 import 'package:provider/provider.dart';
 
-class Registeraion extends StatefulWidget {
+class SignIn extends StatefulWidget {
+  final myController = TextEditingController();
+  final FirebaseAuth auth = FirebaseAuth.instance;
   @override
-  _RegisteraionState createState() => _RegisteraionState();
+  _SignInState createState() => _SignInState();
 }
 
-class _RegisteraionState extends State<Registeraion> {
-  bool isChecked = false;
-  TextEditingController email = TextEditingController();
-  TextEditingController username = TextEditingController();
-  TextEditingController password = TextEditingController();
+class _SignInState extends State<SignIn> {
+  String email = "";
+  String password = "";
+  TextEditingController myController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +29,7 @@ class _RegisteraionState extends State<Registeraion> {
       body: ChangeNotifierProvider(
         create: (context) => AuthenticationProvider(),
         child: Consumer<AuthenticationProvider>(
-          builder: (context, signUpProv, _) => Stack(
+          builder: (context, signInProv, _) => Stack(
             alignment: Alignment.center,
             children: <Widget>[
               Positioned(
@@ -38,9 +39,9 @@ class _RegisteraionState extends State<Registeraion> {
                   width: MediaQuery.of(context).size.width,
                   height: MediaQuery.of(context).size.height * .20,
                   child: Padding(
-                    padding: const EdgeInsets.fromLTRB(20, 0, 10, 20),
+                    padding: const EdgeInsets.fromLTRB(20, 0, 20, 10),
                     child: Text(
-                      'Registeration',
+                      'Sign In',
                       style: TextStyle(
                           color: Colors.white, fontSize: 30, fontFamily: 'Co'),
                     ),
@@ -57,80 +58,64 @@ class _RegisteraionState extends State<Registeraion> {
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10)),
                   child: Container(
-                    height: MediaQuery.of(context).size.height * 0.55,
+                    height: MediaQuery.of(context).size.height * 0.48,
                     child: ListView(
                       children: [
                         Padding(
                           padding: const EdgeInsets.all(15.0),
-                          child: TextField(
-                            controller: username,
+                          child: TextFormField(
+                            keyboardType: TextInputType.emailAddress,
+                            controller: myController,
+                            onChanged: (value) {
+                              email = value;
+                            },
+                            cursorColor: Colors.red,
                             style: TextStyle(
                                 color: Colors.black, fontFamily: 'Co'),
                             decoration: InputDecoration(
-                                suffixIcon: Padding(
-                                  padding: const EdgeInsets.all(15.0),
-                                  child: FaIcon(
-                                    FontAwesomeIcons.solidCircle,
-                                    size: 15,
-                                    color: Colors.green,
-                                  ),
+                              errorText: (signInProv.wrongEmail &&
+                                      signInProv.signInClicked)
+                                  ? "This Email is not exist !"
+                                  : "",
+                              suffixIcon: Padding(
+                                padding: const EdgeInsets.all(15.0),
+                                child: FaIcon(
+                                  FontAwesomeIcons.solidCircle,
+                                  size: 15,
+                                  color: Colors.green,
                                 ),
-                                hintStyle: TextStyle(
-                                    fontSize: 14,
-                                    color: Colors.black54,
-                                    fontFamily: 'Co'),
-                                hintText: 'Enter Your Full Name',
-                                labelText: 'Full Name',
-                                labelStyle: TextStyle(
-                                    color: Colors.black26, fontFamily: 'Co'),
-                                focusedBorder: UnderlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: Color(0xFFc25e3c))),
-                                enabledBorder: UnderlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: Color(0xFFc25e3c)))),
+                              ),
+                              hintText: 'enter your email',
+                              labelText: 'Email',
+                              labelStyle: TextStyle(
+                                  color: Colors.black26, fontFamily: 'Co'),
+                              focusedBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Color(0xFFc25e3c),
+                                ),
+                              ),
+                              enabledBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Color(0xFFc25e3c),
+                                ),
+                              ),
+                            ),
                           ),
                         ),
                         Padding(
                           padding: const EdgeInsets.all(15.0),
-                          child: TextField(
-                            controller: email,
-                            keyboardType: TextInputType.emailAddress,
-                            style: TextStyle(
-                                color: Colors.black, fontFamily: 'Co'),
-                            decoration: InputDecoration(
-                                suffixIcon: Padding(
-                                  padding: const EdgeInsets.all(15.0),
-                                  child: FaIcon(
-                                    FontAwesomeIcons.solidCircle,
-                                    size: 15,
-                                    color: Colors.green,
-                                  ),
-                                ),
-                                hintStyle: TextStyle(
-                                    fontSize: 14,
-                                    color: Colors.black54,
-                                    fontFamily: 'Co'),
-                                hintText: 'enter your email',
-                                labelText: 'Email',
-                                labelStyle: TextStyle(
-                                    color: Colors.black26, fontFamily: 'Co'),
-                                focusedBorder: UnderlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: Color(0xFFc25e3c))),
-                                enabledBorder: UnderlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: Color(0xFFc25e3c)))),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(15, 15, 15, 0),
-                          child: TextField(
-                            controller: password,
-                            style: TextStyle(
-                                color: Colors.black, fontFamily: 'Co'),
+                          child: TextFormField(
                             obscureText: true,
+                            onChanged: (value) {
+                              password = value;
+                            },
+                            style: TextStyle(
+                                color: Colors.black, fontFamily: 'Co'),
                             decoration: InputDecoration(
+                                errorText: (signInProv.wrongPassword &&
+                                        signInProv.signInClicked)
+                                    ? "Password is incorrect!"
+                                    : "",
                                 suffixIcon: Padding(
                                   padding: const EdgeInsets.all(15.0),
                                   child: FaIcon(
@@ -140,10 +125,6 @@ class _RegisteraionState extends State<Registeraion> {
                                   ),
                                 ),
                                 hintText: 'enter your Password',
-                                hintStyle: TextStyle(
-                                    fontSize: 14,
-                                    color: Colors.black54,
-                                    fontFamily: 'Co'),
                                 labelText: 'Password',
                                 labelStyle: TextStyle(
                                     color: Colors.black26, fontFamily: 'Co'),
@@ -155,26 +136,17 @@ class _RegisteraionState extends State<Registeraion> {
                                         BorderSide(color: Color(0xFFc25e3c)))),
                           ),
                         ),
-                        SizedBox(
-                          height: 20,
-                        ),
                         Padding(
-                          padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
+                          padding: const EdgeInsets.all(15.0),
                           child: RaisedButton(
                             color: Color(0xFFc25e3c),
                             onPressed: () async {
-                              UserModel user = UserModel(
-                                email: email.text,
-                                name: username.text,
-                              );
-                              await signUpProv.signUp(
-                                  email.text, password.text, user);
-
-                              if (signUpProv.user != null) {
+                              await signInProv.signIn(email.trim(), password);
+                              if (signInProv.user != null) {
                                 Navigator.of(context).pushReplacement(
                                   MaterialPageRoute(
-                                    builder: (context) => ProfileView(
-                                      user: signUpProv.user,
+                                    builder: (context) => HomeScreen(
+                                      user: signInProv.user,
                                     ),
                                   ),
                                 );
@@ -185,7 +157,7 @@ class _RegisteraionState extends State<Registeraion> {
                             child: Padding(
                                 padding: const EdgeInsets.all(10.0),
                                 child: Text(
-                                  'Sign Up',
+                                  'Sign In',
                                   style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 16,
@@ -199,7 +171,7 @@ class _RegisteraionState extends State<Registeraion> {
                 ),
               ),
               Positioned(
-                top: MediaQuery.of(context).size.height * .68,
+                top: MediaQuery.of(context).size.height * .6,
                 child: Container(
                     width: MediaQuery.of(context).size.width,
                     height: MediaQuery.of(context).size.height * .25,
@@ -211,7 +183,7 @@ class _RegisteraionState extends State<Registeraion> {
                               color: Colors.black54, fontFamily: 'Co'),
                         ),
                         SizedBox(
-                          height: 20,
+                          height: MediaQuery.of(context).size.height * .05,
                         ),
                         Row(
                           crossAxisAlignment: CrossAxisAlignment.center,
@@ -231,13 +203,13 @@ class _RegisteraionState extends State<Registeraion> {
                           ],
                         ),
                         SizedBox(
-                          height: 20,
+                          height: MediaQuery.of(context).size.height * .05,
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              "Already have account? ",
+                              "Don't have account yet ? ",
                               style: TextStyle(
                                   color: Colors.black54, fontFamily: 'Co'),
                             ),
@@ -246,10 +218,10 @@ class _RegisteraionState extends State<Registeraion> {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => SignIn()));
+                                        builder: (context) => Registeraion()));
                               },
                               child: Text(
-                                "Sign In",
+                                "Registeration",
                                 style: TextStyle(
                                     color: AppTheme.appDark,
                                     fontFamily: 'Co',

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pet_care/pet_services/grooming/grooming_details_screen.dart';
+import 'package:pet_care/ui/pet_services/grooming/grooming_details_screen.dart';
 import 'package:pet_care/widgets/appBar.dart';
 import 'package:pet_care/widgets/veterinarian_item.dart';
 

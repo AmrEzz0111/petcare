@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:pet_care/colors/style.dart';
-import 'package:pet_care/profile/profile_view.dart';
-import 'package:pet_care/screens/home_screen.dart';
-import '../appointment_screen/appointment.dart';
+import 'package:pet_care/ui/appointment_screen/appointment.dart';
+import 'package:pet_care/ui/profile/profile_view.dart';
+import 'package:pet_care/ui/screens/home_screen.dart';
 
 class BottomNav extends StatefulWidget {
   @override

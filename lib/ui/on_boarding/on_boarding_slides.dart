@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:pet_care/authentication/auth_ways.dart';
 import 'package:pet_care/colors/style.dart';
-import '../widgets/PageViewModel.dart';
 import 'package:intro_views_flutter/intro_views_flutter.dart';
+import 'package:pet_care/ui/authentication/auth_ways.dart';
+import 'package:pet_care/widgets/PageViewModel.dart';
 
 class OnBoardingScreen extends StatelessWidget {
   @override

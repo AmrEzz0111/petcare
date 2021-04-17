@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:pet_care/authentication/authentication-provider.dart';
 import 'package:pet_care/models/user_model.dart';
-import 'package:pet_care/profile/add_pet_details.dart';
-import 'package:pet_care/profile/edit_profile_view.dart';
 import 'package:pet_care/colors/style.dart';
-import 'package:pet_care/profile/my_pet_view.dart';
+import 'package:pet_care/ui/authentication/authentication-provider.dart';
+import 'package:pet_care/ui/profile/add_pet_details.dart';
+import 'package:pet_care/ui/profile/edit_profile_view.dart';
+import 'package:pet_care/ui/profile/my_pet_view.dart';
 import 'package:pet_care/widgets/appBar.dart';
 import 'package:provider/provider.dart';
 

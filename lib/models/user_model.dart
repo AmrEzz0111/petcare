@@ -8,6 +8,7 @@ class UserModel {
   bool pending;
   String id;
   String gender;
+  String bio;
 
   UserModel({
     this.phone = "",
@@ -19,6 +20,7 @@ class UserModel {
     this.userType = "",
     this.pending,
     this.id,
+    this.bio,
   });
 
   UserModel.fromJson(Map<dynamic, dynamic> map)
@@ -30,6 +32,7 @@ class UserModel {
         userType = map['userType'] ?? "",
         id = map['id'] ?? "",
         pending = map['pending'] ?? false,
+        bio = map['bio'] ?? '',
         gender = map['gender'] ?? "";
 
   Map<String, dynamic> toJson() => {
@@ -42,5 +45,6 @@ class UserModel {
         'userType': userType,
         'id': id,
         'gender': gender,
+        'bio': bio,
       };
 }

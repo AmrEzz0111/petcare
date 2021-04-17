@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:pet_care/colors/style.dart';
 import 'package:pet_care/models/user_model.dart';
+import 'package:pet_care/ui/profile/gender_item.dart';
 import 'package:pet_care/widgets/appBar.dart';
 import 'package:pet_care/widgets/auth_input_widget.dart';
-import 'package:pet_care/profile/gender_item.dart';
 
 class EditProfileView extends StatefulWidget {
   final UserModel user;

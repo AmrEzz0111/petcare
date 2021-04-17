@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:pet_care/colors/style.dart';
-import 'package:pet_care/on_boarding/on_boarding_slides.dart';
+import 'package:pet_care/ui/on_boarding/on_boarding_slides.dart';
 
 class SplashScreen extends StatefulWidget {
   @override

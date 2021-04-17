@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pet_care/colors/style.dart';
-import 'package:pet_care/profile/my_pet_item.dart';
+import 'package:pet_care/ui/profile/my_pet_item.dart';
 
 class MyPetView extends StatefulWidget {
   @override
