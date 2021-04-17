@@ -36,9 +36,14 @@ class MyApp extends StatelessWidget {
               ),
             ),
           ),
-          textButtonTheme: TextButtonThemeData(
-            style: ButtonStyle(),
-          ),
+          // textButtonTheme: TextButtonThemeData(
+          //     // style: TextButton.styleFrom(
+          //     //   backgroundColor: Colors.grey.shade200,
+          //     //   textStyle: TextStyle(
+          //     //     color: AppTheme.headLine1Color,
+          //     //   ),
+          //     // ),
+          //     ),
           buttonTheme: ButtonThemeData(
             buttonColor: Colors.white,
           ),
