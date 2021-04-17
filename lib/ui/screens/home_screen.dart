@@ -50,7 +50,8 @@ class HomeScreen extends StatelessWidget {
                             child: ConstrainedBox(
                               constraints: BoxConstraints(maxWidth: 100),
                               child: Text(
-                                user.name,
+                                "",
+                                // user.name,
                                 style: Theme.of(context)
                                     .textTheme
                                     .headline1

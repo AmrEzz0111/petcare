@@ -27,12 +27,15 @@ class AppointmentPast extends StatelessWidget {
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.25,
           ),
-          AppointmentBtn(
-            padding: EdgeInsets.symmetric(horizontal: 40),
-            text: 'Find a specialist',
-            color: AppTheme.appDark,
-            txtColor: Colors.white,
-            onPressed: () => print(1),
+          ConstrainedBox(
+            constraints: BoxConstraints.tightFor(height: 50),
+            child: AppointmentBtn(
+              padding: EdgeInsets.symmetric(horizontal: 50),
+              text: 'Find a specialist',
+              color: AppTheme.appDark,
+              txtColor: Colors.white,
+              onPressed: () => print(1),
+            ),
           ),
         ],
       ),
