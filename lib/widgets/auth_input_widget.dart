@@ -34,7 +34,7 @@ class AuthInput extends StatelessWidget {
       style: TextStyle(
         color: Colors.black87,
         fontSize: 16.0,
-        fontFamily: 'coRegular',
+        fontFamily: 'Co',
       ),
       decoration: InputDecoration(
         focusedBorder: OutlineInputBorder(
@@ -53,12 +53,12 @@ class AuthInput extends StatelessWidget {
         labelStyle: TextStyle(
           color: Colors.grey,
           fontSize: 14.0,
-          fontFamily: 'coRegular',
+          fontFamily: 'Co',
         ),
         hintStyle: TextStyle(
           color: Colors.grey,
           fontSize: 14.0,
-          fontFamily: 'coRegular',
+          fontFamily: 'Co',
         ),
       ),
     );

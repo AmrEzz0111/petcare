@@ -10,18 +10,22 @@ class GoogleMapWidget extends StatelessWidget {
     target: LatLng(37.42796133580664, -122.085749655962),
     zoom: 14.4746,
   );
+  var myMarker = Marker(
+    markerId: MarkerId("1"),
+  );
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 500,
-      width: 500,
-      child: GoogleMap(
-        mapType: MapType.normal,
-        initialCameraPosition: _kGooglePlex,
-        onMapCreated: (GoogleMapController controller) {
-          _controller.complete(controller);
-        },
+    return GoogleMap(
+      mapType: MapType.normal,
+      initialCameraPosition: _kGooglePlex,
+      onMapCreated: (GoogleMapController controller) {
+        _controller.complete(controller);
+      },
+      myLocationButtonEnabled: true,
+      myLocationEnabled: true,
+      markers: Set.of(
+        [myMarker],
       ),
     );
   }
