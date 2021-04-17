@@ -170,12 +170,14 @@ class _RegisteraionState extends State<Registeraion> {
                               );
                               await signUpProv.signUp(
                                   email.text, password.text, user);
-                              if (signUpProv.user != null) {
+
+                              if (user.runtimeType == UserModel) {
+                                print("UserModel ---->>>>> ${signUpProv.user}");
                                 Navigator.of(context).pushReplacement(
                                   MaterialPageRoute(
-                                    builder: (context) => ProfileView(
-                                      user: signUpProv.user,
-                                    ),
+                                    builder: (context) => HomeScreen(
+                                        // user: signUpProv.user,
+                                        ),
                                   ),
                                 );
                               }
