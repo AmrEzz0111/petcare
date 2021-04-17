@@ -175,8 +175,8 @@ class _RegisteraionState extends State<Registeraion> {
                                 Navigator.of(context).pushReplacement(
                                   MaterialPageRoute(
                                     builder: (context) => HomeScreen(
-                                      user: signUpProv.user,
-                                    ),
+                                        // user: signUpProv.user,
+                                        ),
                                   ),
                                 );
                               }
