@@ -4,8 +4,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:pet_care/models/user_model.dart';
 
 class AuthService {
-  Future<UserModel> signInEmailAndPassword(
-      String email, String password) async {
+  Future signInEmailAndPassword(String email, String password) async {
     UserModel user;
     try {
       await FirebaseAuth.instance
@@ -21,9 +20,9 @@ class AuthService {
       });
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
-        print(e.code);
+        return e.code;
       } else if (e.code == 'wrong-password') {
-        print(e.code);
+        return e.code;
       }
     }
     print('----${user.name}');

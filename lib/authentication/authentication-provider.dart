@@ -14,12 +14,12 @@ class AuthenticationProvider extends ChangeNotifier {
     wrongPassword = false;
     signInClicked = true;
 
-    await _authRepository.signInEmailAndPassword(email, password).then((value) {
-      user = value;
-    });
+    user = await _authRepository.signInEmailAndPassword(email, password);
     if (user == "user-not-found") {
+      print("user ->>>> $user");
       wrongEmail = true;
     } else if (user == "wrong-password") {
+      print("user ->>>> $user");
       wrongPassword = true;
     }
     notifyListeners();
@@ -33,10 +33,8 @@ class AuthenticationProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  signUp(String email, String password, UserModel user) async {
-    await _authRepository.signUp(email, password, user).then((value) {
-      user = value;
-    });
+  signUp(String email, String password, UserModel user1) async {
+    user = await _authRepository.signUp(email, password, user1);
     notifyListeners();
   }
 }
