@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:pet_care/colors/style.dart';
 import 'package:pet_care/models/user_model.dart';
 import 'package:pet_care/ui/authentication/authentication-provider.dart';
+import 'package:pet_care/widgets/animation_utils.dart';
 import 'package:pet_care/widgets/appBar.dart';
 import 'package:pet_care/widgets/auth_input_widget.dart';
+import 'package:pet_care/widgets/gallary_or_camera_dialog.dart';
 import 'package:provider/provider.dart';
 
 class EditProfileView extends StatefulWidget {
@@ -18,12 +20,12 @@ class EditProfileView extends StatefulWidget {
 class _EditProfileViewState extends State<EditProfileView> {
   TextEditingController fullName, email, phone, bio;
   String gender;
-  File img;
   var images = [
     'assets/images/male.png',
     'assets/images/female.png',
   ];
   var genderList = ['Male', 'Female'];
+  File userImage;
 
   int _value;
   @override
@@ -78,23 +80,46 @@ class _EditProfileViewState extends State<EditProfileView> {
                         CircleAvatar(
                           radius: 65,
                           backgroundColor: Colors.white,
-                          backgroundImage: NetworkImage(widget.user.img),
+                          backgroundImage: userImage != null
+                              ? FileImage(
+                                  userImage,
+                                )
+                              : NetworkImage(
+                                  widget.user.img,
+                                ),
                         ),
                         Positioned(
                           bottom: 1,
                           left: 2,
-                          child: Container(
-                            height: 57,
-                            width: 126,
-                            decoration: BoxDecoration(
-                                color: Colors.black45,
-                                borderRadius: BorderRadius.only(
-                                    bottomRight: Radius.circular(70),
-                                    bottomLeft: Radius.circular(70))),
-                            child: Icon(
-                              Icons.camera_alt_outlined,
-                              size: 35,
-                              color: Colors.grey[300],
+                          child: InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                HeroDialogRoute(
+                                  builder: (BuildContext context) =>
+                                      CameraOrGallaryDialog(
+                                    onSelectImage: (photo) {
+                                      setState(() {
+                                        userImage = photo;
+                                      });
+                                    },
+                                  ),
+                                ),
+                              );
+                            },
+                            child: Container(
+                              height: 57,
+                              width: 126,
+                              decoration: BoxDecoration(
+                                  color: Colors.black45,
+                                  borderRadius: BorderRadius.only(
+                                      bottomRight: Radius.circular(70),
+                                      bottomLeft: Radius.circular(70))),
+                              child: Icon(
+                                Icons.camera_alt_outlined,
+                                size: 35,
+                                color: Colors.grey[300],
+                              ),
                             ),
                           ),
                         ),
@@ -222,13 +247,13 @@ class _EditProfileViewState extends State<EditProfileView> {
                   InkWell(
                     onTap: () async {
                       UserModel user = UserModel(
-                        email: email.text,
-                        name: fullName.text,
-                        phone: phone.text,
-                        bio: bio.text,
-                        gender: gender,
-                      );
-                      await editProfileProv.updateUser(user, img);
+                          email: email.text,
+                          name: fullName.text,
+                          phone: phone.text,
+                          bio: bio.text,
+                          gender: gender,
+                          pets: widget.user.pets);
+                      await editProfileProv.updateUser(user, userImage);
                     },
                     child: Container(
                       height: 50,

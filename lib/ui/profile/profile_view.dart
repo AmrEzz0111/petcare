@@ -129,8 +129,9 @@ class _ProfileViewState extends State<ProfileView> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (BuildContext context) =>
-                                      MyPetView()));
+                                  builder: (BuildContext context) => MyPetView(
+                                        user: widget.user,
+                                      )));
                         },
                         child: buildColumn(
                           'My Pets',

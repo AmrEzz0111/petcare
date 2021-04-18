@@ -13,17 +13,20 @@ import 'package:pet_care/widgets/gallary_or_camera_dialog.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart' as date;
 
-class AddPetDetails extends StatefulWidget {
+class EditPetView extends StatefulWidget {
+  final Pet pet;
+
+  const EditPetView({Key key, this.pet}) : super(key: key);
   @override
-  _AddPetDetailsState createState() => _AddPetDetailsState();
+  _EditPetViewState createState() => _EditPetViewState();
 }
 
-class _AddPetDetailsState extends State<AddPetDetails> {
-  bool ligth1 = false;
-  bool ligth2 = false;
-  bool ligth3 = false;
-  bool ligth4 = false;
-  bool ligth5 = false;
+class _EditPetViewState extends State<EditPetView> {
+  bool ligth1;
+  bool ligth2;
+  bool ligth3;
+  bool ligth4;
+  bool ligth5;
   TextEditingController petName, species, breed, weight, birthOfDate;
   String gender;
   var images = [
@@ -37,16 +40,28 @@ class _AddPetDetailsState extends State<AddPetDetails> {
 
   @override
   void initState() {
-    petName = TextEditingController();
-    species = TextEditingController();
-    breed = TextEditingController();
-    weight = TextEditingController();
-    birthOfDate = TextEditingController();
+    petName = TextEditingController(text: widget.pet.name);
+    species = TextEditingController(text: widget.pet.species);
+    breed = TextEditingController(text: widget.pet.breed);
+    weight = TextEditingController(text: widget.pet.weight);
+    birthOfDate = TextEditingController(text: widget.pet.birthOfDate);
+    if (widget.pet.gender == 'Male')
+      _value = 0;
+    else if (widget.pet.gender == 'Female')
+      _value = 1;
+    else
+      _value = 0;
+    ligth1 = widget.pet.vaccinated;
+    ligth2 = widget.pet.friendlyWithDogs;
+    ligth3 = widget.pet.friendlyWithCats;
+    ligth4 = widget.pet.friendlyWithKids;
+    ligth5 = widget.pet.microchipped;
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+    print('=====${widget.pet.id}');
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: PreferredSize(
@@ -60,7 +75,7 @@ class _AddPetDetailsState extends State<AddPetDetails> {
             ),
           ),
           evaluation: 0.5,
-          title: "Add Pet Details",
+          title: "Edit Pet",
         ),
       ),
       body: ChangeNotifierProvider(
@@ -86,8 +101,8 @@ class _AddPetDetailsState extends State<AddPetDetails> {
                               ? FileImage(
                                   petImage,
                                 )
-                              : AssetImage(
-                                  'assets/images/cat.jpg',
+                              : NetworkImage(
+                                  widget.pet.img,
                                 ),
                         ),
                         Positioned(
@@ -484,8 +499,10 @@ class _AddPetDetailsState extends State<AddPetDetails> {
                         friendlyWithCats: ligth3,
                         friendlyWithKids: ligth4,
                         microchipped: ligth5,
+                        id: widget.pet.id,
+                        img: widget.pet.img,
                       );
-                      await petProv.addPet(pet, petImage);
+                      await petProv.editPet(pet, petImage);
                     },
                     child: Container(
                       height: 50,
@@ -495,7 +512,7 @@ class _AddPetDetailsState extends State<AddPetDetails> {
                           borderRadius: BorderRadius.circular(25)),
                       child: Center(
                         child: Text(
-                          'Add Pet',
+                          'Edit Pet',
                           style: TextStyle(
                             color: Colors.white,
                             fontFamily: 'Co',

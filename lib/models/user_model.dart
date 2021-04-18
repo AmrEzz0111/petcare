@@ -1,3 +1,5 @@
+import 'package:pet_care/models/pet_model.dart';
+
 class UserModel {
   String phone;
   String name;
@@ -9,6 +11,7 @@ class UserModel {
   String id;
   String gender;
   String bio;
+  List<dynamic> pets;
 
   UserModel({
     this.phone = "",
@@ -22,6 +25,7 @@ class UserModel {
     this.id,
     this.bio,
     this.gender,
+    this.pets,
   });
 
   UserModel.fromJson(Map<dynamic, dynamic> map)
@@ -34,7 +38,11 @@ class UserModel {
         id = map['id'] ?? "",
         pending = map['pending'] ?? false,
         bio = map['bio'] ?? '',
-        gender = map['gender'] ?? "";
+        gender = map['gender'] ?? "",
+        pets = (map['pets'] ?? Map())
+            .values
+            .map((pet) => Pet.fromJson(pet))
+            .toList();
 
   Map<String, dynamic> toJson() => {
         'phone': phone,
@@ -47,5 +55,6 @@ class UserModel {
         'id': id,
         'gender': gender,
         'bio': bio,
+        'pets': pets,
       };
 }
