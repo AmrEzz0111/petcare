@@ -203,4 +203,30 @@ class AuthService {
       return UserModel.fromJson(userSnapshot.value);
     }
   }
+
+  Future<UserModel> updateUser(UserModel user, File img) async {
+    print(img.path);
+    String id;
+    id = FirebaseAuth.instance.currentUser.uid;
+    if (img == null) {
+      DatabaseReference databaseReference =
+          FirebaseDatabase.instance.reference().child("users").child(id);
+      await databaseReference.update(user.toJson());
+      var userSnapshot = await databaseReference.once();
+      UserModel updatedUser = UserModel.fromJson(userSnapshot.value);
+      return updatedUser;
+    } else {
+      print(img.path);
+      StorageReference storageReference =
+          FirebaseStorage().ref().child(img.toString());
+      StorageUploadTask uploadTask = storageReference.putFile(img);
+      StorageTaskSnapshot storageSnapshot = await uploadTask.onComplete;
+      user.img = await storageSnapshot.ref.getDownloadURL();
+      DatabaseReference databaseReference =
+          FirebaseDatabase.instance.reference().child("users").child(id);
+      await databaseReference.update(user.toJson());
+      var userSnapshot = await databaseReference.once();
+      return UserModel.fromJson(userSnapshot.value);
+    }
+  }
 }
