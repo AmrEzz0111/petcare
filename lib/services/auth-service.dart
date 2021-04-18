@@ -102,6 +102,80 @@ class AuthService {
       savedUser.id = userSnapshot.key;
       return savedUser;
     });
+    print('----${user.name}');
+    return user;
+  }
+
+  Future<UserModel> signInWithGoogle() async {
+    FirebaseAuth auth = FirebaseAuth.instance;
+    UserModel savedUser;
+
+    final GoogleSignIn googleSignIn = GoogleSignIn();
+
+    final GoogleSignInAccount googleSignInAccount = await googleSignIn.signIn();
+    if (googleSignInAccount != null) {
+      final GoogleSignInAuthentication googleSignInAuthentication =
+          await googleSignInAccount.authentication;
+
+      final AuthCredential credential = GoogleAuthProvider.credential(
+        accessToken: googleSignInAuthentication.accessToken,
+        idToken: googleSignInAuthentication.idToken,
+      );
+
+      try {
+        await auth.signInWithCredential(credential).then((d) async {
+          savedUser = UserModel(
+              email: d.user.email,
+              id: d.user.uid,
+              name: d.user.displayName,
+              img: d.user.photoURL,
+              address: 'Ismailia',
+              phone: '01100249647',
+              userType: 'user',
+              pending: false);
+
+          DatabaseReference databaseReference = FirebaseDatabase.instance
+              .reference()
+              .child("users")
+              .child(d.user.uid);
+          await databaseReference.set(savedUser.toJson());
+          var userSnapshot = await databaseReference.once();
+          savedUser = UserModel.fromJson(userSnapshot.value);
+          savedUser.id = userSnapshot.key;
+          return;
+        });
+      } on FirebaseAuthException catch (e) {
+        if (e.code == 'account-exists-with-different-credential') {
+          print(e.code);
+        } else if (e.code == 'invalid-credential') {
+          print(e.code);
+        }
+      } catch (e) {
+        print(e);
+      }
+    }
+    return savedUser;
+  }
+
+  Future<UserModel> signUp(
+      String email, String password, UserModel user) async {
+    UserModel savedUser;
+    return FirebaseAuth.instance
+        .createUserWithEmailAndPassword(
+      email: email.trim(),
+      password: password,
+    )
+        .then((d) async {
+      DatabaseReference databaseReference = FirebaseDatabase.instance
+          .reference()
+          .child("users")
+          .child(d.user.uid);
+      await databaseReference.set(user.toJson());
+      var userSnapshot = await databaseReference.once();
+      savedUser = UserModel.fromJson(userSnapshot.value);
+      savedUser.id = userSnapshot.key;
+      return savedUser;
+    });
   }
 
   Future<UserModel> updateUser(UserModel user, File img) async {
