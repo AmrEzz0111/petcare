@@ -3,8 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:pet_care/models/doctor_model.dart';
 import 'package:pet_care/models/user_model.dart';
 import 'package:pet_care/ui/authentication/authentication-provider.dart';
-import 'package:pet_care/ui/home/home_screen.dart';
-import 'package:pet_care/widgets/appBar.dart';
+import 'package:pet_care/widgets/bottom_navigation_bar.dart';
 import 'package:provider/provider.dart';
 
 class RegisteraionDoctor extends StatefulWidget {
@@ -28,7 +27,6 @@ class _RegisteraionDoctorState extends State<RegisteraionDoctor> {
   List<DaysOfWork> daysOfWorkModel = [];
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     doctor.firstName = widget.user.name;
     doctor.email = widget.user.email;
@@ -40,16 +38,18 @@ class _RegisteraionDoctorState extends State<RegisteraionDoctor> {
     print(widget.user.name);
 
     return Scaffold(
+      backgroundColor: Colors.grey[50],
       body: ChangeNotifierProvider(
         create: (context) => AuthenticationProvider(),
         child: Consumer<AuthenticationProvider>(
-          builder: (context, signUpProv, child) => Padding(
-            padding: const EdgeInsets.fromLTRB(0, 40, 0, 0),
-            child: Container(
-              color: Colors.black12,
-              child: ListView(
-                children: [
-                  Column(
+          builder: (context, signUpProv, child) => Container(
+            color: Colors.black12,
+            child: ListView(
+              children: [
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 30, horizontal: 8),
+                  child: Column(
                     children: [
                       Text(
                         "Complete your data",
@@ -58,51 +58,57 @@ class _RegisteraionDoctorState extends State<RegisteraionDoctor> {
                             fontSize: 20,
                             fontWeight: FontWeight.w600),
                       ),
+                      SizedBox(
+                        height: 15,
+                      ),
                       Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: DropdownButton<String>(
-                                underline: Container(
-                                  color: Color(0xFFc25e3c),
-                                  height: 1,
-                                ),
-                                hint: Text(
-                                  'Chosse Spechilaist',
-                                  style: TextStyle(color: Colors.black54),
-                                ),
-                                value: specialist,
-                                focusColor: Colors.yellow,
-                                style: TextStyle(
-                                  color: Colors.black,
-                                ),
-                                items: <String>[
-                                  'Spech1',
-                                  'Spech2',
-                                  'Spech3',
-                                  'Spech4'
-                                ].map<DropdownMenuItem<String>>(
-                                    (String location) {
-                                  return DropdownMenuItem<String>(
-                                    value: location,
-                                    child: Text(
-                                      location,
-                                      style: TextStyle(color: Colors.black),
-                                    ),
-                                  );
-                                }).toList(),
-                                onChanged: (newValue) {
-                                  doctor.specialist = newValue;
-                                  setState(() {
-                                    specialist = newValue;
-                                  });
-                                },
+                            DropdownButton<String>(
+                              underline: Container(
+                                color: Color(0xFFc25e3c),
+                                height: 1,
                               ),
+                              hint: Text(
+                                'Chosse Spechilaist',
+                                style: TextStyle(
+                                    color: Colors.black54,
+                                    fontFamily: 'Co',
+                                    fontSize: 14),
+                              ),
+                              value: specialist,
+                              focusColor: Colors.yellow,
+                              style: TextStyle(
+                                color: Colors.black,
+                              ),
+                              items: <String>[
+                                'Spech1',
+                                'Spech2',
+                                'Spech3',
+                                'Spech4'
+                              ].map<DropdownMenuItem<String>>(
+                                  (String location) {
+                                return DropdownMenuItem<String>(
+                                  value: location,
+                                  child: Text(
+                                    location,
+                                    style: TextStyle(
+                                        color: Colors.black,
+                                        fontFamily: 'Co',
+                                        fontSize: 14),
+                                  ),
+                                );
+                              }).toList(),
+                              onChanged: (newValue) {
+                                doctor.specialist = newValue;
+                                setState(() {
+                                  specialist = newValue;
+                                });
+                              },
                             ),
                             Container(
                               width: MediaQuery.of(context).size.width * .45,
-                              height: 110,
+                              height: 90,
                               child: Padding(
                                 padding: const EdgeInsets.all(0),
                                 child: TextField(
@@ -111,13 +117,15 @@ class _RegisteraionDoctorState extends State<RegisteraionDoctor> {
                                   },
                                   keyboardType: TextInputType.number,
                                   style: TextStyle(
-                                      color: Colors.black, fontFamily: 'Co'),
+                                      fontWeight: FontWeight.w500,
+                                      color: Colors.black,
+                                      fontFamily: 'Co'),
                                   decoration: InputDecoration(
                                       hintStyle: TextStyle(
                                           fontSize: 14,
                                           color: Colors.black54,
                                           fontFamily: 'Co'),
-                                      hintText: 'years of experience',
+                                      // hintText: 'years of experience',
                                       labelText: 'Experience',
                                       labelStyle: TextStyle(
                                           color: Colors.black26,
@@ -146,11 +154,11 @@ class _RegisteraionDoctorState extends State<RegisteraionDoctor> {
                                   fontSize: 14,
                                   color: Colors.black54,
                                   fontFamily: 'Co'),
-                              hintText: 'Enter tour current Address',
+                              //  hintText: 'Enter tour current Address',
                               labelText: 'Address',
                               labelStyle: TextStyle(
                                   color: Colors.black26, fontFamily: 'Co'),
-                              focusedBorder: OutlineInputBorder(
+                              focusedBorder: UnderlineInputBorder(
                                   borderSide:
                                       BorderSide(color: Color(0xFFc25e3c))),
                               enabledBorder: UnderlineInputBorder(
@@ -180,11 +188,11 @@ class _RegisteraionDoctorState extends State<RegisteraionDoctor> {
                                   fontSize: 14,
                                   color: Colors.black54,
                                   fontFamily: 'Co'),
-                              hintText: 'Price of appointment',
+                              //  hintText: 'Price of appointment',
                               labelText: 'Price',
                               labelStyle: TextStyle(
                                   color: Colors.black26, fontFamily: 'Co'),
-                              focusedBorder: OutlineInputBorder(
+                              focusedBorder: UnderlineInputBorder(
                                   borderSide:
                                       BorderSide(color: Color(0xFFc25e3c))),
                               enabledBorder: UnderlineInputBorder(
@@ -212,48 +220,48 @@ class _RegisteraionDoctorState extends State<RegisteraionDoctor> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: DropdownButton<String>(
-                                underline: Container(
-                                  color: Color(0xFFc25e3c),
-                                  height: 1,
-                                ),
-                                hint: Text(
-                                  'Day',
-                                  style: TextStyle(color: Colors.black54),
-                                ),
-                                value: dayOfWork,
-                                focusColor: Colors.yellow,
-                                style: TextStyle(
-                                  color: Colors.black,
-                                ),
-                                items: <String>[
-                                  'Saturday',
-                                  'Sunday',
-                                  'Monday',
-                                  'Tuesday',
-                                  'Wednesday',
-                                  'Friday'
-                                ].map<DropdownMenuItem<String>>(
-                                    (String location) {
-                                  return DropdownMenuItem<String>(
-                                    value: location,
-                                    child: Text(
-                                      location,
-                                      style: TextStyle(color: Colors.black),
-                                    ),
-                                  );
-                                }).toList(),
-                                onChanged: (newValue) {
-                                  setState(() {
-                                    dayOfWork = newValue;
-                                  });
-                                },
+                            DropdownButton<String>(
+                              underline: Container(
+                                color: Color(0xFFc25e3c),
+                                height: 1,
                               ),
+                              hint: Text(
+                                'Day',
+                                style: TextStyle(
+                                    color: Colors.black54,
+                                    fontFamily: 'Co',
+                                    fontSize: 14),
+                              ),
+                              value: dayOfWork,
+                              focusColor: Colors.yellow,
+                              style: TextStyle(
+                                  color: Colors.black, fontFamily: 'Co'),
+                              items: <String>[
+                                'Saturday',
+                                'Sunday',
+                                'Monday',
+                                'Tuesday',
+                                'Wednesday',
+                                'Friday'
+                              ].map<DropdownMenuItem<String>>(
+                                  (String location) {
+                                return DropdownMenuItem<String>(
+                                  value: location,
+                                  child: Text(
+                                    location,
+                                    style: TextStyle(
+                                        color: Colors.black, fontFamily: 'Co'),
+                                  ),
+                                );
+                              }).toList(),
+                              onChanged: (newValue) {
+                                setState(() {
+                                  dayOfWork = newValue;
+                                });
+                              },
                             ),
                             Container(
-                              height: 120,
+                              height: 100,
                               width: MediaQuery.of(context).size.width * .2,
                               child: Padding(
                                 padding: const EdgeInsets.all(5.0),
@@ -272,7 +280,7 @@ class _RegisteraionDoctorState extends State<RegisteraionDoctor> {
                                           fontSize: 14,
                                           color: Colors.black54,
                                           fontFamily: 'Co'),
-                                      hintText: 'hour',
+                                      //  hintText: 'hour',
                                       labelText: 'From',
                                       labelStyle: TextStyle(
                                           color: Colors.black26,
@@ -287,7 +295,7 @@ class _RegisteraionDoctorState extends State<RegisteraionDoctor> {
                               ),
                             ),
                             Container(
-                              height: 120,
+                              height: 100,
                               width: MediaQuery.of(context).size.width * .2,
                               child: Padding(
                                 padding: const EdgeInsets.all(5.0),
@@ -306,7 +314,7 @@ class _RegisteraionDoctorState extends State<RegisteraionDoctor> {
                                           fontSize: 14,
                                           color: Colors.black54,
                                           fontFamily: 'Co'),
-                                      hintText: 'hour',
+                                      // hintText: 'hour',
                                       labelText: 'To',
                                       labelStyle: TextStyle(
                                           color: Colors.black26,
@@ -389,10 +397,15 @@ class _RegisteraionDoctorState extends State<RegisteraionDoctor> {
                             onPressed: () async {
                               await signUpProv.signUpasDoctor(
                                   widget.user.email, widget.password, doctor);
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => HomeScreen()));
+                              Navigator.pushAndRemoveUntil(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (BuildContext context) => BottomNav(
+                                    user: signUpProv.user,
+                                  ),
+                                ),
+                                (route) => false,
+                              );
                             },
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(30)),
@@ -408,10 +421,13 @@ class _RegisteraionDoctorState extends State<RegisteraionDoctor> {
                           ),
                         ),
                       ),
+                      SizedBox(
+                        height: 10,
+                      )
                     ],
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ),

@@ -4,10 +4,10 @@
 
 import 'dart:convert';
 
-DoctorModel DoctorModelFromJson(String str) =>
+DoctorModel doctorModelFromJson(String str) =>
     DoctorModel.fromJson(json.decode(str));
 
-String DoctorModelToJson(DoctorModel data) => json.encode(data.toJson());
+String doctorModelToJson(DoctorModel data) => json.encode(data.toJson());
 
 class DoctorModel {
   DoctorModel({

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:pet_care/colors/style.dart';
-import 'package:pet_care/widgets/veterinarian_item.dart';
-
 import 'appointment-btn.dart';
 
 class AppointmentPast extends StatelessWidget {

@@ -1,8 +1,5 @@
 import 'dart:io';
-
 import 'package:pet_care/models/doctor_model.dart';
-import 'dart:io';
-
 import 'package:pet_care/models/user_model.dart';
 import 'package:pet_care/services/auth-service.dart';
 

@@ -2,7 +2,8 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:pet_care/colors/style.dart';
 import 'package:pet_care/models/user_model.dart';
-import 'package:pet_care/ui/authentication/registeration-doctors.dart';
+import 'package:pet_care/ui/grooming/grooming_screen.dart';
+import 'package:pet_care/ui/trainers/trainers_screen.dart';
 import 'package:pet_care/ui/veterinarian/veterinarian_screen.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -88,9 +89,18 @@ class HomeScreen extends StatelessWidget {
                               padding: const EdgeInsets.all(20.0),
                               child: Column(
                                 children: [
-                                  Image.asset(
-                                    'assets/images/main_imgs/grooming.png',
-                                    scale: 0.8,
+                                  InkWell(
+                                    onTap: () {
+                                      Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                GroomingScreen()),
+                                      );
+                                    },
+                                    child: Image.asset(
+                                      'assets/images/main_imgs/grooming.png',
+                                      scale: 0.8,
+                                    ),
                                   ),
                                   AutoSizeText(
                                     'Grooming',
@@ -173,7 +183,7 @@ class HomeScreen extends StatelessWidget {
                                 children: [
                                   GestureDetector(
                                     onTap: () {
-                                      Navigator.of(context).pushReplacement(
+                                      Navigator.of(context).push(
                                         MaterialPageRoute(
                                             builder: (context) =>
                                                 VeterinarianView()),
@@ -263,9 +273,18 @@ class HomeScreen extends StatelessWidget {
                               padding: const EdgeInsets.all(20.0),
                               child: Column(
                                 children: [
-                                  Image.asset(
-                                    'assets/images/main_imgs/training.png',
-                                    scale: 0.8,
+                                  InkWell(
+                                    onTap: () {
+                                      Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                TrainersScreen()),
+                                      );
+                                    },
+                                    child: Image.asset(
+                                      'assets/images/main_imgs/training.png',
+                                      scale: 0.8,
+                                    ),
                                   ),
                                   AutoSizeText(
                                     'Traning',

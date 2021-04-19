@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
 import 'package:pet_care/colors/style.dart';
 import 'package:pet_care/models/user_model.dart';
 import 'package:pet_care/ui/authentication/authentication-provider.dart';
 import 'package:pet_care/ui/authentication/registeration-doctors.dart';
 import 'package:pet_care/ui/authentication/sign_in_screen.dart';
-import 'package:pet_care/ui/home/home_screen.dart';
+import 'package:pet_care/widgets/bottom_navigation_bar.dart';
 import 'package:provider/provider.dart';
 
 class Registeraion extends StatefulWidget {
@@ -14,7 +13,7 @@ class Registeraion extends StatefulWidget {
   _RegisteraionState createState() => _RegisteraionState();
 }
 
-String userType = null;
+String userType;
 
 class _RegisteraionState extends State<Registeraion> {
   bool isChecked = false;
@@ -85,10 +84,12 @@ class _RegisteraionState extends State<Registeraion> {
                                     fontSize: 14,
                                     color: Colors.black54,
                                     fontFamily: 'Co'),
-                                hintText: 'Enter Your Full Name',
+                                // hintText: 'Enter Your Full Name',
                                 labelText: 'Full Name',
                                 labelStyle: TextStyle(
-                                    color: Colors.black26, fontFamily: 'Co'),
+                                    fontWeight: FontWeight.w500,
+                                    color: Colors.black26,
+                                    fontFamily: 'Co'),
                                 focusedBorder: UnderlineInputBorder(
                                     borderSide:
                                         BorderSide(color: Color(0xFFc25e3c))),
@@ -117,10 +118,12 @@ class _RegisteraionState extends State<Registeraion> {
                                     fontSize: 14,
                                     color: Colors.black54,
                                     fontFamily: 'Co'),
-                                hintText: 'enter your email',
+                                // hintText: 'enter your email',
                                 labelText: 'Email',
                                 labelStyle: TextStyle(
-                                    color: Colors.black26, fontFamily: 'Co'),
+                                    fontWeight: FontWeight.w500,
+                                    color: Colors.black26,
+                                    fontFamily: 'Co'),
                                 focusedBorder: UnderlineInputBorder(
                                     borderSide:
                                         BorderSide(color: Color(0xFFc25e3c))),
@@ -145,14 +148,16 @@ class _RegisteraionState extends State<Registeraion> {
                                     color: Colors.green,
                                   ),
                                 ),
-                                hintText: 'enter your Password',
+                                // hintText: 'enter your Password',
                                 hintStyle: TextStyle(
                                     fontSize: 14,
                                     color: Colors.black54,
                                     fontFamily: 'Co'),
                                 labelText: 'Password',
                                 labelStyle: TextStyle(
-                                    color: Colors.black26, fontFamily: 'Co'),
+                                    fontWeight: FontWeight.w500,
+                                    color: Colors.black26,
+                                    fontFamily: 'Co'),
                                 focusedBorder: UnderlineInputBorder(
                                     borderSide:
                                         BorderSide(color: Color(0xFFc25e3c))),
@@ -176,9 +181,10 @@ class _RegisteraionState extends State<Registeraion> {
                                 hint: Text(
                                   'Choose type of you',
                                   style: TextStyle(
+                                      fontFamily: 'Co',
                                       color: (signUpClicked && !choosedUserType)
                                           ? Colors.red
-                                          : Colors.black54),
+                                          : Colors.black26),
                                 ),
                                 value: userType,
                                 focusColor: Colors.yellow,
@@ -186,18 +192,20 @@ class _RegisteraionState extends State<Registeraion> {
                                   color: Colors.black,
                                 ),
                                 items: <String>[
-                                  'user',
-                                  'doctor',
-                                  'grooming',
-                                  'pharmacy',
-                                  'market',
+                                  'User',
+                                  'Doctor',
+                                  'Grooming',
+                                  'Pharmacy',
+                                  'Market',
                                 ].map<DropdownMenuItem<String>>(
                                     (String location) {
                                   return DropdownMenuItem<String>(
                                     value: location,
                                     child: Text(
                                       location,
-                                      style: TextStyle(color: Colors.black),
+                                      style: TextStyle(
+                                          color: Colors.black,
+                                          fontFamily: 'Co'),
                                     ),
                                   );
                                 }).toList(),
@@ -220,18 +228,7 @@ class _RegisteraionState extends State<Registeraion> {
                                 signUpClicked = true;
                               });
                               if (choosedUserType) {
-                                if (userType == 'doctor') {
-                                  UserModel user = UserModel(
-                                    email: email.text,
-                                    name: username.text,
-                                  );
-                                  Navigator.of(context).pushReplacement(
-                                    MaterialPageRoute(
-                                      builder: (context) => RegisteraionDoctor(
-                                          user, password.text),
-                                    ),
-                                  );
-                                } else if (userType == "user") {
+                                if (userType == "User") {
                                   UserModel user = UserModel(
                                     email: email.text,
                                     name: username.text,
@@ -242,14 +239,28 @@ class _RegisteraionState extends State<Registeraion> {
                                   if (user != null) {
                                     print(
                                         "UserModel ---->>>>> ${signUpProv.user}");
-                                    Navigator.of(context).pushReplacement(
+                                    Navigator.pushAndRemoveUntil(
+                                      context,
                                       MaterialPageRoute(
-                                        builder: (context) => HomeScreen(
+                                        builder: (BuildContext context) =>
+                                            BottomNav(
                                           user: signUpProv.user,
                                         ),
                                       ),
+                                      (route) => false,
                                     );
                                   }
+                                } else {
+                                  UserModel user = UserModel(
+                                    email: email.text,
+                                    name: username.text,
+                                  );
+                                  Navigator.of(context).push(
+                                    MaterialPageRoute(
+                                      builder: (context) => RegisteraionDoctor(
+                                          user, password.text),
+                                    ),
+                                  );
                                 }
                               }
                             },

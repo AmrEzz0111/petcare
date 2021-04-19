@@ -1,6 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:pet_care/models/user_model.dart';
 import 'package:pet_care/colors/style.dart';
+import 'package:pet_care/ui/authentication/auth_ways.dart';
 import 'package:pet_care/ui/authentication/authentication-provider.dart';
 import 'package:pet_care/ui/profile/add_pet_details.dart';
 import 'package:pet_care/ui/profile/edit_profile_view.dart';
@@ -168,13 +170,26 @@ class _ProfileViewState extends State<ProfileView> {
                             color: AppTheme.appDark,
                             size: 20,
                           )),
-                      buildColumn(
-                          'Log Out',
-                          Icon(
-                            Icons.exit_to_app_rounded,
-                            color: AppTheme.appDark,
-                            size: 20,
-                          )),
+                      InkWell(
+                        onTap: () async {
+                          await FirebaseAuth.instance.signOut();
+                          Navigator.pushAndRemoveUntil(
+                            context,
+                            MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  AuthenticationScreen(),
+                            ),
+                            (route) => false,
+                          );
+                        },
+                        child: buildColumn(
+                            'Log Out',
+                            Icon(
+                              Icons.exit_to_app_rounded,
+                              color: AppTheme.appDark,
+                              size: 20,
+                            )),
+                      ),
                     ],
                   ),
                 ),

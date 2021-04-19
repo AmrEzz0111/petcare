@@ -134,12 +134,14 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
                             });
 
                             if (signInProv.user != null) {
-                              Navigator.of(context).pushReplacement(
+                              Navigator.pushAndRemoveUntil(
+                                context,
                                 MaterialPageRoute(
-                                  builder: (context) => BottomNav(
+                                  builder: (BuildContext context) => BottomNav(
                                     user: signInProv.user,
                                   ),
                                 ),
+                                (route) => false,
                               );
                             }
                           },
@@ -179,7 +181,12 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
                 Padding(
                   padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
                   child: RaisedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => Registeraion()));
+                    },
                     color: Color(0x00FFFFFF),
                     shape: RoundedRectangleBorder(
                       side: BorderSide(width: 1, color: Colors.white),
@@ -190,19 +197,11 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => Registeraion()));
-                            },
-                            child: Text('Register With Email ',
-                                style: TextStyle(
-                                    fontFamily: 'Co',
-                                    fontSize: 16,
-                                    color: Colors.white)),
-                          ),
+                          Text('Register With Email ',
+                              style: TextStyle(
+                                  fontFamily: 'Co',
+                                  fontSize: 16,
+                                  color: Colors.white)),
                         ],
                       ),
                     ),
@@ -215,10 +214,8 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text('Already have an account? ',
-                        style: TextStyle(
-                            fontSize: 14,
-                            color: Colors.white,
-                            fontFamily: 'Co')),
+                        style:
+                            TextStyle(color: Colors.white, fontFamily: 'Co')),
                     GestureDetector(
                       onTap: () {
                         Navigator.push(context,

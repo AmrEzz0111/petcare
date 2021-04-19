@@ -85,10 +85,12 @@ class _SignInState extends State<SignIn> {
                                   color: Colors.green,
                                 ),
                               ),
-                              hintText: 'enter your email',
+                              //  hintText: 'enter your email',
                               labelText: 'Email',
                               labelStyle: TextStyle(
-                                  color: Colors.black26, fontFamily: 'Co'),
+                                  fontWeight: FontWeight.w500,
+                                  color: Colors.black26,
+                                  fontFamily: 'Co'),
                               focusedBorder: UnderlineInputBorder(
                                 borderSide: BorderSide(
                                   color: Color(0xFFc25e3c),
@@ -124,31 +126,36 @@ class _SignInState extends State<SignIn> {
                                     color: Colors.green,
                                   ),
                                 ),
-                                hintText: 'enter your Password',
+                                //  hintText: 'enter your Password',
                                 labelText: 'Password',
                                 labelStyle: TextStyle(
-                                    color: Colors.black26, fontFamily: 'Co'),
+                                    fontWeight: FontWeight.w500,
+                                    color: Colors.black26,
+                                    fontFamily: 'Co'),
                                 focusedBorder: UnderlineInputBorder(
                                     borderSide:
-                                        BorderSide(color: Color(0xFFc25e3c))),
+                                        BorderSide(color: AppTheme.appDark)),
                                 enabledBorder: UnderlineInputBorder(
                                     borderSide:
-                                        BorderSide(color: Color(0xFFc25e3c)))),
+                                        BorderSide(color: AppTheme.appDark))),
                           ),
                         ),
                         Padding(
                           padding: const EdgeInsets.all(15.0),
                           child: RaisedButton(
-                            color: Color(0xFFc25e3c),
+                            color: AppTheme.appDark,
                             onPressed: () async {
                               await signInProv.signIn(email.trim(), password);
                               if (signInProv.user != null) {
-                                Navigator.of(context).pushReplacement(
+                                Navigator.pushAndRemoveUntil(
+                                  context,
                                   MaterialPageRoute(
-                                    builder: (context) => BottomNav(
+                                    builder: (BuildContext context) =>
+                                        BottomNav(
                                       user: signInProv.user,
                                     ),
                                   ),
+                                  (route) => false,
                                 );
                               }
                             },
@@ -223,6 +230,7 @@ class _SignInState extends State<SignIn> {
                               child: Text(
                                 "Registeration",
                                 style: TextStyle(
+                                    fontSize: 16,
                                     color: AppTheme.appDark,
                                     fontFamily: 'Co',
                                     fontWeight: FontWeight.bold,

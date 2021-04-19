@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:pet_care/colors/style.dart';
-import 'package:pet_care/ui/pet_services/grooming/groom_place_details.dart';
-import 'package:pet_care/ui/pet_services/grooming/grooming_place_work.dart';
-import 'package:pet_care/ui/pet_services/grooming/pet_groom_service.dart';
-import 'package:pet_care/ui/pet_services/grooming/review_screen.dart';
+import 'package:pet_care/ui/grooming/groom_place_details.dart';
+import 'package:pet_care/ui/grooming/grooming_place_work.dart';
+import 'package:pet_care/ui/grooming/pet_groom_service.dart';
+import 'package:pet_care/ui/grooming/review_screen.dart';
 
 class TrainersDetailsScreen extends StatefulWidget {
   @override

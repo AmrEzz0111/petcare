@@ -147,11 +147,10 @@ class AuthService {
       print("////////////////////////");
       print(user.toJson());
       await databaseReference.set(user.toJson());
-      // userSnapshot = await databaseReference.once();
-      //savedUser = Doctor.fromJson(userSnapshot.value);
-      //savedUser.id = userSnapshot.key;
+      var userSnapshot = await databaseReference.once();
+      savedUser = Doctor.fromJson(userSnapshot.value);
+      savedUser.id = userSnapshot.key;
       return savedUser;
     });
   }
-
 }

@@ -60,17 +60,15 @@ class MyApp extends StatelessWidget {
           tabBarTheme: TabBarTheme(
             labelStyle: TextStyle(
               fontSize: 20,
-              fontWeight: FontWeight.w700,
             ),
             unselectedLabelStyle: TextStyle(
               fontSize: 20,
-              fontWeight: FontWeight.w700,
             ),
           ),
           fixTextFieldOutlineLabel: true,
-          inputDecorationTheme: InputDecorationTheme(
-            border: InputBorder.none,
-          ),
+          // inputDecorationTheme: InputDecorationTheme(
+          //   border: InputBorder.none,
+          // ),
           bottomNavigationBarTheme: BottomNavigationBarThemeData(
             backgroundColor: AppTheme.bgMain,
             selectedItemColor: AppTheme.appDark,
@@ -89,16 +87,13 @@ class MyApp extends StatelessWidget {
               fontSize: 27,
               color: AppTheme.headLine1Color,
               fontFamily: 'Co',
-              fontWeight: FontWeight.w700,
             ),
             headline2: Theme.of(context).textTheme.headline1.copyWith(
                   fontSize: 23,
-                  fontWeight: FontWeight.w700,
                   color: AppTheme.headLine1Color,
                 ),
             headline3: Theme.of(context).textTheme.headline1.copyWith(
                   fontSize: 17,
-                  fontWeight: FontWeight.w700,
                   color: AppTheme.headLine1Color,
                 ),
             subtitle1: Theme.of(context).textTheme.headline1.copyWith(
