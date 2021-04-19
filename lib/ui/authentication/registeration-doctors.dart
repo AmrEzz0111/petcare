@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:pet_care/models/doctor_model.dart';
 import 'package:pet_care/models/user_model.dart';
 import 'package:pet_care/ui/authentication/authentication-provider.dart';
+import 'package:pet_care/ui/home/home_screen.dart';
 import 'package:pet_care/widgets/appBar.dart';
 import 'package:provider/provider.dart';
 
@@ -385,9 +386,13 @@ class _RegisteraionDoctorState extends State<RegisteraionDoctor> {
                           padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
                           child: RaisedButton(
                             color: Color(0xddffffff),
-                            onPressed: () {
-                              signUpProv.signUpasDoctor(
+                            onPressed: () async {
+                              await signUpProv.signUpasDoctor(
                                   widget.user.email, widget.password, doctor);
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => HomeScreen()));
                             },
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(30)),

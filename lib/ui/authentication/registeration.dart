@@ -1,24 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
 import 'package:pet_care/colors/style.dart';
 import 'package:pet_care/models/user_model.dart';
+import 'package:pet_care/ui/authentication/authentication-provider.dart';
+import 'package:pet_care/ui/authentication/registeration-doctors.dart';
 import 'package:pet_care/ui/authentication/sign_in_screen.dart';
-import 'package:pet_care/widgets/bottom_navigation_bar.dart';
+import 'package:pet_care/ui/home/home_screen.dart';
 import 'package:provider/provider.dart';
-
-import 'authentication-provider.dart';
 
 class Registeraion extends StatefulWidget {
   @override
   _RegisteraionState createState() => _RegisteraionState();
 }
 
+String userType = null;
+
 class _RegisteraionState extends State<Registeraion> {
   bool isChecked = false;
+  bool signUpClicked = false;
+  bool choosedUserType = false;
   TextEditingController email = TextEditingController();
   TextEditingController username = TextEditingController();
   TextEditingController password = TextEditingController();
-
+  bool s = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -159,26 +164,93 @@ class _RegisteraionState extends State<Registeraion> {
                         SizedBox(
                           height: 20,
                         ),
+                        Row(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(8, 0, 8, 8),
+                              child: DropdownButton<String>(
+                                underline: Container(
+                                  color: Color(0xFFc25e3c),
+                                  height: 1,
+                                ),
+                                hint: Text(
+                                  'Choose type of you',
+                                  style: TextStyle(
+                                      color: (signUpClicked && !choosedUserType)
+                                          ? Colors.red
+                                          : Colors.black54),
+                                ),
+                                value: userType,
+                                focusColor: Colors.yellow,
+                                style: TextStyle(
+                                  color: Colors.black,
+                                ),
+                                items: <String>[
+                                  'user',
+                                  'doctor',
+                                  'grooming',
+                                  'pharmacy',
+                                  'market',
+                                ].map<DropdownMenuItem<String>>(
+                                    (String location) {
+                                  return DropdownMenuItem<String>(
+                                    value: location,
+                                    child: Text(
+                                      location,
+                                      style: TextStyle(color: Colors.black),
+                                    ),
+                                  );
+                                }).toList(),
+                                onChanged: (newValue) {
+                                  setState(() {
+                                    choosedUserType = true;
+                                    userType = newValue;
+                                  });
+                                },
+                              ),
+                            ),
+                          ],
+                        ),
                         Padding(
                           padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
                           child: RaisedButton(
                             color: Color(0xFFc25e3c),
                             onPressed: () async {
-                              UserModel user = UserModel(
-                                email: email.text,
-                                name: username.text,
-                              );
-                              await signUpProv.signUp(
-                                  email.text, password.text, user);
-
-                              if (signUpProv.user != null) {
-                                Navigator.of(context).pushReplacement(
-                                  MaterialPageRoute(
-                                    builder: (context) => BottomNav(
-                                      user: signUpProv.user,
+                              setState(() {
+                                signUpClicked = true;
+                              });
+                              if (choosedUserType) {
+                                if (userType == 'doctor') {
+                                  UserModel user = UserModel(
+                                    email: email.text,
+                                    name: username.text,
+                                  );
+                                  Navigator.of(context).pushReplacement(
+                                    MaterialPageRoute(
+                                      builder: (context) => RegisteraionDoctor(
+                                          user, password.text),
                                     ),
-                                  ),
-                                );
+                                  );
+                                } else if (userType == "user") {
+                                  UserModel user = UserModel(
+                                    email: email.text,
+                                    name: username.text,
+                                  );
+                                  await signUpProv.signUp(
+                                      email.text, password.text, user);
+
+                                  if (user != null) {
+                                    print(
+                                        "UserModel ---->>>>> ${signUpProv.user}");
+                                    Navigator.of(context).pushReplacement(
+                                      MaterialPageRoute(
+                                        builder: (context) => HomeScreen(
+                                          user: signUpProv.user,
+                                        ),
+                                      ),
+                                    );
+                                  }
+                                }
                               }
                             },
                             shape: RoundedRectangleBorder(

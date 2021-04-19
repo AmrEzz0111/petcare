@@ -1,10 +1,9 @@
+// import 'package:device_preview/device_preview.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:pet_care/colors/style.dart';
 import 'package:pet_care/ui/slpash_screen/splash_view.dart';
-import 'package:pet_care/slpash_screen/splash_view.dart';
-import 'package:pet_care/widgets/bottom_navigation_bar.dart';
 
 // void main() {
 //   runApp(

@@ -2,6 +2,8 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:pet_care/colors/style.dart';
 import 'package:pet_care/models/user_model.dart';
+import 'package:pet_care/ui/authentication/registeration-doctors.dart';
+import 'package:pet_care/ui/veterinarian/veterinarian_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   final UserModel user;
@@ -169,9 +171,18 @@ class HomeScreen extends StatelessWidget {
                               padding: EdgeInsets.all(25),
                               child: Column(
                                 children: [
-                                  Image.asset(
-                                    'assets/images/main_imgs/vet.png',
-                                    scale: 0.6,
+                                  GestureDetector(
+                                    onTap: () {
+                                      Navigator.of(context).pushReplacement(
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                VeterinarianView()),
+                                      );
+                                    },
+                                    child: Image.asset(
+                                      'assets/images/main_imgs/vet.png',
+                                      scale: 0.6,
+                                    ),
                                   ),
                                   AutoSizeText(
                                     'Veterinary',

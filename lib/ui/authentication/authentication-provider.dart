@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/widgets.dart';
+import 'package:pet_care/models/doctor_model.dart';
 import 'package:pet_care/models/user_model.dart';
 import 'package:pet_care/repositories/auth-repository.dart';
 
@@ -40,6 +41,11 @@ class AuthenticationProvider extends ChangeNotifier {
 
   updateUser(UserModel user, File img) async {
     user = await _authRepository.updateUser(user, img);
+    notifyListeners();
+  }
+
+  signUpasDoctor(String email, String password, Doctor user) async {
+    user = await _authRepository.signUpAsDoctor(email, password, user);
     notifyListeners();
   }
 }
