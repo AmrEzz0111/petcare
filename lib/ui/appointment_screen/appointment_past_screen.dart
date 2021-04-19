@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pet_care/colors/style.dart';
+import 'package:pet_care/widgets/veterinarian_item.dart';
 
 import 'appointment-btn.dart';
 
@@ -22,7 +23,7 @@ class AppointmentPast extends StatelessWidget {
           ),
           Text(
             'No appointments yet',
-            style: TextStyle(color: Colors.grey.shade400),
+            style: Theme.of(context).textTheme.bodyText2,
           ),
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.25,
