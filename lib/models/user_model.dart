@@ -1,13 +1,13 @@
 class UserModel {
-  String phone;
-  String name;
-  String email;
-  String img;
-  String address;
-  String userType;
-  bool pending;
+  final String phone;
+  final String name;
+  final String email;
+  final String img;
+  final String address;
+  final String userType;
+  final bool pending;
   String id;
-  String gender;
+  final String gender;
 
   UserModel({
     this.phone = "",
@@ -19,6 +19,7 @@ class UserModel {
     this.userType = "",
     this.pending,
     this.id,
+    this.gender,
   });
 
   UserModel.fromJson(Map<dynamic, dynamic> map)

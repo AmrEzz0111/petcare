@@ -33,12 +33,13 @@ class BookingCard extends StatelessWidget {
   ];
   @override
   Widget build(BuildContext context) {
+    final deviceData = MediaQuery.of(context);
     return Card(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
       elevation: 10,
       shadowColor: Colors.black12,
       child: Container(
-        height: 370,
+        height: deviceData.size.height * 0.46,
         padding: EdgeInsets.all(20),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -50,7 +51,9 @@ class BookingCard extends StatelessWidget {
                   borderRadius: BorderRadius.circular(20),
                   child: Image.network(
                     'https://images.unsplash.com/photo-1603179415710-79d73cdb2003?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
-                    scale: 12,
+                    fit: BoxFit.cover,
+                    height: 110,
+                    width: 120,
                   ),
                 ),
                 Container(
@@ -83,7 +86,10 @@ class BookingCard extends StatelessWidget {
                           ),
                           Text(
                             '125 Reviews',
-                            style: Theme.of(context).textTheme.headline4,
+                            style: Theme.of(context)
+                                .textTheme
+                                .caption
+                                .copyWith(color: Colors.grey.shade400),
                           ),
                         ],
                       ),
@@ -177,7 +183,7 @@ class BookingCard extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'Veterinary clinic "Alden-Vet',
+                              'Veterinary clinic "Alden-Vet"',
                               style: Theme.of(context).textTheme.headline3,
                             ),
                             SizedBox(
@@ -185,7 +191,7 @@ class BookingCard extends StatelessWidget {
                             ),
                             Text(
                               '141 N Union Ave, Los Angeles, CA',
-                              style: Theme.of(context).textTheme.caption,
+                              style: Theme.of(context).textTheme.subtitle2,
                             ),
                           ],
                         ),
@@ -210,7 +216,7 @@ class BookingCard extends StatelessWidget {
                         padding: const EdgeInsets.only(left: 8),
                         child: Text(
                           'Wed 9 Sep — 10:30 am',
-                          style: Theme.of(context).textTheme.headline3,
+                          style: Theme.of(context).textTheme.subtitle2,
                         ),
                       ),
                     ],

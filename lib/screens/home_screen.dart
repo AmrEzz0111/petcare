@@ -1,15 +1,13 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:pet_care/colors/style.dart';
 import 'package:pet_care/models/user_model.dart';
+import 'package:pet_care/widgets/rounded_service.dart';
 
 class HomeScreen extends StatelessWidget {
-  final UserModel user;
-  final double _elevation = 5;
-
-  const HomeScreen({Key key, this.user}) : super(key: key);
+  const HomeScreen({Key key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    UserModel user = UserModel();
     var deviceData = MediaQuery.of(context);
 
     return SingleChildScrollView(
@@ -50,8 +48,7 @@ class HomeScreen extends StatelessWidget {
                             child: ConstrainedBox(
                               constraints: BoxConstraints(maxWidth: 100),
                               child: Text(
-                                "",
-                                // user.name,
+                                user.name,
                                 style: Theme.of(context)
                                     .textTheme
                                     .headline1
@@ -72,195 +69,71 @@ class HomeScreen extends StatelessWidget {
                   children: [
                     Align(
                       alignment: Alignment.topCenter,
-                      child: Container(
-                        height: 110,
-                        width: 110,
-                        child: Material(
-                          borderRadius: BorderRadius.circular(57.5),
-                          elevation: _elevation,
-                          shadowColor: Colors.black26,
-                          child: Padding(
-                            padding: const EdgeInsets.all(20.0),
-                            child: Column(
-                              children: [
-                                Image.asset(
-                                  'assets/images/main_imgs/grooming.png',
-                                  scale: 0.8,
-                                ),
-                                AutoSizeText(
-                                  'Grooming',
-                                  style: Theme.of(context).textTheme.caption,
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
+                      child: RoundedService(
+                        size: 110,
+                        padding: 20,
+                        img: 'assets/images/main_imgs/grooming.png',
+                        serviceName: 'Grooming',
                       ),
                     ),
                     Positioned(
                       left: 0,
                       top: 75,
-                      child: Container(
-                        height: 110,
-                        width: 110,
-                        child: Material(
-                          borderRadius: BorderRadius.circular(57.5),
-                          elevation: _elevation,
-                          shadowColor: Colors.black26,
-                          child: Container(
-                            padding: EdgeInsets.all(13),
-                            child: Column(
-                              children: [
-                                Image.asset(
-                                  'assets/images/main_imgs/dog walking.png',
-                                  scale: 0.8,
-                                ),
-                                AutoSizeText(
-                                  'Dog Walking',
-                                  style: Theme.of(context).textTheme.caption,
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
+                      child: RoundedService(
+                        size: 110,
+                        padding: 20,
+                        img: 'assets/images/main_imgs/dog walking.png',
+                        serviceName: 'Dog walking',
                       ),
                     ),
                     Positioned(
                       right: 0,
                       top: 75,
-                      child: Container(
-                        height: 110,
-                        width: 110,
-                        child: Material(
-                          borderRadius: BorderRadius.circular(57.5),
-                          elevation: _elevation,
-                          shadowColor: Colors.black26,
-                          child: Container(
-                            padding: const EdgeInsets.all(20.0),
-                            child: Column(
-                              children: [
-                                Image.asset(
-                                  'assets/images/main_imgs/taxi.png',
-                                  scale: 0.8,
-                                ),
-                                AutoSizeText(
-                                  'Pet taxi',
-                                  style: Theme.of(context).textTheme.caption,
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
+                      child: RoundedService(
+                        size: 110,
+                        padding: 20,
+                        img: 'assets/images/main_imgs/taxi.png',
+                        serviceName: 'Pet taxi',
                       ),
                     ),
                     Align(
                       alignment: Alignment.center,
-                      child: Container(
-                        height: 140,
-                        width: 140,
-                        child: Material(
-                          borderRadius: BorderRadius.circular(70),
-                          elevation: _elevation,
-                          shadowColor: Colors.black26,
-                          child: Container(
-                            padding: EdgeInsets.all(25),
-                            child: Column(
-                              children: [
-                                Image.asset(
-                                  'assets/images/main_imgs/vet.png',
-                                  scale: 0.6,
-                                ),
-                                AutoSizeText(
-                                  'Veterinary',
-                                  style: Theme.of(context).textTheme.caption,
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
+                      child: RoundedService(
+                        size: 140,
+                        padding: 20,
+                        imgScale: 0.5,
+                        img: 'assets/images/main_imgs/vet.png',
+                        serviceName: 'Veterinary',
                       ),
                     ),
                     Positioned(
                       left: 0,
                       bottom: 75,
-                      child: SizedBox(
-                        height: 110,
-                        width: 110,
-                        child: Material(
-                          borderRadius: BorderRadius.circular(57.5),
-                          elevation: _elevation,
-                          shadowColor: Colors.black26,
-                          child: Padding(
-                            padding: const EdgeInsets.all(20.0),
-                            child: Column(
-                              children: [
-                                Image.asset(
-                                  'assets/images/main_imgs/date.png',
-                                  scale: 0.8,
-                                ),
-                                AutoSizeText(
-                                  'Pet date',
-                                  style: Theme.of(context).textTheme.caption,
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
+                      child: RoundedService(
+                        size: 110,
+                        padding: 20,
+                        img: 'assets/images/main_imgs/grooming.png',
+                        serviceName: 'Pet date',
                       ),
                     ),
                     Positioned(
                       right: 0,
                       bottom: 75,
-                      child: SizedBox(
-                        height: 110,
-                        width: 110,
-                        child: Material(
-                          borderRadius: BorderRadius.circular(57.5),
-                          elevation: _elevation,
-                          shadowColor: Colors.black26,
-                          child: Padding(
-                            padding: const EdgeInsets.all(20.0),
-                            child: Column(
-                              children: [
-                                Image.asset(
-                                  'assets/images/main_imgs/adoption.png',
-                                  scale: 0.8,
-                                ),
-                                AutoSizeText(
-                                  'Adoption',
-                                  style: Theme.of(context).textTheme.caption,
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
+                      child: RoundedService(
+                        onTap: () => print('object'),
+                        size: 110,
+                        padding: 20,
+                        img: 'assets/images/main_imgs/adoption.png',
+                        serviceName: 'Markets',
                       ),
                     ),
                     Align(
                       alignment: Alignment.bottomCenter,
-                      child: SizedBox(
-                        height: 110,
-                        width: 110,
-                        child: Material(
-                          borderRadius: BorderRadius.circular(57.5),
-                          elevation: _elevation,
-                          shadowColor: Colors.black26,
-                          child: Padding(
-                            padding: const EdgeInsets.all(20.0),
-                            child: Column(
-                              children: [
-                                Image.asset(
-                                  'assets/images/main_imgs/training.png',
-                                  scale: 0.8,
-                                ),
-                                AutoSizeText(
-                                  'Traning',
-                                  style: Theme.of(context).textTheme.caption,
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
+                      child: RoundedService(
+                        size: 110,
+                        padding: 20,
+                        img: 'assets/images/main_imgs/training.png',
+                        serviceName: 'Training',
                       ),
                     ),
                   ],

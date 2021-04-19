@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:pet_care/colors/style.dart';
 import 'package:pet_care/profile/profile_view.dart';
 import 'package:pet_care/screens/home_screen.dart';
@@ -41,6 +42,7 @@ class _BottomNavState extends State<BottomNav> {
               icon: Icon(
                 Icons.access_time_sharp,
               ),
+              // activeIcon: Icon(Icons.access_time_sharp),
               label: 'Appointments',
             ),
             BottomNavigationBarItem(
