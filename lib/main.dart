@@ -3,7 +3,11 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:pet_care/colors/style.dart';
+import 'package:pet_care/ui/authentication/registeration.dart';
+import 'package:pet_care/ui/home/home_screen.dart';
 import 'package:pet_care/ui/slpash_screen/splash_view.dart';
+import 'package:pet_care/ui/veterinarian/specialists_screen.dart';
+import 'package:pet_care/ui/veterinarian/veterinarian_screen.dart';
 
 // void main() {
 //   runApp(
@@ -60,7 +64,7 @@ class MyApp extends StatelessWidget {
           iconTheme: IconThemeData(
             color: AppTheme.appDark,
           )),
-      home: SplashScreen(),
+      home: HomeScreen(),
     );
   }
 }

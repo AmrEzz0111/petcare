@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:pet_care/models/doctor_model.dart';
 import 'package:pet_care/models/user_model.dart';
 
 class AuthService {
@@ -102,64 +103,37 @@ class AuthService {
       savedUser.id = userSnapshot.key;
       return savedUser;
     });
-    print('----${user.name}');
-    return user;
   }
 
-  Future<UserModel> signInWithGoogle() async {
-    FirebaseAuth auth = FirebaseAuth.instance;
-    UserModel savedUser;
-
-    final GoogleSignIn googleSignIn = GoogleSignIn();
-
-    final GoogleSignInAccount googleSignInAccount = await googleSignIn.signIn();
-    if (googleSignInAccount != null) {
-      final GoogleSignInAuthentication googleSignInAuthentication =
-          await googleSignInAccount.authentication;
-
-      final AuthCredential credential = GoogleAuthProvider.credential(
-        accessToken: googleSignInAuthentication.accessToken,
-        idToken: googleSignInAuthentication.idToken,
-      );
-
-      try {
-        await auth.signInWithCredential(credential).then((d) async {
-          savedUser = UserModel(
-              email: d.user.email,
-              id: d.user.uid,
-              name: d.user.displayName,
-              img: d.user.photoURL,
-              address: 'Ismailia',
-              phone: '01100249647',
-              userType: 'user',
-              pending: false);
-
-          DatabaseReference databaseReference = FirebaseDatabase.instance
-              .reference()
-              .child("users")
-              .child(d.user.uid);
-          await databaseReference.set(savedUser.toJson());
-          var userSnapshot = await databaseReference.once();
-          savedUser = UserModel.fromJson(userSnapshot.value);
-          savedUser.id = userSnapshot.key;
-          return;
-        });
-      } on FirebaseAuthException catch (e) {
-        if (e.code == 'account-exists-with-different-credential') {
-          print(e.code);
-        } else if (e.code == 'invalid-credential') {
-          print(e.code);
-        }
-      } catch (e) {
-        print(e);
-      }
+  Future<UserModel> updateUser(UserModel user, File img) async {
+    print(img.path);
+    String id;
+    id = FirebaseAuth.instance.currentUser.uid;
+    if (img == null) {
+      DatabaseReference databaseReference =
+          FirebaseDatabase.instance.reference().child("users").child(id);
+      await databaseReference.update(user.toJson());
+      var userSnapshot = await databaseReference.once();
+      UserModel updatedUser = UserModel.fromJson(userSnapshot.value);
+      return updatedUser;
+    } else {
+      print(img.path);
+      StorageReference storageReference =
+          FirebaseStorage().ref().child(img.toString());
+      StorageUploadTask uploadTask = storageReference.putFile(img);
+      StorageTaskSnapshot storageSnapshot = await uploadTask.onComplete;
+      user.img = await storageSnapshot.ref.getDownloadURL();
+      DatabaseReference databaseReference =
+          FirebaseDatabase.instance.reference().child("users").child(id);
+      await databaseReference.update(user.toJson());
+      var userSnapshot = await databaseReference.once();
+      return UserModel.fromJson(userSnapshot.value);
     }
-    return savedUser;
   }
 
-  Future<UserModel> signUp(
-      String email, String password, UserModel user) async {
-    UserModel savedUser;
+  Future<Doctor> signUpAsDoctor(
+      String email, String password, Doctor user) async {
+    Doctor savedUser;
     return FirebaseAuth.instance
         .createUserWithEmailAndPassword(
       email: email.trim(),
@@ -168,65 +142,15 @@ class AuthService {
         .then((d) async {
       DatabaseReference databaseReference = FirebaseDatabase.instance
           .reference()
-          .child("users")
+          .child("doctors")
           .child(d.user.uid);
+      print("////////////////////////");
+      print(user.toJson());
       await databaseReference.set(user.toJson());
       var userSnapshot = await databaseReference.once();
-      savedUser = UserModel.fromJson(userSnapshot.value);
+      savedUser = Doctor.fromJson(userSnapshot.value);
       savedUser.id = userSnapshot.key;
       return savedUser;
     });
-  }
-
-  Future<UserModel> updateUser(UserModel user, File img) async {
-    print(img.path);
-    String id;
-    id = FirebaseAuth.instance.currentUser.uid;
-    if (img == null) {
-      DatabaseReference databaseReference =
-          FirebaseDatabase.instance.reference().child("users").child(id);
-      await databaseReference.update(user.toJson());
-      var userSnapshot = await databaseReference.once();
-      UserModel updatedUser = UserModel.fromJson(userSnapshot.value);
-      return updatedUser;
-    } else {
-      print(img.path);
-      StorageReference storageReference =
-          FirebaseStorage().ref().child(img.toString());
-      StorageUploadTask uploadTask = storageReference.putFile(img);
-      StorageTaskSnapshot storageSnapshot = await uploadTask.onComplete;
-      user.img = await storageSnapshot.ref.getDownloadURL();
-      DatabaseReference databaseReference =
-          FirebaseDatabase.instance.reference().child("users").child(id);
-      await databaseReference.update(user.toJson());
-      var userSnapshot = await databaseReference.once();
-      return UserModel.fromJson(userSnapshot.value);
-    }
-  }
-
-  Future<UserModel> updateUser(UserModel user, File img) async {
-    print(img.path);
-    String id;
-    id = FirebaseAuth.instance.currentUser.uid;
-    if (img == null) {
-      DatabaseReference databaseReference =
-          FirebaseDatabase.instance.reference().child("users").child(id);
-      await databaseReference.update(user.toJson());
-      var userSnapshot = await databaseReference.once();
-      UserModel updatedUser = UserModel.fromJson(userSnapshot.value);
-      return updatedUser;
-    } else {
-      print(img.path);
-      StorageReference storageReference =
-          FirebaseStorage().ref().child(img.toString());
-      StorageUploadTask uploadTask = storageReference.putFile(img);
-      StorageTaskSnapshot storageSnapshot = await uploadTask.onComplete;
-      user.img = await storageSnapshot.ref.getDownloadURL();
-      DatabaseReference databaseReference =
-          FirebaseDatabase.instance.reference().child("users").child(id);
-      await databaseReference.update(user.toJson());
-      var userSnapshot = await databaseReference.once();
-      return UserModel.fromJson(userSnapshot.value);
-    }
   }
 }
