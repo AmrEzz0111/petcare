@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       // locale: DevicePreview.locale(context), // Add the locale here
       // builder: DevicePreview.appBuilder,
       debugShowCheckedModeBanner: false,
-      theme: Theme.of(context).copyWith(
+      theme: ThemeData(
           primaryColor: AppTheme.appPrimary,
           accentColor: AppTheme.appDark,
           buttonColor: AppTheme.appDark,

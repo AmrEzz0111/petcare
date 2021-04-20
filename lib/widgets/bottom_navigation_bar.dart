@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:pet_care/colors/style.dart';
 import 'package:pet_care/profile/profile_view.dart';
 import 'package:pet_care/screens/home_screen.dart';
 import '../appointment_screen/appointment.dart';
 
 class BottomNav extends StatefulWidget {
+  BottomNav({this.body});
+  final Widget body;
   @override
   _BottomNavState createState() => _BottomNavState();
 }

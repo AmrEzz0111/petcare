@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pet_care/colors/style.dart';
 import 'package:pet_care/models/user_model.dart';
+import 'package:pet_care/screens/markets_screen.dart';
 import 'package:pet_care/widgets/rounded_service.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -120,7 +121,11 @@ class HomeScreen extends StatelessWidget {
                       right: 0,
                       bottom: 75,
                       child: RoundedService(
-                        onTap: () => print('object'),
+                        onTap: () => Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (ctx) => Markets(),
+                          ),
+                        ),
                         size: 110,
                         padding: 20,
                         img: 'assets/images/main_imgs/adoption.png',

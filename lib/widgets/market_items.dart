@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:pet_care/colors/style.dart';
 
-class VeterinarianItem extends StatelessWidget {
+class MarketItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -23,11 +24,16 @@ class VeterinarianItem extends StatelessWidget {
                   Container(
                     height: 80,
                     width: 80,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        image: DecorationImage(
-                            fit: BoxFit.cover,
-                            image: AssetImage('assets/images/DrVet.jpg'))),
+                    child: Icon(
+                      FontAwesomeIcons.home,
+                      color: Colors.orange.shade100,
+                      size: 80,
+                    ),
+                    // decoration: BoxDecoration(
+                    //     borderRadius: BorderRadius.circular(20),
+                    //     image: DecorationImage(
+                    //         fit: BoxFit.cover,
+                    //         image: AssetImage('assets/images/DrVet.jpg'))),
                   ),
                   SizedBox(
                     width: 20,
@@ -36,18 +42,19 @@ class VeterinarianItem extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Peternko Julia',
+                        'عم حنفى',
                         style: TextStyle(
-                            color: AppTheme.headLine1Color,
-                            fontFamily: 'Co',
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold),
+                          color: AppTheme.headLine1Color,
+                          fontFamily: 'Co',
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                       SizedBox(
                         height: 5,
                       ),
                       Text(
-                        'Veterinarian',
+                        'Pets Food',
                         style: TextStyle(
                             color: AppTheme.appDark,
                             fontFamily: 'Co',
@@ -108,7 +115,7 @@ class VeterinarianItem extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    '10 year of experience ',
+                    'Since 2004',
                     style: TextStyle(
                         color: Colors.grey[400],
                         fontFamily: 'Co',
@@ -117,6 +124,27 @@ class VeterinarianItem extends StatelessWidget {
                   ),
                   Row(
                     children: [
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Row(
+                        children: [
+                          SizedBox(
+                            width: 8,
+                          ),
+                          Text(
+                            'Elnozha',
+                            style: TextStyle(
+                                color: Colors.grey[400],
+                                fontFamily: 'Co',
+                                fontSize: 12,
+                                fontWeight: FontWeight.w600),
+                          ),
+                          SizedBox(
+                            width: 5,
+                          ),
+                        ],
+                      ),
                       Row(
                         children: [
                           CircleAvatar(
@@ -131,7 +159,7 @@ class VeterinarianItem extends StatelessWidget {
                             ),
                           ),
                           SizedBox(
-                            width: 8,
+                            width: 5,
                           ),
                           Text(
                             '2.4 km',
@@ -143,35 +171,6 @@ class VeterinarianItem extends StatelessWidget {
                           ),
                         ],
                       ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Row(
-                        children: [
-                          CircleAvatar(
-                            radius: 11,
-                            backgroundColor: Colors.grey[100],
-                            child: Center(
-                              child: Icon(
-                                Icons.payment_rounded,
-                                color: Colors.grey[600],
-                                size: 17,
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            width: 8,
-                          ),
-                          Text(
-                            '\$20',
-                            style: TextStyle(
-                                color: Colors.grey[600],
-                                fontFamily: 'Co',
-                                fontSize: 12,
-                                fontWeight: FontWeight.w600),
-                          ),
-                        ],
-                      )
                     ],
                   )
                 ],
