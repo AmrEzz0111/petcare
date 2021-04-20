@@ -86,7 +86,7 @@ class _RegisteraionState extends State<Registeraion> {
                                     fontSize: 14,
                                     color: Colors.black54,
                                     fontFamily: 'Co'),
-                                 hintText: 'Enter Your Full Name',
+                                //hintText: 'Enter Your Full Name',
                                 labelText: 'Full Name',
                                 labelStyle: TextStyle(
                                     fontWeight: FontWeight.w500,

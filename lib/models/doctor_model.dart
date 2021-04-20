@@ -32,6 +32,9 @@ LocationDr initialLocation = LocationDr(lat: 0.0, long: 0.0);
 List<Review> initialReview = [Review(review: "", reviewerId: "")];
 List<Patiant> initialPatiant = [Patiant(petId: "", petOwnerId: "")];
 List<DaysOfWork> initialDaysOfWork = [DaysOfWork(from: 0, to: 0, day: "")];
+List<PetProfilr> initialPetProfile = [
+  PetProfilr(date: "", desc: "", medicine: [""], nextAppointment: "")
+];
 
 class Doctor {
   Doctor(
@@ -170,19 +173,52 @@ class Patiant {
   Patiant({
     this.petId = "",
     this.petOwnerId = "",
+    this.petProfilr = null,
   });
 
   String petId;
   String petOwnerId;
-
+  List<PetProfilr> petProfilr;
   factory Patiant.fromJson(Map<dynamic, dynamic> json) => Patiant(
-        petId: json["petId"],
-        petOwnerId: json["petOwnerId"],
-      );
+      petId: json["petId"],
+      petOwnerId: json["petOwnerId"],
+      petProfilr: List<PetProfilr>.from(
+          json["pet_profilr"].map((x) => PetProfilr.fromJson(x))));
 
   Map<dynamic, dynamic> toJson() => {
         "petId": petId,
         "petOwnerId": petOwnerId,
+        "pet_profilr": (petProfilr != null)
+            ? List<dynamic>.from(petProfilr.map((x) => x.toJson()))
+            : List<dynamic>.from(initialPetProfile.map((x) => x.toJson()))
+      };
+}
+
+class PetProfilr {
+  PetProfilr({
+    this.date,
+    this.desc,
+    this.medicine,
+    this.nextAppointment,
+  });
+
+  String date;
+  String desc;
+  List<String> medicine;
+  String nextAppointment;
+
+  factory PetProfilr.fromJson(Map<dynamic, dynamic> json) => PetProfilr(
+        date: json["date"],
+        desc: json["desc"],
+        medicine: List<String>.from(json["medicine"].map((x) => x)),
+        nextAppointment: json["nextAppointment"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "date": date,
+        "desc": desc,
+        "medicine": List<dynamic>.from(medicine.map((x) => x)),
+        "nextAppointment": nextAppointment,
       };
 }
 

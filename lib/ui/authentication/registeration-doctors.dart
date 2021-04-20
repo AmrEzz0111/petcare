@@ -366,7 +366,7 @@ class _RegisteraionDoctorState extends State<RegisteraionDoctor> {
                         ),
                       ),
                       Container(
-                        height: 70,
+                        height: 100,
                         width: MediaQuery.of(context).size.width,
                         child: ListView.builder(
                           scrollDirection: Axis.horizontal,

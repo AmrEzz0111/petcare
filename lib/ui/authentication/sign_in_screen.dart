@@ -212,8 +212,9 @@ class _SignInState extends State<SignIn> {
                         SizedBox(
                           height: MediaQuery.of(context).size.height * .05,
                         ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
+                        Expanded(
+                            child: Wrap(
+                          alignment: WrapAlignment.center,
                           children: [
                             Text(
                               "Don't have account yet ? ",
@@ -230,7 +231,6 @@ class _SignInState extends State<SignIn> {
                               child: Text(
                                 "Registeration",
                                 style: TextStyle(
-                                    fontSize: 16,
                                     color: AppTheme.appDark,
                                     fontFamily: 'Co',
                                     fontWeight: FontWeight.bold,
@@ -238,7 +238,7 @@ class _SignInState extends State<SignIn> {
                               ),
                             )
                           ],
-                        )
+                        )),
                       ],
                     )),
               ),
