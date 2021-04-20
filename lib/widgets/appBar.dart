@@ -8,7 +8,11 @@ class AppBarWidget extends StatelessWidget {
   final Widget leading;
 
   const AppBarWidget(
-      {Key key, this.evaluation, this.title, this.actions, this.leading})
+      {Key key,
+      this.evaluation,
+      @required this.title,
+      this.actions,
+      this.leading})
       : super(key: key);
   @override
   Widget build(BuildContext context) {

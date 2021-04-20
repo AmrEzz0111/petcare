@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:pet_care/colors/style.dart';
 import 'package:pet_care/models/user_model.dart';
 import 'package:pet_care/ui/appointment_screen/appointment.dart';
