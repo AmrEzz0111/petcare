@@ -15,7 +15,6 @@ class PetService {
       Map<dynamic, dynamic> map = petSnapshot.value;
       Pet pet = Pet.fromJson(map);
       pet.id = petSnapshot.key;
-      print('#########${pet.id}');
       return pet;
     } else {
       print(img.path);

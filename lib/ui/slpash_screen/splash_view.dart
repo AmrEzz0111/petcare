@@ -21,11 +21,12 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   onDoneLoading() async {
-    Navigator.pushReplacement(
+    Navigator.pushAndRemoveUntil(
       context,
       MaterialPageRoute(
         builder: (BuildContext context) => OnBoardingScreen(),
       ),
+      (route) => false,
     );
   }
 
