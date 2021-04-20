@@ -16,13 +16,13 @@ class AuthRepository {
     return _authService.signInWithGoogle();
   }
 
-  Future signUp(String email, String password, UserModel user) {
+  Future signUp(String email, String password, var user) {
     return _authService.signUp(email, password, user);
   }
 
-  Future signUpAsDoctor(String email, String password, Doctor user) {
-    return _authService.signUpAsDoctor(email, password, user);
-  }
+  // Future signUpAsDoctor(String email, String password, Doctor user) {
+  //   return _authService.signUpAsDoctor(email, password, user);
+  // }
 
   Future updateUser(UserModel user, File img) {
     return _authService.updateUser(user, img);

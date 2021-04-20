@@ -387,7 +387,7 @@ class _RegisteraionDoctorState extends State<RegisteraionDoctor> {
                           child: RaisedButton(
                             color: Color(0xddffffff),
                             onPressed: () async {
-                              await signUpProv.signUpasDoctor(
+                              await signUpProv.signUp(
                                   widget.user.email, widget.password, doctor);
                               Navigator.push(
                                   context,

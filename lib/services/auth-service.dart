@@ -6,6 +6,8 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:pet_care/models/doctor_model.dart';
 import 'package:pet_care/models/user_model.dart';
+import 'package:pet_care/services/pet_service.dart';
+import 'package:pet_care/models/petServicesModel.dart';
 
 class AuthService {
   Future signInEmailAndPassword(String email, String password) async {
@@ -84,26 +86,26 @@ class AuthService {
     return savedUser;
   }
 
-  Future<UserModel> signUp(
-      String email, String password, UserModel user) async {
-    UserModel savedUser;
-    return FirebaseAuth.instance
-        .createUserWithEmailAndPassword(
-      email: email.trim(),
-      password: password,
-    )
-        .then((d) async {
-      DatabaseReference databaseReference = FirebaseDatabase.instance
-          .reference()
-          .child("users")
-          .child(d.user.uid);
-      await databaseReference.set(user.toJson());
-      var userSnapshot = await databaseReference.once();
-      savedUser = UserModel.fromJson(userSnapshot.value);
-      savedUser.id = userSnapshot.key;
-      return savedUser;
-    });
-  }
+  // Future<UserModel> signUp(
+  //     String email, String password, UserModel user) async {
+  //   UserModel savedUser;
+  //   return FirebaseAuth.instance
+  //       .createUserWithEmailAndPassword(
+  //     email: email.trim(),
+  //     password: password,
+  //   )
+  //       .then((d) async {
+  //     DatabaseReference databaseReference = FirebaseDatabase.instance
+  //         .reference()
+  //         .child("users")
+  //         .child(d.user.uid);
+  //     await databaseReference.set(user.toJson());
+  //     var userSnapshot = await databaseReference.once();
+  //     savedUser = UserModel.fromJson(userSnapshot.value);
+  //     savedUser.id = userSnapshot.key;
+  //     return savedUser;
+  //   });
+  // }
 
   Future<UserModel> updateUser(UserModel user, File img) async {
     print(img.path);
@@ -131,25 +133,41 @@ class AuthService {
     }
   }
 
-  Future<Doctor> signUpAsDoctor(
-      String email, String password, Doctor user) async {
-    Doctor savedUser;
+  Future<dynamic> signUp(String email, String password, var user) async {
+    var savedUser;
+    String node;
+    if (user.runtimeType == Doctor) {
+      node = "doctors";
+    } else if (user.runtimeType == UserModel) {
+      node = "users";
+    } else if (user.runtimeType == PetServices) {
+      if (user.serviceName == "grooming") {
+        node = "groomings";
+      } else if (user.serviceName == "pharmacy") {
+        node = "pharmacies";
+      } else if (user.serviceName == "market") {
+        node = "markets";
+      }
+    }
     return FirebaseAuth.instance
         .createUserWithEmailAndPassword(
       email: email.trim(),
       password: password,
     )
         .then((d) async {
-      DatabaseReference databaseReference = FirebaseDatabase.instance
-          .reference()
-          .child("doctors")
-          .child(d.user.uid);
-      print("////////////////////////");
-      print(user.toJson());
+      DatabaseReference databaseReference =
+          FirebaseDatabase.instance.reference().child(node).child(d.user.uid);
       await databaseReference.set(user.toJson());
-      // userSnapshot = await databaseReference.once();
-      //savedUser = Doctor.fromJson(userSnapshot.value);
-      //savedUser.id = userSnapshot.key;
+      var userSnapshot = await databaseReference.once();
+      userSnapshot = await databaseReference.once();
+      if (node == "doctors") {
+        savedUser = Doctor.fromJson(userSnapshot.value);
+      } else if (node == "users") {
+        savedUser = UserModel.fromJson(userSnapshot.value);
+      } else if (user.runtimeType == PetServices) {
+        savedUser = PetServices.fromJson(userSnapshot.value);
+      }
+      savedUser.id = userSnapshot.key;
       return savedUser;
     });
   }

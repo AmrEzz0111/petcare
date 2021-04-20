@@ -4,6 +4,8 @@
 
 import 'dart:convert';
 
+import 'package:flutter/cupertino.dart';
+
 DoctorModel DoctorModelFromJson(String str) =>
     DoctorModel.fromJson(json.decode(str));
 
@@ -26,6 +28,11 @@ class DoctorModel {
       };
 }
 
+LocationDr initialLocation = LocationDr(lat: 0.0, long: 0.0);
+List<Review> initialReview = [Review(review: "", reviewerId: "")];
+List<Patiant> initialPatiant = [Patiant(petId: "", petOwnerId: "")];
+List<DaysOfWork> initialDaysOfWork = [DaysOfWork(from: 0, to: 0, day: "")];
+
 class Doctor {
   Doctor(
       {this.id = "",
@@ -39,12 +46,12 @@ class Doctor {
       this.email = "",
       this.username = "",
       this.password = "",
-      this.locationDr,
+      this.locationDr = null,
       this.like = const [""],
       this.notLike = const [""],
-      this.reviews = const [],
-      this.patiants = const [],
-      this.daysOfWork = const []});
+      this.reviews = null,
+      this.patiants = null,
+      this.daysOfWork = null});
 
   String id;
   int price;
@@ -63,8 +70,12 @@ class Doctor {
   List<Review> reviews;
   List<Patiant> patiants;
   List<DaysOfWork> daysOfWork;
-  factory Doctor.fromJson(Map<String, dynamic> json) => Doctor(
+  factory Doctor.fromJson(Map<dynamic, dynamic> json) => Doctor(
         id: json["id"],
+        price: json['price'],
+        address: json['address'],
+        specialist: json['specialist'],
+        yearsOfExp: json['yearsOfExp'],
         firstName: json["firstName"],
         lastName: json["lastName"],
         profilePic: json["profile_pic"],
@@ -82,8 +93,11 @@ class Doctor {
             json["daysOfWork"].map((x) => DaysOfWork.fromJson(x))),
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<dynamic, dynamic> toJson() => {
         "id": id,
+        "locationDr": (locationDr != null)
+            ? locationDr.toJson()
+            : initialLocation.toJson(),
         "price": price,
         "address": address,
         "specialist": specialist,
@@ -96,9 +110,15 @@ class Doctor {
         "password": password,
         "like": List<dynamic>.from(like.map((x) => x)),
         "notLike": List<dynamic>.from(notLike.map((x) => x)),
-        "reviews": List<dynamic>.from(reviews.map((x) => x.toJson())),
-        "patiants": List<dynamic>.from(patiants.map((x) => x.toJson())),
-        "daysOfWork": List<dynamic>.from(daysOfWork.map((x) => x.toJson())),
+        "reviews": (reviews != null)
+            ? List<dynamic>.from(reviews.map((x) => x.toJson()))
+            : List<dynamic>.from(initialReview.map((x) => x.toJson())),
+        "patiants": (patiants != null)
+            ? List<dynamic>.from(patiants.map((x) => x.toJson()))
+            : List<dynamic>.from(initialPatiant.map((x) => x.toJson())),
+        "daysOfWork": (daysOfWork != null)
+            ? List<dynamic>.from(daysOfWork.map((x) => x.toJson()))
+            : List<dynamic>.from(initialDaysOfWork.map((x) => x.toJson())),
       };
 }
 
@@ -113,7 +133,7 @@ class DaysOfWork {
   int from;
   int to;
 
-  factory DaysOfWork.fromJson(Map<String, dynamic> json) => DaysOfWork(
+  factory DaysOfWork.fromJson(Map<dynamic, dynamic> json) => DaysOfWork(
         day: json["day"],
         from: json["from"],
         to: json["to"],
@@ -135,7 +155,7 @@ class LocationDr {
   double lat;
   double long;
 
-  factory LocationDr.fromJson(Map<String, dynamic> json) => LocationDr(
+  factory LocationDr.fromJson(Map<dynamic, dynamic> json) => LocationDr(
         lat: json["lat"].toDouble(),
         long: json["long"].toDouble(),
       );
@@ -150,52 +170,19 @@ class Patiant {
   Patiant({
     this.petId = "",
     this.petOwnerId = "",
-    this.petProfilr,
   });
 
   String petId;
   String petOwnerId;
-  List<PetProfilr> petProfilr;
 
-  factory Patiant.fromJson(Map<String, dynamic> json) => Patiant(
+  factory Patiant.fromJson(Map<dynamic, dynamic> json) => Patiant(
         petId: json["petId"],
         petOwnerId: json["petOwnerId"],
-        petProfilr: List<PetProfilr>.from(
-            json["pet_profilr"].map((x) => PetProfilr.fromJson(x))),
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<dynamic, dynamic> toJson() => {
         "petId": petId,
         "petOwnerId": petOwnerId,
-        "pet_profilr": List<dynamic>.from(petProfilr.map((x) => x.toJson())),
-      };
-}
-
-class PetProfilr {
-  PetProfilr({
-    this.date = "",
-    this.desc = "",
-    this.medicine,
-    this.nextAppointment = "",
-  });
-
-  String date;
-  String desc;
-  List<String> medicine;
-  String nextAppointment;
-
-  factory PetProfilr.fromJson(Map<String, dynamic> json) => PetProfilr(
-        date: json["date"],
-        desc: json["desc"],
-        medicine: List<String>.from(json["medicine"].map((x) => x)),
-        nextAppointment: json["nextAppointment"],
-      );
-
-  Map<String, dynamic> toJson() => {
-        "date": date,
-        "desc": desc,
-        "medicine": List<dynamic>.from(medicine.map((x) => x)),
-        "nextAppointment": nextAppointment,
       };
 }
 
@@ -208,7 +195,7 @@ class Review {
   String reviewerId;
   String review;
 
-  factory Review.fromJson(Map<String, dynamic> json) => Review(
+  factory Review.fromJson(Map<dynamic, dynamic> json) => Review(
         reviewerId: json["reviewerID"],
         review: json["review"],
       );

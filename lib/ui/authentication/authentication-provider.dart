@@ -34,18 +34,13 @@ class AuthenticationProvider extends ChangeNotifier {
     print('====${user.name}');
   }
 
-  signUp(String email, String password, UserModel user) async {
+  signUp(String email, String password, var user) async {
     user = await _authRepository.signUp(email, password, user);
     notifyListeners();
   }
 
   updateUser(UserModel user, File img) async {
     user = await _authRepository.updateUser(user, img);
-    notifyListeners();
-  }
-
-  signUpasDoctor(String email, String password, Doctor user) async {
-    user = await _authRepository.signUpAsDoctor(email, password, user);
     notifyListeners();
   }
 }

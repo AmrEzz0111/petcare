@@ -8,6 +8,7 @@ import 'package:pet_care/ui/authentication/registeration-doctors.dart';
 import 'package:pet_care/ui/authentication/sign_in_screen.dart';
 import 'package:pet_care/ui/home/home_screen.dart';
 import 'package:provider/provider.dart';
+import 'package:pet_care/models/petServicesModel.dart';
 
 class Registeraion extends StatefulWidget {
   @override
@@ -231,14 +232,13 @@ class _RegisteraionState extends State<Registeraion> {
                                           user, password.text),
                                     ),
                                   );
-                                } else if (userType == "user") {
+                                } else if (userType == 'user') {
                                   UserModel user = UserModel(
                                     email: email.text,
                                     name: username.text,
                                   );
                                   await signUpProv.signUp(
                                       email.text, password.text, user);
-
                                   if (user != null) {
                                     print(
                                         "UserModel ---->>>>> ${signUpProv.user}");
@@ -250,6 +250,15 @@ class _RegisteraionState extends State<Registeraion> {
                                       ),
                                     );
                                   }
+                                } else {
+                                  PetServices user = PetServices(
+                                      email: email.text,
+                                      name: username.text,
+                                      address: "Giza",
+                                      phone: "99776722",
+                                      serviceName: userType);
+                                  await signUpProv.signUp(
+                                      email.text, password.text, user);
                                 }
                               }
                             },
