@@ -1,10 +1,20 @@
+// import 'package:device_preview/device_preview.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:pet_care/colors/style.dart';
-import 'package:pet_care/slpash_screen/splash_view.dart';
-import 'package:pet_care/widgets/bottom_navigation_bar.dart';
+import 'package:pet_care/ui/slpash_screen/splash_view.dart';
 
+// void main() {
+//   runApp(
+//     DevicePreview(
+//       enabled: true,
+//       builder: (context) => MyApp(),
+//     ),
+//   );
+//   SystemChrome.setSystemUIOverlayStyle(
+//       SystemUiOverlayStyle(statusBarColor: Colors.transparent));
+// }
 void main() async {
   runApp(MyApp());
   WidgetsFlutterBinding.ensureInitialized();
@@ -50,17 +60,15 @@ class MyApp extends StatelessWidget {
           tabBarTheme: TabBarTheme(
             labelStyle: TextStyle(
               fontSize: 20,
-              fontWeight: FontWeight.w700,
             ),
             unselectedLabelStyle: TextStyle(
               fontSize: 20,
-              fontWeight: FontWeight.w700,
             ),
           ),
           fixTextFieldOutlineLabel: true,
-          inputDecorationTheme: InputDecorationTheme(
-            border: InputBorder.none,
-          ),
+          // inputDecorationTheme: InputDecorationTheme(
+          //   border: InputBorder.none,
+          // ),
           bottomNavigationBarTheme: BottomNavigationBarThemeData(
             backgroundColor: AppTheme.bgMain,
             selectedItemColor: AppTheme.appDark,
@@ -79,16 +87,13 @@ class MyApp extends StatelessWidget {
               fontSize: 27,
               color: AppTheme.headLine1Color,
               fontFamily: 'Co',
-              fontWeight: FontWeight.w700,
             ),
             headline2: Theme.of(context).textTheme.headline1.copyWith(
                   fontSize: 23,
-                  fontWeight: FontWeight.w700,
                   color: AppTheme.headLine1Color,
                 ),
             headline3: Theme.of(context).textTheme.headline1.copyWith(
                   fontSize: 17,
-                  fontWeight: FontWeight.w700,
                   color: AppTheme.headLine1Color,
                 ),
             subtitle1: Theme.of(context).textTheme.headline1.copyWith(
@@ -130,7 +135,7 @@ class MyApp extends StatelessWidget {
           iconTheme: IconThemeData(
             color: AppTheme.appDark,
           )),
-      home: BottomNav(),
+      home: SplashScreen(),
     );
   }
 }

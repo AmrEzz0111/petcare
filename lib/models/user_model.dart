@@ -1,13 +1,17 @@
+import 'package:pet_care/models/pet_model.dart';
+
 class UserModel {
-  final String phone;
-  final String name;
-  final String email;
-  final String img;
-  final String address;
-  final String userType;
-  final bool pending;
+  String phone;
+  String name;
+  String email;
+  String img;
+  String address;
+  String userType;
+  bool pending;
   String id;
-  final String gender;
+  String gender;
+  String bio;
+  List<dynamic> pets;
 
   UserModel({
     this.phone = "",
@@ -19,7 +23,9 @@ class UserModel {
     this.userType = "",
     this.pending,
     this.id,
+    this.bio,
     this.gender,
+    this.pets,
   });
 
   UserModel.fromJson(Map<dynamic, dynamic> map)
@@ -31,7 +37,12 @@ class UserModel {
         userType = map['userType'] ?? "",
         id = map['id'] ?? "",
         pending = map['pending'] ?? false,
-        gender = map['gender'] ?? "";
+        bio = map['bio'] ?? '',
+        gender = map['gender'] ?? "",
+        pets = (map['pets'] ?? Map())
+            .values
+            .map((pet) => Pet.fromJson(pet))
+            .toList();
 
   Map<String, dynamic> toJson() => {
         'phone': phone,
@@ -43,5 +54,7 @@ class UserModel {
         'userType': userType,
         'id': id,
         'gender': gender,
+        'bio': bio,
+        'pets': pets,
       };
 }

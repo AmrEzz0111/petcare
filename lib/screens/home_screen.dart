@@ -75,6 +75,7 @@ class HomeScreen extends StatelessWidget {
                         padding: 20,
                         img: 'assets/images/main_imgs/grooming.png',
                         serviceName: 'Grooming',
+                        onTap: null,
                       ),
                     ),
                     Positioned(
@@ -85,6 +86,7 @@ class HomeScreen extends StatelessWidget {
                         padding: 20,
                         img: 'assets/images/main_imgs/dog walking.png',
                         serviceName: 'Dog walking',
+                        onTap: null,
                       ),
                     ),
                     Positioned(
@@ -95,6 +97,7 @@ class HomeScreen extends StatelessWidget {
                         padding: 20,
                         img: 'assets/images/main_imgs/taxi.png',
                         serviceName: 'Pet taxi',
+                        onTap: null,
                       ),
                     ),
                     Align(
@@ -105,6 +108,7 @@ class HomeScreen extends StatelessWidget {
                         imgScale: 0.5,
                         img: 'assets/images/main_imgs/vet.png',
                         serviceName: 'Veterinary',
+                        onTap: null,
                       ),
                     ),
                     Positioned(
@@ -115,6 +119,7 @@ class HomeScreen extends StatelessWidget {
                         padding: 20,
                         img: 'assets/images/main_imgs/grooming.png',
                         serviceName: 'Pet date',
+                        onTap: null,
                       ),
                     ),
                     Positioned(
@@ -139,6 +144,7 @@ class HomeScreen extends StatelessWidget {
                         padding: 20,
                         img: 'assets/images/main_imgs/training.png',
                         serviceName: 'Training',
+                        onTap: null,
                       ),
                     ),
                   ],

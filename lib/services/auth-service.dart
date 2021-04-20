@@ -1,6 +1,10 @@
+import 'dart:io';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:pet_care/models/doctor_model.dart';
 import 'package:pet_care/models/user_model.dart';
 
 class AuthService {
@@ -96,6 +100,55 @@ class AuthService {
       await databaseReference.set(user.toJson());
       var userSnapshot = await databaseReference.once();
       savedUser = UserModel.fromJson(userSnapshot.value);
+      savedUser.id = userSnapshot.key;
+      return savedUser;
+    });
+  }
+
+  Future<UserModel> updateUser(UserModel user, File img) async {
+    print(img.path);
+    String id;
+    id = FirebaseAuth.instance.currentUser.uid;
+    if (img == null) {
+      DatabaseReference databaseReference =
+          FirebaseDatabase.instance.reference().child("users").child(id);
+      await databaseReference.update(user.toJson());
+      var userSnapshot = await databaseReference.once();
+      UserModel updatedUser = UserModel.fromJson(userSnapshot.value);
+      return updatedUser;
+    } else {
+      print(img.path);
+      StorageReference storageReference =
+          FirebaseStorage().ref().child(img.toString());
+      StorageUploadTask uploadTask = storageReference.putFile(img);
+      StorageTaskSnapshot storageSnapshot = await uploadTask.onComplete;
+      user.img = await storageSnapshot.ref.getDownloadURL();
+      DatabaseReference databaseReference =
+          FirebaseDatabase.instance.reference().child("users").child(id);
+      await databaseReference.update(user.toJson());
+      var userSnapshot = await databaseReference.once();
+      return UserModel.fromJson(userSnapshot.value);
+    }
+  }
+
+  Future<Doctor> signUpAsDoctor(
+      String email, String password, Doctor user) async {
+    Doctor savedUser;
+    return FirebaseAuth.instance
+        .createUserWithEmailAndPassword(
+      email: email.trim(),
+      password: password,
+    )
+        .then((d) async {
+      DatabaseReference databaseReference = FirebaseDatabase.instance
+          .reference()
+          .child("doctors")
+          .child(d.user.uid);
+      print("////////////////////////");
+      print(user.toJson());
+      await databaseReference.set(user.toJson());
+      var userSnapshot = await databaseReference.once();
+      savedUser = Doctor.fromJson(userSnapshot.value);
       savedUser.id = userSnapshot.key;
       return savedUser;
     });

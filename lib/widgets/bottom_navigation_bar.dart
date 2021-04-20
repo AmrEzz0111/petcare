@@ -1,59 +1,69 @@
 import 'package:flutter/material.dart';
 import 'package:pet_care/colors/style.dart';
-import 'package:pet_care/profile/profile_view.dart';
-import 'package:pet_care/screens/home_screen.dart';
-import '../appointment_screen/appointment.dart';
+import 'package:pet_care/models/user_model.dart';
+import 'package:pet_care/ui/appointment_screen/appointment.dart';
+import 'package:pet_care/ui/home/home_screen.dart';
+import 'package:pet_care/ui/profile/profile_view.dart';
 
 class BottomNav extends StatefulWidget {
-  BottomNav({this.body});
-  final Widget body;
+  final UserModel user;
+
+  const BottomNav({Key key, this.user}) : super(key: key);
   @override
   _BottomNavState createState() => _BottomNavState();
 }
 
 class _BottomNavState extends State<BottomNav> {
-  final List<Widget> _pages = [
-    HomeScreen(),
-    Appointments(),
-    ProfileView(),
-  ];
   int _selectedBarItem = 0;
 
   @override
   Widget build(BuildContext context) {
+    final List<Widget> _pages = [
+      HomeScreen(
+        user: widget.user,
+      ),
+      Appointments(),
+      ProfileView(
+        user: widget.user,
+      ),
+    ];
     return Scaffold(
       backgroundColor: AppTheme.bgMain,
-      bottomNavigationBar: SizedBox(
-        height: 80,
-        child: BottomNavigationBar(
-          onTap: (value) {
-            setState(() {
-              _selectedBarItem = value;
-            });
-          },
-          currentIndex: _selectedBarItem,
-          items: [
-            BottomNavigationBarItem(
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.grey[50],
+        type: BottomNavigationBarType.fixed,
+        onTap: (value) {
+          setState(() {
+            _selectedBarItem = value;
+          });
+        },
+        currentIndex: _selectedBarItem,
+        items: [
+          BottomNavigationBarItem(
               icon: Icon(
                 Icons.search,
               ),
-              label: 'Search',
-            ),
-            BottomNavigationBarItem(
+              title: Text(
+                'Home',
+                style: TextStyle(fontFamily: 'Co'),
+              )),
+          BottomNavigationBarItem(
               icon: Icon(
                 Icons.access_time_sharp,
               ),
-              // activeIcon: Icon(Icons.access_time_sharp),
-              label: 'Appointments',
-            ),
-            BottomNavigationBarItem(
+              title: Text(
+                'Appointments',
+                style: TextStyle(fontFamily: 'Co'),
+              )),
+          BottomNavigationBarItem(
               icon: Icon(
                 Icons.person_outline,
               ),
-              label: 'Profile',
-            ),
-          ],
-        ),
+              title: Text(
+                'Profile',
+                style: TextStyle(fontFamily: 'Co'),
+              )),
+        ],
       ),
       body: _pages[_selectedBarItem],
     );
