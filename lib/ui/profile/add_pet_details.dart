@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pet_care/colors/style.dart';
-import 'package:pet_care/ui/profile/gender_item.dart';
 import 'package:pet_care/widgets/appBar.dart';
 import 'package:pet_care/widgets/auth_input_widget.dart';
 
@@ -157,7 +156,6 @@ class _AddPetDetailsState extends State<AddPetDetails> {
               SizedBox(
                 height: 5,
               ),
-              GenderItem(),
               SizedBox(
                 height: 15,
               ),
