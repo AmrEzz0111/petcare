@@ -28,7 +28,7 @@ class Appointments extends StatelessWidget {
                   child: TabBar(
                     labelColor: Colors.white,
                     unselectedLabelColor: AppTheme.headLine1Color,
-                    automaticIndicatorColorAdjustment: true,
+                   // automaticIndicatorColorAdjustment: true,
                     indicator: BoxDecoration(
                       color: AppTheme.appDark,
                       boxShadow: [
