@@ -4,10 +4,10 @@
 
 import 'dart:convert';
 
-PetServicesModel PetServicesModelFromJson(String str) =>
+PetServicesModel petServicesModelFromJson(String str) =>
     PetServicesModel.fromJson(json.decode(str));
 
-String PetServicesModelToJson(PetServicesModel data) =>
+String petServicesModelToJson(PetServicesModel data) =>
     json.encode(data.toJson());
 
 class PetServicesModel {
@@ -42,19 +42,21 @@ class PetServices {
     this.name = "",
     this.groomingServices = const [""],
     this.serviceName = "",
-    this.location = null,
-    this.reviews = null,
+    this.location,
+    this.reviews,
     this.like = const [""],
     this.dislike = const [""],
     this.phone = "",
     this.address = "",
     this.picture = "",
-    this.products = null,
+    this.products,
+    this.rate = 0.0,
   });
 
   String id;
   String email;
   String name;
+  double rate;
   List<String> groomingServices;
   String serviceName;
   Location location;
@@ -70,6 +72,7 @@ class PetServices {
         id: json["id"],
         email: json["email"],
         name: json["name"],
+        rate: json['rate'],
         groomingServices:
             List<String>.from(json["groomingServices"].map((x) => x)),
         serviceName: json["serviceName"],
@@ -89,6 +92,7 @@ class PetServices {
         "id": id,
         "email": email,
         "name": name,
+        'rate': rate,
         "groomingServices": List<dynamic>.from(groomingServices.map((x) => x)),
         "serviceName": serviceName,
         "Location":

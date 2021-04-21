@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:pet_care/colors/style.dart';
 import 'package:pet_care/widgets/app_appBar.dart';
 import 'package:pet_care/widgets/market_items.dart';
-import 'package:pet_care/widgets/veterinarian_item.dart';
 
 class Markets extends StatefulWidget {
   @override

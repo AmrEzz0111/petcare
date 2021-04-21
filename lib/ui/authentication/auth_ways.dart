@@ -214,8 +214,10 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text('Already have an account? ',
-                        style:
-                            TextStyle(color: Colors.white, fontFamily: 'Co')),
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontFamily: 'Co',
+                            fontSize: 16)),
                     GestureDetector(
                       onTap: () {
                         Navigator.push(context,

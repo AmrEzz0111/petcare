@@ -31,6 +31,13 @@ class _RegisteraionState extends State<Registeraion> {
       appBar: AppBar(
         backgroundColor: Color(0xFF2e2b43),
         elevation: 0,
+        leading: InkWell(
+          onTap: () => Navigator.pop(context),
+          child: Icon(
+            Icons.arrow_back_rounded,
+            color: Colors.white,
+          ),
+        ),
       ),
       body: ChangeNotifierProvider(
         create: (context) => AuthenticationProvider(),
@@ -199,6 +206,7 @@ class _RegisteraionState extends State<Registeraion> {
                                   'grooming',
                                   'pharmacy',
                                   'market',
+                                  'training',
                                 ].map<DropdownMenuItem<String>>(
                                     (String location) {
                                   return DropdownMenuItem<String>(
@@ -302,7 +310,9 @@ class _RegisteraionState extends State<Registeraion> {
                         Text(
                           'or continue with',
                           style: TextStyle(
-                              color: Colors.black54, fontFamily: 'Co'),
+                              color: Colors.black54,
+                              fontFamily: 'Co',
+                              fontSize: 16),
                         ),
                         SizedBox(
                           height: 20,
@@ -333,7 +343,9 @@ class _RegisteraionState extends State<Registeraion> {
                             Text(
                               "Already have account? ",
                               style: TextStyle(
-                                  color: Colors.black54, fontFamily: 'Co'),
+                                  color: Colors.black54,
+                                  fontFamily: 'Co',
+                                  fontSize: 16),
                             ),
                             GestureDetector(
                               onTap: () {
@@ -348,6 +360,7 @@ class _RegisteraionState extends State<Registeraion> {
                                     color: AppTheme.appDark,
                                     fontFamily: 'Co',
                                     fontWeight: FontWeight.bold,
+                                    fontSize: 16,
                                     decoration: TextDecoration.underline),
                               ),
                             )

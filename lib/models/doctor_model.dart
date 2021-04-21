@@ -4,9 +4,7 @@
 
 import 'dart:convert';
 
-import 'package:flutter/cupertino.dart';
-
-DoctorModel DoctorModelFromJson(String str) =>
+DoctorModel doctorModelFromJson(String str) =>
     DoctorModel.fromJson(json.decode(str));
 
 String doctorModelToJson(DoctorModel data) => json.encode(data.toJson());
@@ -49,12 +47,13 @@ class Doctor {
       this.email = "",
       this.username = "",
       this.password = "",
-      this.locationDr = null,
+      this.locationDr,
       this.like = const [""],
       this.notLike = const [""],
-      this.reviews = null,
-      this.patiants = null,
-      this.daysOfWork = null});
+      this.reviews,
+      this.patiants,
+      this.daysOfWork,
+      this.rate = 0.0});
 
   String id;
   int price;
@@ -73,8 +72,10 @@ class Doctor {
   List<Review> reviews;
   List<Patiant> patiants;
   List<DaysOfWork> daysOfWork;
+  num rate;
   factory Doctor.fromJson(Map<dynamic, dynamic> json) => Doctor(
         id: json["id"],
+        rate: json['rate'],
         price: json['price'],
         address: json['address'],
         specialist: json['specialist'],
@@ -111,6 +112,7 @@ class Doctor {
         "email": email,
         "username": username,
         "password": password,
+        'rate': rate,
         "like": List<dynamic>.from(like.map((x) => x)),
         "notLike": List<dynamic>.from(notLike.map((x) => x)),
         "reviews": (reviews != null)
@@ -173,7 +175,7 @@ class Patiant {
   Patiant({
     this.petId = "",
     this.petOwnerId = "",
-    this.petProfilr = null,
+    this.petProfilr,
   });
 
   String petId;

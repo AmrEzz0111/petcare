@@ -6,7 +6,6 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:pet_care/models/doctor_model.dart';
 import 'package:pet_care/models/user_model.dart';
-import 'package:pet_care/services/pet_service.dart';
 import 'package:pet_care/models/petServicesModel.dart';
 
 class AuthService {
@@ -147,6 +146,8 @@ class AuthService {
         node = "pharmacies";
       } else if (user.serviceName == "market") {
         node = "markets";
+      } else if (user.serviceName == "training") {
+        node = "trainers";
       }
     }
     return FirebaseAuth.instance

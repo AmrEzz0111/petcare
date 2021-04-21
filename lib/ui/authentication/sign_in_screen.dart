@@ -25,6 +25,13 @@ class _SignInState extends State<SignIn> {
       appBar: AppBar(
         backgroundColor: Color(0xFF2e2b43),
         elevation: 0,
+        leading: InkWell(
+          onTap: () => Navigator.pop(context),
+          child: Icon(
+            Icons.arrow_back_rounded,
+            color: Colors.white,
+          ),
+        ),
       ),
       body: ChangeNotifierProvider(
         create: (context) => AuthenticationProvider(),
@@ -187,7 +194,9 @@ class _SignInState extends State<SignIn> {
                         Text(
                           'or continue with',
                           style: TextStyle(
-                              color: Colors.black54, fontFamily: 'Co'),
+                              color: Colors.black54,
+                              fontFamily: 'Co',
+                              fontSize: 16),
                         ),
                         SizedBox(
                           height: MediaQuery.of(context).size.height * .05,
@@ -219,7 +228,9 @@ class _SignInState extends State<SignIn> {
                             Text(
                               "Don't have account yet ? ",
                               style: TextStyle(
-                                  color: Colors.black54, fontFamily: 'Co'),
+                                  color: Colors.black54,
+                                  fontFamily: 'Co',
+                                  fontSize: 16),
                             ),
                             GestureDetector(
                               onTap: () {
@@ -234,6 +245,7 @@ class _SignInState extends State<SignIn> {
                                     color: AppTheme.appDark,
                                     fontFamily: 'Co',
                                     fontWeight: FontWeight.bold,
+                                    fontSize: 16,
                                     decoration: TextDecoration.underline),
                               ),
                             )
