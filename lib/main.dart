@@ -3,10 +3,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:pet_care/colors/style.dart';
-import 'package:pet_care/ui/pet_services/grooming/grooming_details_screen.dart';
+import 'package:pet_care/ui/authentication/auth_ways.dart';
 import 'package:pet_care/ui/slpash_screen/splash_view.dart';
-import 'package:pet_care/ui/trainers/Trainers_Details.dart';
-import 'package:pet_care/ui/trainers/Trainers_Screen.dart';
 
 // void main() {
 //   runApp(
@@ -50,7 +48,7 @@ class MyApp extends StatelessWidget {
           ),
           textTheme: TextTheme(
             headline1: TextStyle(
-              fontSize: 33,
+              fontSize: 16,
               color: AppTheme.headLine1Color,
               fontFamily: 'Co',
               fontWeight: FontWeight.w700,
@@ -63,7 +61,7 @@ class MyApp extends StatelessWidget {
           iconTheme: IconThemeData(
             color: AppTheme.appDark,
           )),
-      home: TrainersScreen(),
+      home: AuthenticationScreen(),
     );
   }
 }

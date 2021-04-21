@@ -21,6 +21,7 @@ class UserModel {
     this.pending,
     this.id,
     this.bio,
+    this.gender,
   });
 
   UserModel.fromJson(Map<dynamic, dynamic> map)

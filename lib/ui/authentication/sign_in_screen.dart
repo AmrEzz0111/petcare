@@ -4,7 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:pet_care/colors/style.dart';
 import 'package:pet_care/ui/authentication/authentication-provider.dart';
 import 'package:pet_care/ui/authentication/registeration.dart';
-import 'package:pet_care/ui/screens/home_screen.dart';
+import 'package:pet_care/widgets/bottom_navigation_bar.dart';
 import 'package:provider/provider.dart';
 
 class SignIn extends StatefulWidget {
@@ -138,6 +138,7 @@ class _SignInState extends State<SignIn> {
                         ),
                         Padding(
                           padding: const EdgeInsets.all(15.0),
+                          // ignore: deprecated_member_use
                           child: RaisedButton(
                             color: Color(0xFFc25e3c),
                             onPressed: () async {
@@ -145,7 +146,7 @@ class _SignInState extends State<SignIn> {
                               if (signInProv.user != null) {
                                 Navigator.of(context).pushReplacement(
                                   MaterialPageRoute(
-                                    builder: (context) => HomeScreen(
+                                    builder: (context) => BottomNav(
                                       user: signInProv.user,
                                     ),
                                   ),

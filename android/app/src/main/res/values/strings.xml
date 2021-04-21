@@ -4,5 +4,8 @@
      <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">
         AIzaSyC1r96dCzZ3dYsuZymAmMJgSlhGSeOmiz8
     </string>
-  
+  <string name="facebook_app_id">764766864223009</string>
+  <string name="app_name">pet_care </string>
+<string name="fb_login_protocol_scheme">fb764766864223009</string>
+
 </resources>

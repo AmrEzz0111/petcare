@@ -4,7 +4,7 @@ import 'package:pet_care/colors/style.dart';
 import 'package:pet_care/ui/authentication/authentication-provider.dart';
 import 'package:pet_care/ui/authentication/registeration.dart';
 import 'package:pet_care/ui/authentication/sign_in_screen.dart';
-import 'package:pet_care/ui/screens/home_screen.dart';
+import 'package:pet_care/widgets/bottom_navigation_bar.dart';
 import 'package:provider/provider.dart';
 
 class AuthenticationScreen extends StatefulWidget {
@@ -80,8 +80,29 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
                 ),
                 Padding(
                   padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                  // ignore: deprecated_member_use
                   child: RaisedButton(
-                    onPressed: () {},
+                    onPressed: () async {
+                      setState(() {
+                        _isSigningIn = true;
+                      });
+
+                      await signInProv.signInWithFacebook();
+
+                      setState(() {
+                        _isSigningIn = false;
+                      });
+
+                      if (signInProv.user != null) {
+                        Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(
+                            builder: (context) => BottomNav(
+                              user: signInProv.user,
+                            ),
+                          ),
+                        );
+                      }
+                    },
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30)),
                     child: Padding(
@@ -121,6 +142,7 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
                           valueColor:
                               AlwaysStoppedAnimation<Color>(Colors.white),
                         )
+                      // ignore: deprecated_member_use
                       : RaisedButton(
                           onPressed: () async {
                             setState(() {
@@ -136,7 +158,7 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
                             if (signInProv.user != null) {
                               Navigator.of(context).pushReplacement(
                                 MaterialPageRoute(
-                                  builder: (context) => HomeScreen(
+                                  builder: (context) => BottomNav(
                                     user: signInProv.user,
                                   ),
                                 ),
@@ -178,6 +200,7 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
                 ),
                 Padding(
                   padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                  // ignore: deprecated_member_use
                   child: RaisedButton(
                     onPressed: () {},
                     color: Color(0x00FFFFFF),
