@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:pet_care/colors/style.dart';
+import 'package:pet_care/models/doctor_model.dart';
 import 'package:pet_care/ui/authentication/booking.dart';
 
 class VeterinarianItem extends StatelessWidget {
+  final user;
+
+  const VeterinarianItem({Key key, this.user}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -46,7 +50,9 @@ class VeterinarianItem extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Peternko Julia',
+                          (user.runtimeType == Doctor)
+                              ? user.firstName + ' ' + user.lastName
+                              : user.name,
                           style: TextStyle(
                               color: AppTheme.headLine1Color,
                               fontFamily: 'Co',
@@ -57,7 +63,7 @@ class VeterinarianItem extends StatelessWidget {
                           height: 5,
                         ),
                         Text(
-                          'Veterinarian',
+                          user.specialist,
                           style: TextStyle(
                               color: AppTheme.appDark,
                               fontFamily: 'Co',
@@ -70,7 +76,7 @@ class VeterinarianItem extends StatelessWidget {
                         Row(
                           children: [
                             RatingBar(
-                              initialRating: 4.5,
+                              initialRating: user.rate,
                               direction: Axis.horizontal,
                               allowHalfRating: true,
                               ignoreGestures: true,
@@ -98,7 +104,7 @@ class VeterinarianItem extends StatelessWidget {
                               width: 10,
                             ),
                             Text(
-                              '125 Reviews',
+                              '${user.reviews.length} Reviews',
                               style: TextStyle(
                                   color: Colors.grey[400],
                                   fontFamily: 'Co',
@@ -118,7 +124,7 @@ class VeterinarianItem extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      '10 year of experience ',
+                      user.yearsOfExp.toString() + ' Years of experience',
                       style: TextStyle(
                           color: Colors.grey[400],
                           fontFamily: 'Co',
@@ -173,7 +179,7 @@ class VeterinarianItem extends StatelessWidget {
                               width: 8,
                             ),
                             Text(
-                              '\$20',
+                              '\$${user.price}',
                               style: TextStyle(
                                   color: Colors.grey[600],
                                   fontFamily: 'Co',

@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:pet_care/ui/grooming/grooming_details_screen.dart';
-import 'package:pet_care/ui/grooming/grooming_provider.dart';
+import 'package:pet_care/ui/markets/market_provider.dart';
+import 'package:pet_care/ui/pharmacies/pharmacy-Details-Screen.dart';
 import 'package:pet_care/widgets/appBar.dart';
 import 'package:pet_care/widgets/veterinarian_item.dart';
 import 'package:provider/provider.dart';
 
-class GroomingScreen extends StatefulWidget {
+class MarketScreen extends StatefulWidget {
   @override
-  _GroomingScreenState createState() => _GroomingScreenState();
+  MarketScreenState createState() => MarketScreenState();
 }
 
-class _GroomingScreenState extends State<GroomingScreen> {
+class MarketScreenState extends State<MarketScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,15 +25,15 @@ class _GroomingScreenState extends State<GroomingScreen> {
             ),
           ),
           evaluation: 0.5,
-          title: "Groomings",
+          title: "Markets",
         ),
       ),
       body: ChangeNotifierProvider(
-        create: (context) => PetGroomingProvider(),
-        child: Consumer<PetGroomingProvider>(
-          builder: (context, groomingProv, _) => groomingProv.groomings != null
+        create: (context) => MarketProvider(),
+        child: Consumer<MarketProvider>(
+          builder: (context, marketProv, _) => marketProv.markets != null
               ? ListView.builder(
-                  itemCount: groomingProv.groomings.length,
+                  itemCount: marketProv.markets.length,
                   itemBuilder: (BuildContext context, int index) {
                     return InkWell(
                       onTap: () {
@@ -41,12 +41,12 @@ class _GroomingScreenState extends State<GroomingScreen> {
                           context,
                           MaterialPageRoute(
                             builder: (BuildContext context) =>
-                                GroomingDetailScreen(),
+                                PharmacyDetails(),
                           ),
                         );
                       },
                       child: VeterinarianItem(
-                        user: groomingProv.groomings[index],
+                        user: marketProv.markets[index],
                       ),
                     );
                   })

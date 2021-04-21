@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:pet_care/ui/trainers/trainer_provider.dart';
 import 'package:pet_care/ui/trainers/trainers_details.dart';
 import 'package:pet_care/widgets/appBar.dart';
 import 'package:pet_care/widgets/veterinarian_item.dart';
+import 'package:provider/provider.dart';
 
 class TrainersScreen extends StatefulWidget {
   @override
@@ -26,19 +28,30 @@ class _TrainersScreenState extends State<TrainersScreen> {
           title: "Pet Trainers",
         ),
       ),
-      body: ListView.builder(itemBuilder: (BuildContext context, int index) {
-        return InkWell(
-          onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (BuildContext context) => TrainersDetailsScreen(),
-              ),
-            );
-          },
-          child: VeterinarianItem(),
-        );
-      }),
+      body: ChangeNotifierProvider(
+        create: (context) => TrainerProvider(),
+        child: Consumer<TrainerProvider>(
+          builder: (context, trainerProv, _) => trainerProv.trainers != null
+              ? ListView.builder(
+                  itemBuilder: (BuildContext context, int index) {
+                  return InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (BuildContext context) =>
+                              TrainersDetailsScreen(),
+                        ),
+                      );
+                    },
+                    child: VeterinarianItem(),
+                  );
+                })
+              : Center(
+                  child: CircularProgressIndicator(),
+                ),
+        ),
+      ),
     );
   }
 }
