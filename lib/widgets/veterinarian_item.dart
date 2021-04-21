@@ -10,8 +10,8 @@ class VeterinarianItem extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
       child: GestureDetector(
         onTap: () {
-          Navigator.of(context).pushReplacement(
-              MaterialPageRoute(builder: (context) => Booking()));
+          // Navigator.of(context).pushReplacement(
+          //     MaterialPageRoute(builder: (context) => Booking()));
         },
         child: Container(
           decoration: BoxDecoration(

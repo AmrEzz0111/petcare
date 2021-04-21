@@ -242,6 +242,7 @@ class _RegisteraionDoctorState extends State<RegisteraionDoctor> {
                                 'Monday',
                                 'Tuesday',
                                 'Wednesday',
+                                'Thursday',
                                 'Friday'
                               ].map<DropdownMenuItem<String>>(
                                   (String location) {

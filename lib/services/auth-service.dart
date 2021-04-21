@@ -11,17 +11,17 @@ import 'package:pet_care/models/petServicesModel.dart';
 
 class AuthService {
   Future signInEmailAndPassword(String email, String password) async {
-    UserModel user;
+    Doctor user;
     try {
       await FirebaseAuth.instance
           .signInWithEmailAndPassword(email: email.trim(), password: password)
           .then((d) async {
         var userReference = await FirebaseDatabase.instance
             .reference()
-            .child("users")
+            .child("doctors")
             .child(d.user.uid)
             .once();
-        user = UserModel.fromJson(userReference.value);
+        user = Doctor.fromJson(userReference.value);
         user.id = userReference.key;
       });
     } on FirebaseAuthException catch (e) {
@@ -31,7 +31,7 @@ class AuthService {
         return e.code;
       }
     }
-    print('----${user.name}');
+
     return user;
   }
 

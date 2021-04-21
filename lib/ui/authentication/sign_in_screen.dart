@@ -2,7 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:pet_care/colors/style.dart';
+import 'package:pet_care/models/user_model.dart';
 import 'package:pet_care/ui/authentication/authentication-provider.dart';
+import 'package:pet_care/ui/authentication/booking.dart';
 import 'package:pet_care/ui/authentication/registeration.dart';
 import 'package:pet_care/widgets/bottom_navigation_bar.dart';
 import 'package:provider/provider.dart';
@@ -146,13 +148,23 @@ class _SignInState extends State<SignIn> {
                             color: AppTheme.appDark,
                             onPressed: () async {
                               await signInProv.signIn(email.trim(), password);
-                              if (signInProv.user != null) {
+                              if (signInProv.user.runtimeType == UserModel) {
                                 Navigator.pushAndRemoveUntil(
                                   context,
                                   MaterialPageRoute(
                                     builder: (BuildContext context) =>
                                         BottomNav(
                                       user: signInProv.user,
+                                    ),
+                                  ),
+                                  (route) => false,
+                                );
+                              } else {
+                                Navigator.pushAndRemoveUntil(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (BuildContext context) => Booking(
+                                      signInProv.user,
                                     ),
                                   ),
                                   (route) => false,
