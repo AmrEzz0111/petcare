@@ -18,7 +18,6 @@ class _BookingState extends State<Booking> {
   Doctor doctor = Doctor();
   @override
   void initState() {
-    // TODO: implement initState
     doctor = widget.d;
     print("------****************-------------");
     print(doctor.toJson());

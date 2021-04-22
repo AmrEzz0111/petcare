@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:pet_care/colors/style.dart';
-import 'package:pet_care/ui/authentication/booking.dart';
 
 class VeterinarianItem extends StatelessWidget {
   final user;
