@@ -246,7 +246,8 @@ class _RegisteraionState extends State<Registeraion> {
                                   Navigator.of(context).pushReplacement(
                                     MaterialPageRoute(
                                       builder: (context) => RegisteraionDoctor(
-                                          user, password.text),
+                                          user, password.text,
+                                          userType: userType),
                                     ),
                                   );
                                 } else if (userType == 'user') {

@@ -48,7 +48,8 @@ class PetServices {
     this.dislike = const [""],
     this.phone = "",
     this.address = "",
-    this.picture = "",
+    this.picture =
+        "https://firebasestorage.googleapis.com/v0/b/pet-care-29230.appspot.com/o/pet%20service%2Fself-service.png?alt=media&token=7419cb5b-d490-48dc-bbb4-a4dd283d9b18",
     this.products,
     this.rate = 0.0,
   });
