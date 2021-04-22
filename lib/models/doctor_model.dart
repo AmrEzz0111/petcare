@@ -43,7 +43,8 @@ class Doctor {
       this.yearsOfExp = 0,
       this.firstName = "",
       this.lastName = "",
-      this.profilePic = "",
+      this.profilePic =
+          "https://firebasestorage.googleapis.com/v0/b/pet-care-29230.appspot.com/o/doctors%2Fveterinary.png?alt=media&token=1b0af289-758b-4364-a319-6cca792f3bdc",
       this.email = "",
       this.username = "",
       this.password = "",

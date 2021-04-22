@@ -85,27 +85,6 @@ class AuthService {
     return savedUser;
   }
 
-  // Future<UserModel> signUp(
-  //     String email, String password, UserModel user) async {
-  //   UserModel savedUser;
-  //   return FirebaseAuth.instance
-  //       .createUserWithEmailAndPassword(
-  //     email: email.trim(),
-  //     password: password,
-  //   )
-  //       .then((d) async {
-  //     DatabaseReference databaseReference = FirebaseDatabase.instance
-  //         .reference()
-  //         .child("users")
-  //         .child(d.user.uid);
-  //     await databaseReference.set(user.toJson());
-  //     var userSnapshot = await databaseReference.once();
-  //     savedUser = UserModel.fromJson(userSnapshot.value);
-  //     savedUser.id = userSnapshot.key;
-  //     return savedUser;
-  //   });
-  // }
-
   Future<UserModel> updateUser(UserModel user, File img) async {
     print(img.path);
     String id;

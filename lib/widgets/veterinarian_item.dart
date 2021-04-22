@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:pet_care/colors/style.dart';
-import 'package:pet_care/models/doctor_model.dart';
 import 'package:pet_care/ui/authentication/booking.dart';
 
 class VeterinarianItem extends StatelessWidget {
@@ -41,7 +40,7 @@ class VeterinarianItem extends StatelessWidget {
                           borderRadius: BorderRadius.circular(20),
                           image: DecorationImage(
                               fit: BoxFit.cover,
-                              image: AssetImage('assets/images/DrVet.jpg'))),
+                              image: NetworkImage(user.profilePic))),
                     ),
                     SizedBox(
                       width: 20,
@@ -50,9 +49,7 @@ class VeterinarianItem extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          (user.runtimeType == Doctor)
-                              ? user.firstName + ' ' + user.lastName
-                              : user.name,
+                          user.firstName + ' ' + user.lastName,
                           style: TextStyle(
                               color: AppTheme.headLine1Color,
                               fontFamily: 'Co',
@@ -76,7 +73,7 @@ class VeterinarianItem extends StatelessWidget {
                         Row(
                           children: [
                             RatingBar(
-                              initialRating: user.rate,
+                              initialRating: 6,
                               direction: Axis.horizontal,
                               allowHalfRating: true,
                               ignoreGestures: true,
