@@ -242,7 +242,9 @@ class _BookingState extends State<Booking> {
                   ),
                 ),
                 Container(
-                    height: 500, width: 500, child: GoogleMapWidget(doctor)),
+                    height: 500,
+                    width: 500,
+                    child: GoogleMapWidget(doctor: doctor)),
               ],
             ),
           ],

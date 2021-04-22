@@ -138,7 +138,7 @@ class MyApp extends StatelessWidget {
           iconTheme: IconThemeData(
             color: AppTheme.appDark,
           )),
-      home: SignIn(),
+      home: VeterinarianView(),
     );
   }
 }
