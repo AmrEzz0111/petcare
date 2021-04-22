@@ -84,56 +84,56 @@ class MyApp extends StatelessWidget {
               fontSize: 12,
             ),
           ),
-          textTheme: TextTheme(
-            headline1: TextStyle(
-              fontSize: 27,
-              color: AppTheme.headLine1Color,
-              fontFamily: 'Co',
-            ),
-            headline2: Theme.of(context).textTheme.headline1.copyWith(
-                  fontSize: 23,
-                  color: AppTheme.headLine1Color,
-                ),
-            headline3: Theme.of(context).textTheme.headline1.copyWith(
-                  fontSize: 17,
-                  color: AppTheme.headLine1Color,
-                ),
-            subtitle1: Theme.of(context).textTheme.headline1.copyWith(
-                  fontSize: 17,
-                  fontWeight: FontWeight.w600,
-                  color: AppTheme.appDark,
-                ),
-            subtitle2: Theme.of(context).textTheme.headline1.copyWith(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w600,
-                  color: AppTheme.headLine1Color,
-                ),
-            bodyText1: TextStyle(
-              fontSize: 18,
-              color: AppTheme.headLine1Color,
-              fontFamily: 'Co',
-            ),
-            bodyText2: TextStyle(
-              fontSize: 18,
-              color: Colors.grey.shade300,
-              fontFamily: 'Co',
-            ),
-            headline4: TextStyle(
-              fontSize: 12,
-              color: Colors.grey.shade400,
-              fontWeight: FontWeight.w500,
-              fontFamily: 'Co',
-            ),
-            caption: TextStyle(
-              fontSize: 13,
-              fontWeight: FontWeight.w500,
-              color: AppTheme.headLine1Color,
-            ),
-            button: TextStyle(
-              fontSize: 20,
-              color: Colors.white,
-            ),
-          ),
+          // textTheme: TextTheme(
+          //   headline1: TextStyle(
+          //     fontSize: 27,
+          //     color: AppTheme.headLine1Color,
+          //     fontFamily: 'Co',
+          //   ),
+          //   headline2: Theme.of(context).textTheme.headline1.copyWith(
+          //         fontSize: 23,
+          //         color: AppTheme.headLine1Color,
+          //       ),
+          //   headline3: Theme.of(context).textTheme.headline1.copyWith(
+          //         fontSize: 17,
+          //         color: AppTheme.headLine1Color,
+          //       ),
+          //   subtitle1: Theme.of(context).textTheme.headline1.copyWith(
+          //         fontSize: 17,
+          //         fontWeight: FontWeight.w600,
+          //         color: AppTheme.appDark,
+          //       ),
+          //   subtitle2: Theme.of(context).textTheme.headline1.copyWith(
+          //         fontSize: 14,
+          //         fontWeight: FontWeight.w600,
+          //         color: AppTheme.headLine1Color,
+          //       ),
+          //   bodyText1: TextStyle(
+          //     fontSize: 18,
+          //     color: AppTheme.headLine1Color,
+          //     fontFamily: 'Co',
+          //   ),
+          //   bodyText2: TextStyle(
+          //     fontSize: 18,
+          //     color: Colors.grey.shade300,
+          //     fontFamily: 'Co',
+          //   ),
+          //   headline4: TextStyle(
+          //     fontSize: 12,
+          //     color: Colors.grey.shade400,
+          //     fontWeight: FontWeight.w500,
+          //     fontFamily: 'Co',
+          //   ),
+          //   caption: TextStyle(
+          //     fontSize: 13,
+          //     fontWeight: FontWeight.w500,
+          //     color: AppTheme.headLine1Color,
+          //   ),
+          //   button: TextStyle(
+          //     fontSize: 20,
+          //     color: Colors.white,
+          //   ),
+          // ),
           iconTheme: IconThemeData(
             color: AppTheme.appDark,
           )),
