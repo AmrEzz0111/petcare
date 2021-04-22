@@ -56,7 +56,7 @@ class GroomPlaceDetails extends StatelessWidget {
                     SizedBox(
                       height: 15,
                     ),
-                    Container(height: 170, child: GoogleMapWidget()),
+                    //Container(height: 170, child: GoogleMapWidget()),
                   ],
                 ),
               ),
