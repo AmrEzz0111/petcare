@@ -7,20 +7,42 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:pet_care/models/doctor_model.dart';
 import 'package:pet_care/models/user_model.dart';
 import 'package:pet_care/models/petServicesModel.dart';
+import 'package:pet_care/ui/authentication/authentication-provider.dart';
 
 class AuthService {
-  Future signInEmailAndPassword(String email, String password) async {
-    Doctor user;
+  Future signInEmailAndPassword(
+      String email, String password, String userType) async {
+    var user;
+    var node = "";
+    if (userType == "user") {
+      node = "users";
+    } else if (userType == "doctor") {
+      node = "doctors";
+    } else if (userType == "grooming") {
+      node = "groomings";
+    } else if (userType == "pharmacy") {
+      node = "pharmacies";
+    } else if (userType == "market") {
+      node = "markets";
+    } else if (userType == "training") {
+      node = "trainers";
+    }
     try {
       await FirebaseAuth.instance
           .signInWithEmailAndPassword(email: email.trim(), password: password)
           .then((d) async {
         var userReference = await FirebaseDatabase.instance
             .reference()
-            .child("doctors")
+            .child(node)
             .child(d.user.uid)
             .once();
-        user = Doctor.fromJson(userReference.value);
+        if (userType == "user") {
+          user = UserModel.fromJson(userReference.value);
+        } else if (userType == "doctor") {
+          user = Doctor.fromJson(userReference.value);
+        } else {
+          user = PetServices.fromJson(userReference.value);
+        }
         user.id = userReference.key;
       });
     } on FirebaseAuthException catch (e) {

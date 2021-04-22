@@ -4,8 +4,9 @@ import 'package:pet_care/services/auth-service.dart';
 
 class AuthRepository {
   AuthService _authService = AuthService();
-  Future signInEmailAndPassword(String email, String password) {
-    return _authService.signInEmailAndPassword(email, password);
+  Future signInEmailAndPassword(
+      String email, String password, String userType) {
+    return _authService.signInEmailAndPassword(email, password, userType);
   }
 
   Future signInWithGoogle() {

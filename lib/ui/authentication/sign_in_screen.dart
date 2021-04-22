@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:pet_care/colors/style.dart';
+import 'package:pet_care/models/doctor_model.dart';
 import 'package:pet_care/models/user_model.dart';
 import 'package:pet_care/ui/authentication/authentication-provider.dart';
 import 'package:pet_care/ui/authentication/booking.dart';
@@ -9,9 +10,10 @@ import 'package:pet_care/ui/authentication/registeration.dart';
 import 'package:pet_care/widgets/bottom_navigation_bar.dart';
 import 'package:provider/provider.dart';
 
+String userType;
+
 class SignIn extends StatefulWidget {
   final myController = TextEditingController();
-  final FirebaseAuth auth = FirebaseAuth.instance;
   @override
   _SignInState createState() => _SignInState();
 }
@@ -19,6 +21,8 @@ class SignIn extends StatefulWidget {
 class _SignInState extends State<SignIn> {
   String email = "";
   String password = "";
+  bool signInClicked = false;
+  bool choosedUserType = false;
   TextEditingController myController = TextEditingController();
 
   @override
@@ -149,33 +153,87 @@ class _SignInState extends State<SignIn> {
                                         BorderSide(color: AppTheme.appDark))),
                           ),
                         ),
+                        Container(
+                          child: Padding(
+                            padding: const EdgeInsets.fromLTRB(8, 0, 8, 8),
+                            child: DropdownButton<String>(
+                              underline: Container(
+                                color: Color(0xFFc25e3c),
+                                height: 1,
+                              ),
+                              hint: Text(
+                                'Choose type of you',
+                                style: TextStyle(
+                                    fontFamily: 'Co',
+                                    color: (signInClicked && !choosedUserType)
+                                        ? Colors.red
+                                        : Colors.black26),
+                              ),
+                              value: userType,
+                              focusColor: Colors.yellow,
+                              style: TextStyle(
+                                color: Colors.black,
+                              ),
+                              items: <String>[
+                                'user',
+                                'doctor',
+                                'grooming',
+                                'pharmacy',
+                                'market',
+                                'training',
+                              ].map<DropdownMenuItem<String>>(
+                                  (String location) {
+                                return DropdownMenuItem<String>(
+                                  value: location,
+                                  child: Text(
+                                    location,
+                                    style: TextStyle(
+                                        color: Colors.black, fontFamily: 'Co'),
+                                  ),
+                                );
+                              }).toList(),
+                              onChanged: (newValue) {
+                                setState(() {
+                                  choosedUserType = true;
+                                  userType = newValue;
+                                });
+                              },
+                            ),
+                          ),
+                        ),
                         Padding(
                           padding: const EdgeInsets.all(15.0),
                           child: RaisedButton(
                             color: AppTheme.appDark,
                             onPressed: () async {
-                              await signInProv.signIn(email.trim(), password);
-                              if (signInProv.user.runtimeType == UserModel) {
-                                Navigator.pushAndRemoveUntil(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (BuildContext context) =>
-                                        BottomNav(
-                                      user: signInProv.user,
+                              setState(() {
+                                signInClicked = true;
+                              });
+                              if (choosedUserType) {
+                                await signInProv.signIn(
+                                    email.trim(), password, userType);
+                                if (signInProv.user.runtimeType == UserModel) {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (BuildContext context) =>
+                                          BottomNav(
+                                        user: signInProv.user,
+                                      ),
                                     ),
-                                  ),
-                                  (route) => false,
-                                );
-                              } else {
-                                Navigator.pushAndRemoveUntil(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (BuildContext context) => Booking(
-                                      signInProv.user,
+                                  );
+                                } else if (signInProv.user.runtimeType ==
+                                    Doctor) {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (BuildContext context) =>
+                                          Booking(
+                                        signInProv.user,
+                                      ),
                                     ),
-                                  ),
-                                  (route) => false,
-                                );
+                                  );
+                                }
                               }
                             },
                             shape: RoundedRectangleBorder(
