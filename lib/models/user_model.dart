@@ -22,7 +22,7 @@ class UserModel {
     this.address = "",
     this.userType = "",
     this.pending,
-    this.id,
+    this.id = "",
     this.bio,
     this.gender,
     this.pets,

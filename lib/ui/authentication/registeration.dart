@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -239,11 +240,12 @@ class _RegisteraionState extends State<Registeraion> {
                                 signUpClicked = true;
                               });
                               if (choosedUserType) {
+                                UserModel user = UserModel(
+                                  email: email.text,
+                                  name: username.text,
+                                );
+
                                 if (userType == 'doctor') {
-                                  UserModel user = UserModel(
-                                    email: email.text,
-                                    name: username.text,
-                                  );
                                   Navigator.of(context).push(
                                     MaterialPageRoute(
                                       builder: (context) => RegisteraionDoctor(
@@ -252,21 +254,16 @@ class _RegisteraionState extends State<Registeraion> {
                                     ),
                                   );
                                 } else if (userType == 'user') {
-                                  UserModel user = UserModel(
-                                    email: email.text,
-                                    name: username.text,
-                                  );
-                                  await signUpProv.signUp(
+                                  var returnedUser;
+                                  returnedUser = await signUpProv.signUp(
                                       email.text, password.text, user);
-                                  if (user != null) {
-                                    print(
-                                        "UserModel ---->>>>> ${signUpProv.user}");
+                                  if (returnedUser.runtimeType != null) {
                                     Navigator.pushAndRemoveUntil(
                                       context,
                                       MaterialPageRoute(
                                         builder: (BuildContext context) =>
                                             BottomNav(
-                                          user: signUpProv.user,
+                                          user: returnedUser,
                                         ),
                                       ),
                                       (route) => false,
