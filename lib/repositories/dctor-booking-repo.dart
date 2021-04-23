@@ -7,4 +7,8 @@ class DortorBookingRepo {
   Future updateUser(Doctor user) {
     return _doctorAndBookingService.updateDoctor(user);
   }
+
+  String getCurrentUserId() {
+    return _doctorAndBookingService.getCurrentUser();
+  }
 }
