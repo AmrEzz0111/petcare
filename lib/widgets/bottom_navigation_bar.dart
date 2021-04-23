@@ -6,7 +6,7 @@ import 'package:pet_care/ui/home/home_screen.dart';
 import 'package:pet_care/ui/profile/profile_view.dart';
 
 class BottomNav extends StatefulWidget {
-  final UserModel user;
+  final user;
 
   const BottomNav({Key key, this.user}) : super(key: key);
   @override

@@ -1,7 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:pet_care/models/doctor_model.dart';
 import 'package:pet_care/models/user_model.dart';
 import 'package:pet_care/colors/style.dart';
+import 'package:pet_care/services/pet_service.dart';
 import 'package:pet_care/ui/authentication/auth_ways.dart';
 import 'package:pet_care/ui/authentication/authentication-provider.dart';
 import 'package:pet_care/ui/profile/add_pet_details.dart';
@@ -11,7 +13,7 @@ import 'package:pet_care/widgets/appBar.dart';
 import 'package:provider/provider.dart';
 
 class ProfileView extends StatefulWidget {
-  final UserModel user;
+  final user;
 
   const ProfileView({Key key, this.user}) : super(key: key);
   @override
@@ -21,6 +23,18 @@ class ProfileView extends StatefulWidget {
 class _ProfileViewState extends State<ProfileView> {
   @override
   Widget build(BuildContext context) {
+    var imgPath;
+    var name;
+    if (widget.user.runtimeType == Doctor) {
+      imgPath = widget.user.profilePic;
+      name = widget.user.firstName;
+    } else if (widget.user.runtimeType == UserModel) {
+      imgPath = widget.user.img;
+      name = widget.user.name;
+    } else {
+      imgPath = widget.user.picture;
+      name = widget.user.name;
+    }
     return Scaffold(
       backgroundColor: Colors.grey[100],
       appBar: PreferredSize(
@@ -91,13 +105,13 @@ class _ProfileViewState extends State<ProfileView> {
                         CircleAvatar(
                           radius: 55,
                           backgroundColor: Colors.white,
-                          backgroundImage: NetworkImage(widget.user.img),
+                          backgroundImage: NetworkImage(imgPath),
                         ),
                         SizedBox(
                           height: 15,
                         ),
                         Text(
-                          widget.user.name,
+                          (name),
                           style: TextStyle(
                             color: Colors.black87,
                             fontFamily: 'Co',

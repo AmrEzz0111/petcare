@@ -53,6 +53,11 @@ class _CalenderWidgetState extends State<CalenderWidget> {
     for (var i = 0; i < doctor.daysOfWork.length; i++) {
       var item = doctor.daysOfWork[i];
       List<String> itemGenerated = [];
+      if (item.from > item.to) {
+        var temp = item.to;
+        item.to = item.from;
+        item.from = temp;
+      }
       for (var i = item.from; i < item.to; i++) {
         for (var j = 0; j <= 6; j++) {
           var str;
@@ -215,7 +220,17 @@ class _CalenderWidgetState extends State<CalenderWidget> {
                             onTap: () {
                               if (choos == false) {
                                 String booked = available[index];
+                                List<String> keysOfAllGenerated = [];
                                 allGenerated.keys.forEach((element) {
+                                  keysOfAllGenerated = [
+                                    ...keysOfAllGenerated,
+                                    element
+                                  ];
+                                });
+                                for (var i = 0;
+                                    i < keysOfAllGenerated.length;
+                                    i++) {
+                                  var element = keysOfAllGenerated[i];
                                   if (element == currentDaySelected) {
                                     for (var i = 0;
                                         i < doctor.daysOfWork.length;
@@ -238,12 +253,14 @@ class _CalenderWidgetState extends State<CalenderWidget> {
                                         allGenerated[element].remove(removed);
                                       }
                                     }
+                                    docBokProv.updateUser(doctor);
+                                    break;
                                   }
-                                });
+                                }
                                 setState(() {
                                   available.remove(booked);
                                 });
-                                docBokProv.updateUser(doctor);
+
                                 generateTimes();
                                 setState(() {
                                   choos = true;

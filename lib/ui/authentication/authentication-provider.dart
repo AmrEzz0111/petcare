@@ -33,10 +33,11 @@ class AuthenticationProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<UserModel> signUp(String email, String password, var user) async {
-    user = await _authRepository.signUp(email, password, user);
-    UserModel returned = user;
+  Future<dynamic> signUp(String email, String password, var user2) async {
+    user = await _authRepository.signUp(email, password, user2);
+    var returned = user;
     notifyListeners();
+    print("xxxxxxxxxxxxxxxxxxxxxxxxxx${returned.runtimeType}");
     return returned;
   }
 

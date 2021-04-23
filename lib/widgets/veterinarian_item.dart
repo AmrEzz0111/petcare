@@ -77,7 +77,7 @@ class VeterinarianItem extends StatelessWidget {
                           Row(
                             children: [
                               RatingBar(
-                                initialRating: user.rate,
+                                initialRating: user.rate.toDouble(),
                                 direction: Axis.horizontal,
                                 allowHalfRating: true,
                                 ignoreGestures: true,
