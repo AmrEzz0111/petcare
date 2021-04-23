@@ -2,7 +2,9 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:pet_care/colors/style.dart';
+import 'package:pet_care/models/doctor_model.dart';
 import 'package:pet_care/models/user_model.dart';
+import 'package:pet_care/services/pet_service.dart';
 import 'package:pet_care/ui/grooming/grooming_screen.dart';
 import 'package:pet_care/ui/markets/market_screen.dart';
 import 'package:pet_care/ui/pharmacies/pharmacy_screen.dart';
@@ -10,7 +12,7 @@ import 'package:pet_care/ui/trainers/trainers_screen.dart';
 import 'package:pet_care/ui/veterinarian/veterinarian_screen.dart';
 
 class HomeScreen extends StatelessWidget {
-  final UserModel user;
+  final user;
   final double _elevation = 5;
 
   const HomeScreen({Key key, this.user}) : super(key: key);
@@ -18,7 +20,14 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var deviceData = MediaQuery.of(context);
-
+    var name;
+    if (user.runtimeType == Doctor) {
+      name = user.firstName;
+    } else if (user.runtimeType == UserModel) {
+      name = user.name;
+    } else {
+      name = user.name;
+    }
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
@@ -51,7 +60,7 @@ class HomeScreen extends StatelessWidget {
                       fontSize: 30),
                   children: <InlineSpan>[
                     TextSpan(
-                      text: user.name,
+                      text: name,
                       style: TextStyle(
                           color: AppTheme.appDark,
                           fontSize: 28,

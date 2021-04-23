@@ -477,17 +477,19 @@ class _PetServiceCompleteDataState extends State<PetServiceCompleteData> {
                                   email: widget.petService.email,
                                   phone: phone.text,
                                   address: address.text,
-                                  price: double.parse(price.text),
+                                  price: double.parse("8.0"),
                                   yearsOfExp: int.parse(experience.text),
                                   services: petServices,
                                   serviceName: widget.userType);
-                              await signUpProv.signUp(widget.petService.email,
-                                  widget.password, petService);
+                              var returned = await signUpProv.signUp(
+                                  widget.petService.email,
+                                  widget.password,
+                                  petService);
                               Navigator.pushAndRemoveUntil(
                                 context,
                                 MaterialPageRoute(
                                   builder: (BuildContext context) => BottomNav(
-                                    user: signUpProv.user,
+                                    user: returned,
                                   ),
                                 ),
                                 (route) => false,

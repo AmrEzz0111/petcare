@@ -142,12 +142,16 @@ class AuthService {
       node = "users";
     } else if (user.runtimeType == PetServices) {
       if (user.serviceName == "grooming") {
+        print("Grooming------------------------------------------");
         node = "groomings";
       } else if (user.serviceName == "pharmacy") {
+        print("pharmacy------------------------------------------");
         node = "pharmacies";
       } else if (user.serviceName == "market") {
+        print("markets------------------------------------------");
         node = "markets";
       } else if (user.serviceName == "training") {
+        print("Tainers------------------------------------------");
         node = "trainers";
       }
     }
@@ -163,10 +167,13 @@ class AuthService {
       var userSnapshot = await databaseReference.once();
       userSnapshot = await databaseReference.once();
       if (node == "doctors") {
+        print("doctors2------------------------------------------");
         savedUser = Doctor.fromJson(userSnapshot.value);
       } else if (node == "users") {
+        print("users2------------------------------------------");
         savedUser = UserModel.fromJson(userSnapshot.value);
-      } else if (user.runtimeType == PetServices) {
+      } else {
+        print("PetService2------------------------------------------");
         savedUser = PetServices.fromJson(userSnapshot.value);
       }
       savedUser.id = userSnapshot.key;
