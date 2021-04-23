@@ -20,12 +20,10 @@ class _BottomNavState extends State<BottomNav> {
   Widget build(BuildContext context) {
     final List<Widget> _pages = [
       HomeScreen(
-        user: widget.user,
-      ),
+          // user: widget.user,
+          ),
       Appointments(),
-      ProfileView(
-        user: widget.user,
-      ),
+      ProfileView(),
     ];
     return Scaffold(
       backgroundColor: AppTheme.bgMain,

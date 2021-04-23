@@ -11,14 +11,13 @@ import 'package:pet_care/widgets/appBar.dart';
 import 'package:provider/provider.dart';
 
 class ProfileView extends StatefulWidget {
-  final UserModel user;
-
-  const ProfileView({Key key, this.user}) : super(key: key);
+  const ProfileView({Key key}) : super(key: key);
   @override
   _ProfileViewState createState() => _ProfileViewState();
 }
 
 class _ProfileViewState extends State<ProfileView> {
+  final UserModel user = UserModel();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,7 +36,7 @@ class _ProfileViewState extends State<ProfileView> {
                     context,
                     MaterialPageRoute(
                       builder: (BuildContext context) =>
-                          EditProfileView(user: widget.user),
+                          EditProfileView(user: user),
                     ),
                   );
                 },
@@ -91,13 +90,13 @@ class _ProfileViewState extends State<ProfileView> {
                         CircleAvatar(
                           radius: 55,
                           backgroundColor: Colors.white,
-                          backgroundImage: NetworkImage(widget.user.img),
+                          backgroundImage: NetworkImage(user.img),
                         ),
                         SizedBox(
                           height: 15,
                         ),
                         Text(
-                          widget.user.name,
+                          user.name,
                           style: TextStyle(
                             color: Colors.black87,
                             fontFamily: 'Co',
@@ -108,7 +107,7 @@ class _ProfileViewState extends State<ProfileView> {
                           height: 5,
                         ),
                         Text(
-                          widget.user.email,
+                          user.email,
                           style: TextStyle(
                             color: Colors.grey,
                             fontFamily: 'Co',
@@ -132,7 +131,7 @@ class _ProfileViewState extends State<ProfileView> {
                               context,
                               MaterialPageRoute(
                                   builder: (BuildContext context) => MyPetView(
-                                        user: widget.user,
+                                        user: user,
                                       )));
                         },
                         child: buildColumn(

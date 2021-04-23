@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:pet_care/ui/trainers/trainers_details.dart';
 import 'package:pet_care/widgets/appBar.dart';
 import 'package:pet_care/widgets/veterinarian_item.dart';
+
+import 'Trainers_Details.dart';
 
 class TrainersScreen extends StatefulWidget {
   @override

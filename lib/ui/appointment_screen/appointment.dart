@@ -28,6 +28,8 @@ class Appointments extends StatelessWidget {
                   child: TabBar(
                     labelColor: Colors.white,
                     unselectedLabelColor: AppTheme.headLine1Color,
+                    unselectedLabelStyle:
+                        TextStyle(fontSize: 15, fontWeight: FontWeight.w700),
                     automaticIndicatorColorAdjustment: true,
                     indicator: BoxDecoration(
                       color: AppTheme.appDark,
@@ -65,33 +67,3 @@ class Appointments extends StatelessWidget {
     );
   }
 }
-
-// class AppAppBar extends StatelessWidget implements PreferredSizeWidget {
-//   const AppAppBar({
-//     Key key,
-//   }) : preferredSize = const Size.fromHeight(60);
-
-//   @override
-//   final Size preferredSize;
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return AppBar(
-//       title: Text(
-//         'Appointments',
-//         style: Theme.of(context).textTheme.headline2,
-//       ),
-//       backgroundColor: Colors.white,
-//       elevation: 10,
-//       shadowColor: Colors.black12,
-//       shape: RoundedRectangleBorder(
-//         borderRadius: BorderRadius.horizontal(
-//           right: Radius.circular(30),
-//           left: Radius.circular(30),
-//         ),
-//       ),
-//       centerTitle: true,
-
-//     );
-//   }
-// }

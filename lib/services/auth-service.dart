@@ -37,12 +37,18 @@ class AuthService {
     FirebaseAuth auth = FirebaseAuth.instance;
     UserModel savedUser;
 
-    final GoogleSignIn googleSignIn = GoogleSignIn();
+    final GoogleSignInAccount googleUser = await GoogleSignIn().signIn();
 
-    final GoogleSignInAccount googleSignInAccount = await googleSignIn.signIn();
-    if (googleSignInAccount != null) {
+    final GoogleSignInAuthentication googleAuth =
+        await googleUser.authentication;
+
+    final GoogleAuthCredential credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth.accessToken,
+      idToken: googleAuth.idToken,
+    );
+    if (googleUser != null) {
       final GoogleSignInAuthentication googleSignInAuthentication =
-          await googleSignInAccount.authentication;
+          await googleUser.authentication;
 
       final AuthCredential credential = GoogleAuthProvider.credential(
         accessToken: googleSignInAuthentication.accessToken,

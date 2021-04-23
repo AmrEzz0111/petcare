@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:pet_care/colors/style.dart';
 import 'package:pet_care/ui/slpash_screen/splash_view.dart';
+import 'package:pet_care/widgets/bottom_navigation_bar.dart';
 
 // void main() {
 //   runApp(
@@ -35,6 +36,7 @@ class MyApp extends StatelessWidget {
           primaryColor: AppTheme.appPrimary,
           accentColor: AppTheme.appDark,
           buttonColor: AppTheme.appDark,
+          fontFamily: 'Co',
           elevatedButtonTheme: ElevatedButtonThemeData(
             style: ElevatedButton.styleFrom(
               primary: AppTheme.appDark,
@@ -58,17 +60,12 @@ class MyApp extends StatelessWidget {
             buttonColor: Colors.white,
           ),
           tabBarTheme: TabBarTheme(
-            labelStyle: TextStyle(
-              fontSize: 20,
-            ),
-            unselectedLabelStyle: TextStyle(
-              fontSize: 20,
-            ),
+            labelStyle: TextStyle(fontSize: 15, fontWeight: FontWeight.w700),
           ),
           fixTextFieldOutlineLabel: true,
-          // inputDecorationTheme: InputDecorationTheme(
-          //   border: InputBorder.none,
-          // ),
+          inputDecorationTheme: InputDecorationTheme(
+            border: InputBorder.none,
+          ),
           bottomNavigationBarTheme: BottomNavigationBarThemeData(
             backgroundColor: AppTheme.bgMain,
             selectedItemColor: AppTheme.appDark,
@@ -86,14 +83,17 @@ class MyApp extends StatelessWidget {
             headline1: TextStyle(
               fontSize: 27,
               color: AppTheme.headLine1Color,
-              fontFamily: 'Co',
+              // fontFamily: 'Co',
+              fontWeight: FontWeight.w700,
             ),
             headline2: Theme.of(context).textTheme.headline1.copyWith(
                   fontSize: 23,
+                  fontWeight: FontWeight.w700,
                   color: AppTheme.headLine1Color,
                 ),
             headline3: Theme.of(context).textTheme.headline1.copyWith(
                   fontSize: 17,
+                  fontWeight: FontWeight.w700,
                   color: AppTheme.headLine1Color,
                 ),
             subtitle1: Theme.of(context).textTheme.headline1.copyWith(
@@ -109,26 +109,26 @@ class MyApp extends StatelessWidget {
             bodyText1: TextStyle(
               fontSize: 18,
               color: AppTheme.headLine1Color,
-              fontFamily: 'Co',
+              // fontFamily: 'Co',
             ),
             bodyText2: TextStyle(
               fontSize: 18,
               color: Colors.grey.shade300,
-              fontFamily: 'Co',
+              // fontFamily: 'Co',
             ),
             headline4: TextStyle(
               fontSize: 12,
               color: Colors.grey.shade400,
               fontWeight: FontWeight.w500,
-              fontFamily: 'Co',
+              // fontFamily: 'Co',
             ),
             caption: TextStyle(
-              fontSize: 13,
+              fontSize: 12,
               fontWeight: FontWeight.w500,
               color: AppTheme.headLine1Color,
             ),
             button: TextStyle(
-              fontSize: 20,
+              fontSize: 15,
               color: Colors.white,
             ),
           ),
