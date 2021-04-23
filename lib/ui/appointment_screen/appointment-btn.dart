@@ -6,19 +6,17 @@ class AppointmentBtn extends CustomRaisedButton {
     @required String text,
     Color color,
     Color txtColor,
-    double height = 5,
     VoidCallback onPressed,
     EdgeInsets padding = const EdgeInsets.all(8.0),
   })  : assert(text != null),
         super(
-          height: height,
           child: Padding(
             padding: padding,
             child: Text(
               text,
               style: TextStyle(
                   color: txtColor,
-                  fontSize: 18.0,
+                  fontSize: 16.0,
                   fontFamily: "Co",
                   fontWeight: FontWeight.bold),
             ),

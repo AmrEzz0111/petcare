@@ -107,6 +107,9 @@ class _GroomingDetailScreenState extends State<GroomingDetailScreen>
                                             fontSize: 14,
                                             fontWeight: FontWeight.bold),
                                       ),
+                                      SizedBox(
+                                        width: 100,
+                                      ),
                                       Expanded(
                                         child: Text(
                                           widget.petService.address,
@@ -315,6 +318,7 @@ class _GroomingDetailScreenState extends State<GroomingDetailScreen>
                                                                 widget
                                                                     .petService
                                                                     .id);
+                                                            setState(() {});
                                                           },
                                                           child: Container(
                                                             height: 50,

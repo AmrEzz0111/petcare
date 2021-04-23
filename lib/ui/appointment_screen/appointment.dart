@@ -9,7 +9,7 @@ class Appointments extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      initialIndex: 1,
+      initialIndex: 0,
       length: 2,
       child: Scaffold(
         backgroundColor: AppTheme.bgMain,
@@ -28,13 +28,11 @@ class Appointments extends StatelessWidget {
                   child: TabBar(
                     labelColor: Colors.white,
                     unselectedLabelColor: AppTheme.headLine1Color,
-                   // automaticIndicatorColorAdjustment: true,
                     indicator: BoxDecoration(
                       color: AppTheme.appDark,
                       boxShadow: [
                         BoxShadow(
                           color: Colors.deepOrange.shade100,
-                          // offset: Offset(0, -5),
                           blurRadius: 10.0,
                           spreadRadius: 1,
                         ),
@@ -43,11 +41,25 @@ class Appointments extends StatelessWidget {
                     ),
                     tabs: [
                       Tab(
-                        text: 'Upcomming',
+                        child: Text(
+                          'Upcoming',
+                          style: TextStyle(
+                            fontFamily: 'Co',
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                       ),
                       Tab(
-                        text: 'Past',
-                      )
+                        child: Text(
+                          'Past',
+                          style: TextStyle(
+                            fontFamily: 'Co',
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ),

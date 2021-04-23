@@ -22,6 +22,7 @@ class _SignInState extends State<SignIn> {
   String password = "";
   bool signInClicked = false;
   bool choosedUserType = false;
+  bool showPassword = false;
   TextEditingController myController = TextEditingController();
 
   @override
@@ -119,7 +120,7 @@ class _SignInState extends State<SignIn> {
                         Padding(
                           padding: const EdgeInsets.all(15.0),
                           child: TextFormField(
-                            obscureText: true,
+                            obscureText: !showPassword,
                             onChanged: (value) {
                               password = value;
                             },
@@ -130,13 +131,16 @@ class _SignInState extends State<SignIn> {
                                         signInProv.signInClicked)
                                     ? "Password is incorrect!"
                                     : "",
-                                suffixIcon: Padding(
-                                  padding: const EdgeInsets.all(15.0),
-                                  child: FaIcon(
-                                    FontAwesomeIcons.solidCircle,
-                                    size: 15,
-                                    color: Colors.green,
-                                  ),
+                                suffixIcon: InkWell(
+                                  child: Icon(
+                                      showPassword
+                                          ? Icons.visibility
+                                          : Icons.visibility_off,
+                                      color: Colors.grey,
+                                      size: 20),
+                                  onTap: () => setState(() {
+                                    showPassword = !showPassword;
+                                  }),
                                 ),
                                 //  hintText: 'enter your Password',
                                 labelText: 'Password',

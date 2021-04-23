@@ -26,6 +26,8 @@ class _RegisteraionState extends State<Registeraion> {
   TextEditingController username = TextEditingController();
   TextEditingController password = TextEditingController();
   bool s = false;
+  bool showPassword = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -148,15 +150,18 @@ class _RegisteraionState extends State<Registeraion> {
                             controller: password,
                             style: TextStyle(
                                 color: Colors.black, fontFamily: 'Co'),
-                            obscureText: true,
+                            obscureText: !showPassword,
                             decoration: InputDecoration(
-                                suffixIcon: Padding(
-                                  padding: const EdgeInsets.all(15.0),
-                                  child: FaIcon(
-                                    FontAwesomeIcons.solidCircle,
-                                    size: 15,
-                                    color: Colors.green,
-                                  ),
+                                suffixIcon: InkWell(
+                                  child: Icon(
+                                      showPassword
+                                          ? Icons.visibility
+                                          : Icons.visibility_off,
+                                      color: Colors.grey,
+                                      size: 20),
+                                  onTap: () => setState(() {
+                                    showPassword = !showPassword;
+                                  }),
                                 ),
                                 // hintText: 'enter your Password',
                                 hintStyle: TextStyle(

@@ -1,262 +1,284 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:pet_care/colors/style.dart';
 
 import 'appointment-btn.dart';
 
 class BookingCard extends StatelessWidget {
-  final List<Widget> _starts = [
-    Icon(
-      Icons.star,
-      size: 17,
-      color: Colors.yellow,
-    ),
-    Icon(
-      Icons.star,
-      size: 17,
-      color: Colors.yellow,
-    ),
-    Icon(
-      Icons.star,
-      size: 17,
-      color: Colors.yellow,
-    ),
-    Icon(
-      Icons.star,
-      size: 17,
-      color: Colors.yellow,
-    ),
-    Icon(
-      Icons.star,
-      size: 17,
-      color: Colors.yellow,
-    ),
-  ];
   @override
   Widget build(BuildContext context) {
-    final deviceData = MediaQuery.of(context);
-    return Card(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-      elevation: 10,
-      shadowColor: Colors.black12,
-      child: Container(
-        height: deviceData.size.height * 0.46,
-        padding: EdgeInsets.all(20),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(20),
-                  child: Image.network(
-                    'https://images.unsplash.com/photo-1603179415710-79d73cdb2003?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
-                    fit: BoxFit.cover,
-                    height: 110,
-                    width: 120,
-                  ),
-                ),
-                Container(
-                  padding: EdgeInsets.symmetric(horizontal: 10),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Petrenko Julia',
-                        style: Theme.of(context).textTheme.headline2,
-                      ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Text(
-                        'Veterinarian',
-                        style: Theme.of(context).textTheme.subtitle1,
-                      ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Row(
-                        children: [
-                          Row(
-                            children: _starts,
-                          ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Text(
-                            '125 Reviews',
-                            style: Theme.of(context)
-                                .textTheme
-                                .caption
-                                .copyWith(color: Colors.grey.shade400),
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: 7,
-                      ),
-                      Row(
-                        children: [
-                          Container(
-                            height: 30,
-                            width: 30,
-                            decoration: BoxDecoration(
-                              color: Colors.grey.shade200,
-                              borderRadius: BorderRadius.circular(50),
-                            ),
-                            child: Icon(
-                              Icons.location_on_outlined,
-                              size: 20,
-                              color: Colors.black87,
-                            ),
-                          ),
-                          SizedBox(
-                            width: 7,
-                          ),
-                          Text(
-                            '1.5 km',
-                            style: Theme.of(context).textTheme.caption,
-                          ),
-                          SizedBox(
-                            width: 20,
-                          ),
-                          Container(
-                            height: 30,
-                            width: 30,
-                            decoration: BoxDecoration(
-                              color: Colors.grey.shade200,
-                              borderRadius: BorderRadius.circular(50),
-                            ),
-                            child: Icon(
-                              Icons.monetization_on_outlined,
-                              size: 20,
-                              color: Colors.black87,
-                            ),
-                          ),
-                          SizedBox(
-                            width: 7,
-                          ),
-                          Text(
-                            '\$20',
-                            style: Theme.of(context).textTheme.caption,
-                          ),
-                        ],
-                      )
-                    ],
-                  ),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Container(
-              height: 140,
-              width: double.infinity,
-              padding: EdgeInsets.all(20),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15),
-                border: Border.all(color: Colors.grey.shade200),
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+      child: Card(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+        elevation: 10,
+        shadowColor: Colors.black12,
+        child: Container(
+          padding: EdgeInsets.all(20),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Row(
-                    children: [
-                      Container(
-                        height: 40,
-                        width: 40,
-                        decoration: BoxDecoration(
-                          color: Colors.grey.shade200,
-                          borderRadius: BorderRadius.circular(50),
+                  Container(
+                    height: 100,
+                    width: 100,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        image: DecorationImage(
+                            fit: BoxFit.cover,
+                            image: NetworkImage(
+                              'https://images.unsplash.com/photo-1603179415710-79d73cdb2003?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+                            ))),
+                  ),
+                  SizedBox(
+                    width: 20,
+                  ),
+                  Expanded(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Petrenko Julia',
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                              color: AppTheme.headLine1Color,
+                              fontFamily: 'Co',
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold),
                         ),
-                        child: Icon(
-                          Icons.wallet_travel,
-                          size: 20,
-                          color: Colors.black87,
+                        SizedBox(
+                          height: 5,
                         ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 8),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                        Text(
+                          'Veterinarian',
+                          style: TextStyle(
+                              color: AppTheme.appDark,
+                              fontFamily: 'Co',
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Row(
                           children: [
-                            Text(
-                              'Veterinary clinic "Alden-Vet"',
-                              style: Theme.of(context).textTheme.headline3,
+                            RatingBar(
+                              initialRating: 2.0,
+                              direction: Axis.horizontal,
+                              allowHalfRating: true,
+                              ignoreGestures: true,
+                              itemSize: 14,
+                              itemCount: 5,
+                              ratingWidget: RatingWidget(
+                                full: Icon(
+                                  Icons.star,
+                                  color: Colors.amber,
+                                ),
+                                half: Icon(
+                                  Icons.star,
+                                  color: Colors.black12,
+                                ),
+                                empty: Icon(
+                                  Icons.star,
+                                  color: Colors.black12,
+                                ),
+                              ),
+                              onRatingUpdate: (rating) {
+                                print(rating);
+                              },
                             ),
                             SizedBox(
-                              height: 5,
+                              width: 10,
                             ),
                             Text(
-                              '141 N Union Ave, Los Angeles, CA',
-                              style: Theme.of(context).textTheme.subtitle2,
+                              '2 Reviews',
+                              style: TextStyle(
+                                  color: Colors.grey[400],
+                                  fontFamily: 'Co',
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w600),
                             ),
                           ],
                         ),
-                      )
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Container(
-                        height: 40,
-                        width: 40,
-                        decoration: BoxDecoration(
-                          color: Colors.grey.shade200,
-                          borderRadius: BorderRadius.circular(50),
+                        SizedBox(
+                          height: 10,
                         ),
-                        child: Icon(
-                          Icons.access_time_rounded,
-                          color: Colors.black87,
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Row(
+                              children: [
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Row(
+                                  children: [
+                                    CircleAvatar(
+                                      radius: 11,
+                                      backgroundColor: Colors.grey[100],
+                                      child: Center(
+                                        child: Icon(
+                                          Icons.payment_rounded,
+                                          color: Colors.grey[600],
+                                          size: 17,
+                                        ),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: 8,
+                                    ),
+                                    Text(
+                                      '\$15',
+                                      style: TextStyle(
+                                          color: Colors.grey[600],
+                                          fontFamily: 'Co',
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.w600),
+                                    ),
+                                  ],
+                                )
+                              ],
+                            )
+                          ],
                         ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 8),
-                        child: Text(
-                          'Wed 9 Sep — 10:30 am',
-                          style: Theme.of(context).textTheme.subtitle2,
-                        ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ],
               ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                ConstrainedBox(
-                  constraints: BoxConstraints.tightFor(width: 150, height: 40),
-                  child: AppointmentBtn(
-                    onPressed: () => print(1),
-                    text: 'Edit',
-                    txtColor: Colors.white,
-                    color: AppTheme.appDark,
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 25,
+              SizedBox(
+                height: 20,
+              ),
+              Container(
+                height: 140,
+                width: double.infinity,
+                padding: EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  border: Border.all(color: Colors.grey.shade200),
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        Container(
+                          height: 35,
+                          width: 35,
+                          decoration: BoxDecoration(
+                            color: Colors.grey.shade200,
+                            borderRadius: BorderRadius.circular(50),
+                          ),
+                          child: Icon(
+                            Icons.wallet_travel,
+                            size: 20,
+                            color: Colors.black87,
+                          ),
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'Veterinary clinic "Alden-Vet"',
+                                style: TextStyle(
+                                    color: Colors.black87,
+                                    fontFamily: 'Co',
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w600),
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                              SizedBox(
+                                height: 5,
+                              ),
+                              Text(
+                                '141 N Union Ave, Los Angeles, CA',
+                                style: TextStyle(
+                                    color: Colors.grey,
+                                    fontFamily: 'Co',
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w600),
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Container(
+                          height: 35,
+                          width: 35,
+                          decoration: BoxDecoration(
+                            color: Colors.grey.shade200,
+                            borderRadius: BorderRadius.circular(50),
+                          ),
+                          child: Icon(
+                            Icons.access_time_rounded,
+                            color: Colors.black87,
+                          ),
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text(
+                          'Wed 9 Sep — 10:30 am',
+                          style: TextStyle(
+                              color: Colors.grey,
+                              fontFamily: 'Co',
+                              fontSize: 14,
+                              fontWeight: FontWeight.w600),
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Expanded(
+                    child: AppointmentBtn(
+                      onPressed: () => print(1),
+                      text: 'Edit',
+                      txtColor: Colors.white,
+                      color: AppTheme.appDark,
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 15,
+                      ),
                     ),
                   ),
-                ),
-                ConstrainedBox(
-                  constraints: BoxConstraints.tightFor(width: 150, height: 40),
-                  child: AppointmentBtn(
-                    onPressed: () => print(1),
-                    text: 'Cancel',
-                    txtColor: AppTheme.headLine1Color,
-                    color: Colors.grey.shade200,
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 25,
+                  SizedBox(
+                    width: 15,
+                  ),
+                  Expanded(
+                    child: AppointmentBtn(
+                      onPressed: () => print(1),
+                      text: 'Cancel',
+                      txtColor: AppTheme.headLine1Color,
+                      color: Colors.grey.shade200,
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 15,
+                      ),
                     ),
                   ),
-                ),
-              ],
-            )
-          ],
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );

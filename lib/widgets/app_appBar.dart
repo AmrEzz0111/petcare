@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pet_care/colors/style.dart';
 
 class AppAppBar extends StatelessWidget implements PreferredSizeWidget {
   const AppAppBar({
@@ -18,9 +19,14 @@ class AppAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      automaticallyImplyLeading: false,
       title: Text(
         _title,
-        style: Theme.of(context).textTheme.headline2,
+        style: TextStyle(
+          color: AppTheme.headLine1Color,
+          fontFamily: 'Co',
+          fontSize: 20,
+        ),
       ),
       backgroundColor: Colors.white,
       elevation: 30,
