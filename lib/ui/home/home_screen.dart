@@ -90,8 +90,8 @@ class HomeScreen extends StatelessWidget {
                                     onTap: () {
                                       Navigator.of(context).push(
                                         MaterialPageRoute(
-                                            builder: (context) =>
-                                                MarketScreen()),
+                                            builder: (context) => MarketScreen(
+                                                currentUser: user)),
                                       );
                                     },
                                     child: Image.asset(
@@ -134,7 +134,8 @@ class HomeScreen extends StatelessWidget {
                                       Navigator.of(context).push(
                                         MaterialPageRoute(
                                             builder: (context) =>
-                                                GroomingScreen()),
+                                                GroomingScreen(
+                                                    currentUser: user)),
                                       );
                                     },
                                     child: Image.asset(
@@ -222,7 +223,8 @@ class HomeScreen extends StatelessWidget {
                                       Navigator.of(context).push(
                                         MaterialPageRoute(
                                             builder: (context) =>
-                                                PharmacyScreen()),
+                                                PharmacyScreen(
+                                                    currentUser: user)),
                                       );
                                     },
                                     child: Image.asset(
@@ -265,7 +267,8 @@ class HomeScreen extends StatelessWidget {
                                       Navigator.of(context).push(
                                         MaterialPageRoute(
                                             builder: (context) =>
-                                                TrainersScreen()),
+                                                TrainersScreen(
+                                                    currentUser: user)),
                                       );
                                     },
                                     child: Image.asset(

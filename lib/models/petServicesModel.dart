@@ -29,8 +29,8 @@ class PetServicesModel {
 
 const x = 1.0;
 const y = 1.0;
-Location initialLocation = Location(lat: 1.0, long: 1.0);
-List<Review> initialReviews = [Review(autherId: "", review: "")];
+Location initialLocation = Location(lat: 0.0, long: 0.0);
+List<Review> initialReviews = [];
 List<Service> initialService = [Service(servicePic: "", serviceName: "")];
 
 List<Product> initialProducts = [
@@ -84,10 +84,12 @@ class PetServices {
         yearsOfExp: json['yearsOfExp'],
         services: List<Service>.from(
             json["services"].map((x) => Service.fromJson(x))),
-        serviceName: json["serviceName"] ?? [],
+        serviceName: json["serviceName"],
         location: Location.fromJson(json["Location"]),
-        reviews:
-            List<Review>.from(json["reviews"].map((x) => Review.fromJson(x))),
+        reviews: List<Review>.from((json['reviews'] ?? Map())
+            .values
+            .map((review) => Review.fromJson(review))
+            .toList()),
         like: List<String>.from(json["like"].map((x) => x)),
         dislike: List<String>.from(json["dislike"].map((x) => x)),
         phone: json["phone"],
@@ -188,24 +190,31 @@ class Service {
 
 class Review {
   Review({
-    this.autherId,
+    this.id,
     this.review,
     this.rate,
+    this.userName,
+    this.userImg,
   });
 
-  String autherId;
+  String id;
   String review;
   num rate;
+  String userName;
+  String userImg;
 
   factory Review.fromJson(Map<dynamic, dynamic> json) => Review(
-        autherId: json["autherId"],
-        review: json["review"],
-        rate: json['rate'],
-      );
+      id: json["id"],
+      review: json["review"],
+      rate: json['rate'],
+      userName: json["userName"],
+      userImg: json['userImg']);
 
-  Map<String, dynamic> toJson() => {
-        "autherId": autherId,
+  Map<dynamic, dynamic> toJson() => {
+        "id": id,
         "review": review,
         'rate': rate,
+        'userName': userName,
+        'userImg': userImg,
       };
 }

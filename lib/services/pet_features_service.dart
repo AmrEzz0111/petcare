@@ -1,5 +1,5 @@
 import 'package:firebase_database/firebase_database.dart';
-import 'package:pet_care/models/doctor_model.dart';
+import 'package:pet_care/models/doctor_model.dart' hide Review;
 import 'package:pet_care/models/petServicesModel.dart';
 
 class PetFeatureService {
@@ -91,5 +91,30 @@ class PetFeatureService {
     });
 
     return markets;
+  }
+
+  Future<Review> addReview(
+      Review review, String serviceName, String serviceID) async {
+    String node;
+    if (serviceName == "grooming") {
+      node = "groomings";
+    } else if (serviceName == "pharmacy") {
+      node = "pharmacies";
+    } else if (serviceName == "market") {
+      node = "markets";
+    } else if (serviceName == "training") {
+      node = "trainers";
+    }
+    DatabaseReference databaseReference = FirebaseDatabase.instance
+        .reference()
+        .child('$node/$serviceID/reviews')
+        .push();
+    databaseReference.set(review.toJson());
+    var reviewSnapshot = await databaseReference.once();
+    Map<dynamic, dynamic> map = reviewSnapshot.value;
+    print(map);
+    Review reviews = Review.fromJson(map);
+    reviews.id = reviewSnapshot.key;
+    return reviews;
   }
 }

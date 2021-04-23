@@ -1,3 +1,4 @@
+import 'package:pet_care/models/petServicesModel.dart';
 import 'package:pet_care/services/pet_features_service.dart';
 
 class PetFeaturesRepository {
@@ -20,5 +21,9 @@ class PetFeaturesRepository {
 
   Future getMarkets() {
     return _petFeatureService.getMarkets();
+  }
+
+  Future addReview(Review review, String serviceName, String serviceID) {
+    return _petFeatureService.addReview(review, serviceName, serviceID);
   }
 }

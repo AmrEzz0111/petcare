@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pet_care/models/user_model.dart';
 import 'package:pet_care/ui/grooming/grooming_details_screen.dart';
 import 'package:pet_care/ui/pharmacies/pharmacy_provider.dart';
 import 'package:pet_care/widgets/appBar.dart';
@@ -6,6 +7,9 @@ import 'package:pet_care/widgets/petService_item.dart';
 import 'package:provider/provider.dart';
 
 class PharmacyScreen extends StatefulWidget {
+  final UserModel currentUser;
+
+  const PharmacyScreen({Key key, this.currentUser}) : super(key: key);
   @override
   PharmacyScreenState createState() => PharmacyScreenState();
 }
@@ -43,6 +47,7 @@ class PharmacyScreenState extends State<PharmacyScreen> {
                             builder: (BuildContext context) =>
                                 GroomingDetailScreen(
                               petService: pharmacyProv.pharmacies[index],
+                              currentUser: widget.currentUser,
                             ),
                           ),
                         );

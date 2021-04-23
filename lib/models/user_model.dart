@@ -11,7 +11,7 @@ class UserModel {
   String id;
   String gender;
   String bio;
-  List<dynamic> pets;
+  List<Pet> pets;
 
   UserModel({
     this.phone = "",
@@ -39,10 +39,10 @@ class UserModel {
         pending = map['pending'] ?? false,
         bio = map['bio'] ?? '',
         gender = map['gender'] ?? "",
-        pets = (map['pets'] ?? Map())
+        pets = List<Pet>.from((map['pets'] ?? Map())
             .values
             .map((pet) => Pet.fromJson(pet))
-            .toList();
+            .toList());
 
   Map<String, dynamic> toJson() => {
         'phone': phone,
