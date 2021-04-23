@@ -253,7 +253,19 @@ class _CalenderWidgetState extends State<CalenderWidget> {
                                         allGenerated[element].remove(removed);
                                       }
                                     }
+                                    PetProfilr petProfilr = PetProfilr(
+                                        date: available[index],
+                                        desc: "tired and cold",
+                                        medicine: ["med1", "med2"],
+                                        nextAppointment: available[index]);
+                                    var userId = docBokProv.getCurrentUserId();
+                                    Patiant p = Patiant(
+                                        petOwnerId: userId = userId,
+                                        petId: "daadc",
+                                        petProfilr: [petProfilr]);
+                                    doctor.patiants = [p];
                                     docBokProv.updateUser(doctor);
+
                                     break;
                                   }
                                 }
