@@ -359,7 +359,10 @@ class _PetServiceCompleteDataState extends State<PetServiceCompleteData> {
                               Service services = Service();
                               services.serviceName = serviceName.text;
                               services.servicePic = img;
-                              services.price = double.parse(productPrice.text);
+                              productPrice == null
+                                  ? services.price =
+                                      int.parse(productPrice.text)
+                                  : services.price = 0;
 
                               petServices = [...petServices, services];
                               serviceName.clear();
@@ -494,15 +497,13 @@ class _PetServiceCompleteDataState extends State<PetServiceCompleteData> {
                                       yearsOfExp: int.parse(experience.text),
                                       services: petServices,
                                       serviceName: widget.userType);
-                              var returned = await signUpProv.signUp(
-                                  widget.petService.email,
-                                  widget.password,
-                                  petService);
+                              await signUpProv.signUp(widget.petService.email,
+                                  widget.password, petService);
                               Navigator.pushAndRemoveUntil(
                                 context,
                                 MaterialPageRoute(
                                   builder: (BuildContext context) => BottomNav(
-                                    user: returned,
+                                    user: signUpProv.user,
                                   ),
                                 ),
                                 (route) => false,

@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:pet_care/colors/style.dart';
 import 'package:pet_care/models/doctor_model.dart';
 import 'package:pet_care/models/user_model.dart';
-import 'package:pet_care/services/pet_service.dart';
 import 'package:pet_care/ui/grooming/grooming_screen.dart';
 import 'package:pet_care/ui/markets/market_screen.dart';
 import 'package:pet_care/ui/pharmacies/pharmacy_screen.dart';

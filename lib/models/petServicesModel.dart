@@ -171,12 +171,12 @@ class Service {
 
   String serviceName;
   String servicePic;
-  double price;
+  int price;
 
   factory Service.fromJson(Map<dynamic, dynamic> json) => Service(
         serviceName: json["serviceName"],
         servicePic: json["servicePic"],
-        price: json["price"].toDouble() ?? 0.0,
+        price: json["price"].toInt() ?? 0,
       );
 
   Map<String, dynamic> toJson() => {

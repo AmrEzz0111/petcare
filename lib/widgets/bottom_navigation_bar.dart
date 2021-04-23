@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:pet_care/colors/style.dart';
-import 'package:pet_care/models/user_model.dart';
 import 'package:pet_care/ui/appointment_screen/appointment.dart';
 import 'package:pet_care/ui/home/home_screen.dart';
 import 'package:pet_care/ui/profile/profile_view.dart';
