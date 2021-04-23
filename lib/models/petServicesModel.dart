@@ -31,6 +31,8 @@ const x = 1.0;
 const y = 1.0;
 Location initialLocation = Location(lat: 1.0, long: 1.0);
 List<Review> initialReviews = [Review(autherId: "", review: "")];
+List<Service> initialService = [Service(servicePic: "", serviceName: "")];
+
 List<Product> initialProducts = [
   Product(price: 1.0, productName: "", productPic: "")
 ];
@@ -40,7 +42,7 @@ class PetServices {
     this.id = "",
     this.email = "",
     this.name = "",
-    this.groomingServices = const [""],
+    this.services,
     this.serviceName = "",
     this.location,
     this.reviews,
@@ -49,16 +51,20 @@ class PetServices {
     this.phone = "",
     this.address = "",
     this.picture =
-        "https://firebasestorage.googleapis.com/v0/b/pet-care-29230.appspot.com/o/pet%20service%2Fself-service.png?alt=media&token=7419cb5b-d490-48dc-bbb4-a4dd283d9b18",
+        "https://firebasestorage.googleapis.com/v0/b/pet-care-29230.appspot.com/o/pet.jpg?alt=media&token=47f7072a-e0f7-4807-aaa1-6f68b364d1ab",
     this.products,
     this.rate = 0.0,
+    this.price = 0,
+    this.yearsOfExp,
   });
 
   String id;
   String email;
   String name;
   double rate;
-  List<String> groomingServices;
+  int yearsOfExp;
+  num price;
+  List<Service> services;
   String serviceName;
   Location location;
   List<Review> reviews;
@@ -73,10 +79,12 @@ class PetServices {
         id: json["id"],
         email: json["email"],
         name: json["name"],
-        rate: json['rate'],
-        groomingServices:
-            List<String>.from(json["groomingServices"].map((x) => x)),
-        serviceName: json["serviceName"],
+        rate: json['rate'].toDouble(),
+        price: json['price'],
+        yearsOfExp: json['yearsOfExp'],
+        services: List<Service>.from(
+            json["services"].map((x) => Service.fromJson(x))),
+        serviceName: json["serviceName"] ?? [],
         location: Location.fromJson(json["Location"]),
         reviews:
             List<Review>.from(json["reviews"].map((x) => Review.fromJson(x))),
@@ -94,7 +102,9 @@ class PetServices {
         "email": email,
         "name": name,
         'rate': rate,
-        "groomingServices": List<dynamic>.from(groomingServices.map((x) => x)),
+        'price': price,
+        'yearsOfExp': yearsOfExp,
+        "services": List<dynamic>.from(services.map((x) => x.toJson())),
         "serviceName": serviceName,
         "Location":
             (location != null) ? location.toJson() : initialLocation.toJson(),
@@ -135,7 +145,7 @@ class Location {
 class Product {
   Product({
     this.productName,
-    this.price,
+    this.price = 0.0,
     this.productPic,
   });
 
@@ -156,22 +166,46 @@ class Product {
       };
 }
 
+class Service {
+  Service({this.serviceName, this.servicePic, this.price});
+
+  String serviceName;
+  String servicePic;
+  double price;
+
+  factory Service.fromJson(Map<dynamic, dynamic> json) => Service(
+        serviceName: json["serviceName"],
+        servicePic: json["servicePic"],
+        price: json["price"].toDouble() ?? 0.0,
+      );
+
+  Map<String, dynamic> toJson() => {
+        "serviceName": serviceName,
+        "servicePic": servicePic,
+        "price": price,
+      };
+}
+
 class Review {
   Review({
     this.autherId,
     this.review,
+    this.rate,
   });
 
   String autherId;
   String review;
+  num rate;
 
   factory Review.fromJson(Map<dynamic, dynamic> json) => Review(
         autherId: json["autherId"],
         review: json["review"],
+        rate: json['rate'],
       );
 
   Map<String, dynamic> toJson() => {
         "autherId": autherId,
         "review": review,
+        'rate': rate,
       };
 }

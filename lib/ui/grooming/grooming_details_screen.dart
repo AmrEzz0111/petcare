@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:pet_care/colors/style.dart';
+import 'package:pet_care/models/petServicesModel.dart';
 import 'package:pet_care/ui/grooming/groom_place_details.dart';
 import 'package:pet_care/ui/grooming/pet_groom_service.dart';
 import 'package:pet_care/ui/grooming/review_screen.dart';
-import 'grooming_place_work.dart';
 
 class GroomingDetailScreen extends StatefulWidget {
+  final PetServices petService;
+
+  const GroomingDetailScreen({Key key, this.petService}) : super(key: key);
   @override
   _GroomingDetailScreenState createState() => _GroomingDetailScreenState();
 }
@@ -16,7 +19,7 @@ class _GroomingDetailScreenState extends State<GroomingDetailScreen>
   TabController controller;
   @override
   void initState() {
-    controller = new TabController(length: 4, vsync: this);
+    controller = new TabController(length: 3, vsync: this);
     super.initState();
   }
 
@@ -37,11 +40,11 @@ class _GroomingDetailScreenState extends State<GroomingDetailScreen>
                   Positioned(
                     top: 0,
                     child: Container(
-                        color: Color(0xFF2e2b43),
+                        color: Colors.white,
                         width: MediaQuery.of(context).size.width,
                         height: MediaQuery.of(context).size.height * .48,
-                        child: Image.asset(
-                          "assets/images/petGroom.jpg",
+                        child: Image.network(
+                          widget.petService.picture,
                           fit: BoxFit.cover,
                         )),
                   ),
@@ -61,7 +64,7 @@ class _GroomingDetailScreenState extends State<GroomingDetailScreen>
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'Grooming Studio Ltd',
+                                widget.petService.name,
                                 style: TextStyle(
                                     color: AppTheme.headLine1Color,
                                     fontFamily: 'Co',
@@ -76,7 +79,15 @@ class _GroomingDetailScreenState extends State<GroomingDetailScreen>
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
-                                    'Pet Groomer',
+                                    widget.petService.serviceName == 'grooming'
+                                        ? 'Pet Groomer'
+                                        : widget.petService.serviceName ==
+                                                'training'
+                                            ? 'Pet Trainer'
+                                            : widget.petService.serviceName ==
+                                                    'pharmacy'
+                                                ? 'Pet Pharmacy'
+                                                : 'Pet Store',
                                     style: TextStyle(
                                         color: AppTheme.appDark,
                                         fontFamily: 'Co',
@@ -84,7 +95,7 @@ class _GroomingDetailScreenState extends State<GroomingDetailScreen>
                                         fontWeight: FontWeight.bold),
                                   ),
                                   Text(
-                                    '99 Battersea Park Rd',
+                                    widget.petService.address,
                                     style: TextStyle(
                                         color: Colors.grey[600],
                                         fontFamily: 'Co',
@@ -103,7 +114,7 @@ class _GroomingDetailScreenState extends State<GroomingDetailScreen>
                                   Row(
                                     children: [
                                       RatingBar(
-                                        initialRating: 4.5,
+                                        initialRating: widget.petService.rate,
                                         direction: Axis.horizontal,
                                         allowHalfRating: true,
                                         ignoreGestures: true,
@@ -131,7 +142,9 @@ class _GroomingDetailScreenState extends State<GroomingDetailScreen>
                                         width: 10,
                                       ),
                                       Text(
-                                        '125 Reviews',
+                                        widget.petService.reviews.length
+                                                .toString() +
+                                            ' Reviews',
                                         style: TextStyle(
                                             color: Colors.grey[400],
                                             fontFamily: 'Co',
@@ -212,17 +225,18 @@ class _GroomingDetailScreenState extends State<GroomingDetailScreen>
             ),
             Tab(
               child: Text(
-                'Services',
+                widget.petService.serviceName == 'grooming'
+                    ? 'Services'
+                    : widget.petService.serviceName == 'training'
+                        ? 'Services'
+                        : widget.petService.serviceName == 'pharmacy'
+                            ? 'Products'
+                            : 'Products',
               ),
             ),
             Tab(
               child: Text(
                 'Details',
-              ),
-            ),
-            Tab(
-              child: Text(
-                'Our Work',
               ),
             ),
           ]),
@@ -237,9 +251,13 @@ class _GroomingDetailScreenState extends State<GroomingDetailScreen>
         controller: controller,
         children: <Widget>[
           ReviewScreen(),
-          PetGroomService(),
-          GroomPlaceDetails(),
-          GroomingPlaceWork(),
+          PetGroomService(
+            petServices: widget.petService.services,
+            role: widget.petService.serviceName,
+          ),
+          GroomPlaceDetails(
+            petServices: widget.petService,
+          ),
         ],
       ),
     );

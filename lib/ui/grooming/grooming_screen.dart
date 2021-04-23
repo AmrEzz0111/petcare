@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pet_care/ui/grooming/grooming_details_screen.dart';
 import 'package:pet_care/ui/grooming/grooming_provider.dart';
 import 'package:pet_care/widgets/appBar.dart';
-import 'package:pet_care/widgets/veterinarian_item.dart';
+import 'package:pet_care/widgets/petService_item.dart';
 import 'package:provider/provider.dart';
 
 class GroomingScreen extends StatefulWidget {
@@ -25,7 +25,7 @@ class _GroomingScreenState extends State<GroomingScreen> {
             ),
           ),
           evaluation: 0.5,
-          title: "Groomings",
+          title: "Pet Groomers",
         ),
       ),
       body: ChangeNotifierProvider(
@@ -41,12 +41,14 @@ class _GroomingScreenState extends State<GroomingScreen> {
                           context,
                           MaterialPageRoute(
                             builder: (BuildContext context) =>
-                                GroomingDetailScreen(),
+                                GroomingDetailScreen(
+                              petService: groomingProv.groomings[index],
+                            ),
                           ),
                         );
                       },
-                      child: VeterinarianItem(
-                        user: groomingProv.groomings[index],
+                      child: PetServiceItem(
+                        petService: groomingProv.groomings[index],
                       ),
                     );
                   })

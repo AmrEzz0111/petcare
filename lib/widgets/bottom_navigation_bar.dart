@@ -44,7 +44,7 @@ class _BottomNavState extends State<BottomNav> {
                 Icons.search,
               ),
               title: Text(
-                'Home',
+                'Search',
                 style: TextStyle(fontFamily: 'Co'),
               )),
           BottomNavigationBarItem(

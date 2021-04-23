@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:pet_care/colors/style.dart';
+import 'package:pet_care/models/doctor_model.dart';
 
 class VeterinarianItem extends StatelessWidget {
-  final user;
+  final Doctor user;
 
   const VeterinarianItem({Key key, this.user}) : super(key: key);
   @override
@@ -44,72 +45,76 @@ class VeterinarianItem extends StatelessWidget {
                     SizedBox(
                       width: 20,
                     ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          user.firstName + ' ' + user.lastName,
-                          style: TextStyle(
-                              color: AppTheme.headLine1Color,
-                              fontFamily: 'Co',
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        SizedBox(
-                          height: 5,
-                        ),
-                        Text(
-                          user.specialist,
-                          style: TextStyle(
-                              color: AppTheme.appDark,
-                              fontFamily: 'Co',
-                              fontSize: 14,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Row(
-                          children: [
-                            RatingBar(
-                              initialRating: 6,
-                              direction: Axis.horizontal,
-                              allowHalfRating: true,
-                              ignoreGestures: true,
-                              itemSize: 14,
-                              itemCount: 5,
-                              ratingWidget: RatingWidget(
-                                full: Icon(
-                                  Icons.star,
-                                  color: Colors.amber,
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            user.firstName + ' ' + user.lastName,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(
+                                color: AppTheme.headLine1Color,
+                                fontFamily: 'Co',
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          SizedBox(
+                            height: 5,
+                          ),
+                          Text(
+                            user.specialist,
+                            style: TextStyle(
+                                color: AppTheme.appDark,
+                                fontFamily: 'Co',
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Row(
+                            children: [
+                              RatingBar(
+                                initialRating: user.rate,
+                                direction: Axis.horizontal,
+                                allowHalfRating: true,
+                                ignoreGestures: true,
+                                itemSize: 14,
+                                itemCount: 5,
+                                ratingWidget: RatingWidget(
+                                  full: Icon(
+                                    Icons.star,
+                                    color: Colors.amber,
+                                  ),
+                                  half: Icon(
+                                    Icons.star,
+                                    color: Colors.black12,
+                                  ),
+                                  empty: Icon(
+                                    Icons.star,
+                                    color: Colors.black12,
+                                  ),
                                 ),
-                                half: Icon(
-                                  Icons.star,
-                                  color: Colors.black12,
-                                ),
-                                empty: Icon(
-                                  Icons.star,
-                                  color: Colors.black12,
-                                ),
+                                onRatingUpdate: (rating) {
+                                  print(rating);
+                                },
                               ),
-                              onRatingUpdate: (rating) {
-                                print(rating);
-                              },
-                            ),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            Text(
-                              '${user.reviews.length} Reviews',
-                              style: TextStyle(
-                                  color: Colors.grey[400],
-                                  fontFamily: 'Co',
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w600),
-                            ),
-                          ],
-                        ),
-                      ],
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Text(
+                                '${user.reviews.length} Reviews',
+                                style: TextStyle(
+                                    color: Colors.grey[400],
+                                    fontFamily: 'Co',
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w600),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),
@@ -129,32 +134,32 @@ class VeterinarianItem extends StatelessWidget {
                     ),
                     Row(
                       children: [
-                        Row(
-                          children: [
-                            CircleAvatar(
-                              radius: 11,
-                              backgroundColor: Colors.grey[100],
-                              child: Center(
-                                child: Icon(
-                                  Icons.location_on_outlined,
-                                  color: Colors.grey[600],
-                                  size: 17,
-                                ),
-                              ),
-                            ),
-                            SizedBox(
-                              width: 8,
-                            ),
-                            Text(
-                              '2.4 km',
-                              style: TextStyle(
-                                  color: Colors.grey[600],
-                                  fontFamily: 'Co',
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w600),
-                            ),
-                          ],
-                        ),
+                        // Row(
+                        //   children: [
+                        //     CircleAvatar(
+                        //       radius: 11,
+                        //       backgroundColor: Colors.grey[100],
+                        //       child: Center(
+                        //         child: Icon(
+                        //           Icons.location_on_outlined,
+                        //           color: Colors.grey[600],
+                        //           size: 17,
+                        //         ),
+                        //       ),
+                        //     ),
+                        //     SizedBox(
+                        //       width: 8,
+                        //     ),
+                        //     Text(
+                        //       '2.4 km',
+                        //       style: TextStyle(
+                        //           color: Colors.grey[600],
+                        //           fontFamily: 'Co',
+                        //           fontSize: 12,
+                        //           fontWeight: FontWeight.w600),
+                        //     ),
+                        //   ],
+                        // ),
                         SizedBox(
                           width: 10,
                         ),

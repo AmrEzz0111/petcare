@@ -61,9 +61,9 @@ class MyApp extends StatelessWidget {
             labelStyle: TextStyle(
               fontSize: 20,
             ),
-            unselectedLabelStyle: TextStyle(
-              fontSize: 20,
-            ),
+            // unselectedLabelStyle: TextStyle(
+            //   fontSize: 20,
+            // ),
           ),
           fixTextFieldOutlineLabel: true,
           // inputDecorationTheme: InputDecorationTheme(

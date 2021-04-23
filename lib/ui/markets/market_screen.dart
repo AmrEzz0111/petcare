@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:pet_care/ui/grooming/grooming_details_screen.dart';
 import 'package:pet_care/ui/markets/market_provider.dart';
-import 'package:pet_care/ui/pharmacies/pharmacy-Details-Screen.dart';
 import 'package:pet_care/widgets/appBar.dart';
-import 'package:pet_care/widgets/veterinarian_item.dart';
+import 'package:pet_care/widgets/petService_item.dart';
 import 'package:provider/provider.dart';
 
 class MarketScreen extends StatefulWidget {
@@ -25,7 +25,7 @@ class MarketScreenState extends State<MarketScreen> {
             ),
           ),
           evaluation: 0.5,
-          title: "Markets",
+          title: "Stores",
         ),
       ),
       body: ChangeNotifierProvider(
@@ -41,12 +41,14 @@ class MarketScreenState extends State<MarketScreen> {
                           context,
                           MaterialPageRoute(
                             builder: (BuildContext context) =>
-                                PharmacyDetails(),
+                                GroomingDetailScreen(
+                              petService: marketProv.markets[index],
+                            ),
                           ),
                         );
                       },
-                      child: VeterinarianItem(
-                        user: marketProv.markets[index],
+                      child: PetServiceItem(
+                        petService: marketProv.markets[index],
                       ),
                     );
                   })

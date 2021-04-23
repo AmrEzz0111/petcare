@@ -39,7 +39,7 @@ class _RegisteraionDoctorState extends State<RegisteraionDoctor> {
     print(widget.user.name);
 
     return Scaffold(
-      backgroundColor: Colors.grey[50],
+      backgroundColor: Colors.white,
       body: ChangeNotifierProvider(
         create: (context) => AuthenticationProvider(),
         child: Consumer<AuthenticationProvider>(
@@ -55,6 +55,7 @@ class _RegisteraionDoctorState extends State<RegisteraionDoctor> {
                       Text(
                         "Complete your data",
                         style: TextStyle(
+                            fontFamily: 'Co',
                             color: Color(0xCCc25e3c),
                             fontSize: 20,
                             fontWeight: FontWeight.w600),
@@ -82,92 +83,24 @@ class _RegisteraionDoctorState extends State<RegisteraionDoctor> {
                               style: TextStyle(
                                 color: Colors.black,
                               ),
-                              items: widget.userType == 'doctor'
-                                  ? <String>[
-                                      'Spech1',
-                                      'Spech2',
-                                      'Spech3',
-                                      'Spech4'
-                                    ].map<DropdownMenuItem<String>>(
-                                      (String location) {
-                                      return DropdownMenuItem<String>(
-                                        value: location,
-                                        child: Text(
-                                          location,
-                                          style: TextStyle(
-                                              color: Colors.black,
-                                              fontFamily: 'Co',
-                                              fontSize: 14),
-                                        ),
-                                      );
-                                    }).toList()
-                                  : widget.userType == 'grooming'
-                                      ? <String>['g1', 'g2', 'g3', 'g4']
-                                          .map<DropdownMenuItem<String>>(
-                                              (String location) {
-                                          return DropdownMenuItem<String>(
-                                            value: location,
-                                            child: Text(
-                                              location,
-                                              style: TextStyle(
-                                                  color: Colors.black,
-                                                  fontFamily: 'Co',
-                                                  fontSize: 14),
-                                            ),
-                                          );
-                                        }).toList()
-                                      : widget.userType == 'pharmacy'
-                                          ? <String>[
-                                              'p1',
-                                              'p2',
-                                            ].map<DropdownMenuItem<String>>(
-                                              (String location) {
-                                              return DropdownMenuItem<String>(
-                                                value: location,
-                                                child: Text(
-                                                  location,
-                                                  style: TextStyle(
-                                                      color: Colors.black,
-                                                      fontFamily: 'Co',
-                                                      fontSize: 14),
-                                                ),
-                                              );
-                                            }).toList()
-                                          : widget.userType == 'market'
-                                              ? <String>[
-                                                  'm1',
-                                                  'm2',
-                                                ].map<DropdownMenuItem<String>>(
-                                                  (String location) {
-                                                  return DropdownMenuItem<
-                                                      String>(
-                                                    value: location,
-                                                    child: Text(
-                                                      location,
-                                                      style: TextStyle(
-                                                          color: Colors.black,
-                                                          fontFamily: 'Co',
-                                                          fontSize: 14),
-                                                    ),
-                                                  );
-                                                }).toList()
-                                              : <String>[
-                                                  't1',
-                                                  't2',
-                                                ].map<DropdownMenuItem<String>>(
-                                                  (String location) {
-                                                  return DropdownMenuItem<
-                                                      String>(
-                                                    value: location,
-                                                    child: Text(
-                                                      location,
-                                                      style: TextStyle(
-                                                          color: Colors.black,
-                                                          fontFamily: 'Co',
-                                                          fontSize: 14),
-                                                    ),
-                                                  );
-                                                }).toList(),
+                              items: <String>[
+                                'Veterinarian',
+                                'Veterinary Surgeon',
+                                'Veterinary Dentist',
+                                'Clinic'
+                              ].map<DropdownMenuItem<String>>(
+                                  (String location) {
+                                return DropdownMenuItem<String>(
+                                  value: location,
+                                  child: Text(
+                                    location,
+                                    style: TextStyle(
+                                        color: Colors.black,
+                                        fontFamily: 'Co',
+                                        fontSize: 14),
+                                  ),
+                                );
+                              }).toList(),
                               onChanged: (newValue) {
                                 doctor.specialist = newValue;
                                 setState(() {

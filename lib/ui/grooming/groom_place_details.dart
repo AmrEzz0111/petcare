@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:pet_care/models/petServicesModel.dart';
 import 'package:pet_care/widgets/googleMap.dart';
 
 class GroomPlaceDetails extends StatelessWidget {
+  final PetServices petServices;
+
+  const GroomPlaceDetails({Key key, this.petServices}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -42,7 +46,7 @@ class GroomPlaceDetails extends StatelessWidget {
                         ),
                         Expanded(
                           child: Text(
-                            '101 El Hegaz St, El-Nozha, El Nozha, Cairo Governorate',
+                            petServices.address,
                             maxLines: 2,
                             style: TextStyle(
                                 color: Colors.grey[600],
@@ -94,7 +98,7 @@ class GroomPlaceDetails extends StatelessWidget {
                     ),
                     Expanded(
                       child: Text(
-                        '+201090636004',
+                        petServices.phone,
                         maxLines: 2,
                         style: TextStyle(
                             color: Colors.grey[600],

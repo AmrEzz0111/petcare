@@ -5,6 +5,7 @@ import 'package:pet_care/colors/style.dart';
 import 'package:pet_care/models/user_model.dart';
 import 'package:pet_care/ui/authentication/authentication-provider.dart';
 import 'package:pet_care/ui/authentication/registeration-doctors.dart';
+import 'package:pet_care/ui/authentication/service_complete_data.dart';
 import 'package:pet_care/ui/authentication/sign_in_screen.dart';
 import 'package:pet_care/widgets/bottom_navigation_bar.dart';
 import 'package:provider/provider.dart';
@@ -243,7 +244,7 @@ class _RegisteraionState extends State<Registeraion> {
                                     email: email.text,
                                     name: username.text,
                                   );
-                                  Navigator.of(context).pushReplacement(
+                                  Navigator.of(context).push(
                                     MaterialPageRoute(
                                       builder: (context) => RegisteraionDoctor(
                                           user, password.text,
@@ -272,14 +273,19 @@ class _RegisteraionState extends State<Registeraion> {
                                     );
                                   }
                                 } else {
-                                  PetServices user = PetServices(
-                                      email: email.text,
-                                      name: username.text,
-                                      address: "Giza",
-                                      phone: "99776722",
-                                      serviceName: userType);
-                                  await signUpProv.signUp(
-                                      email.text, password.text, user);
+                                  PetServices petService = PetServices(
+                                    email: email.text,
+                                    name: username.text,
+                                  );
+                                  Navigator.of(context).push(
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          PetServiceCompleteData(
+                                              petService: petService,
+                                              password: password.text,
+                                              userType: userType),
+                                    ),
+                                  );
                                 }
                               }
                             },
@@ -288,7 +294,7 @@ class _RegisteraionState extends State<Registeraion> {
                             child: Padding(
                                 padding: const EdgeInsets.all(10.0),
                                 child: Text(
-                                  'Sign Up',
+                                  userType == 'user' ? 'Sign Up' : 'Complete',
                                   style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 16,

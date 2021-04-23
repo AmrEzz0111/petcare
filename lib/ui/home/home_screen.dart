@@ -1,8 +1,11 @@
-import 'package:auto_size_text/auto_size_text.dart';
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:pet_care/colors/style.dart';
 import 'package:pet_care/models/user_model.dart';
 import 'package:pet_care/ui/grooming/grooming_screen.dart';
+import 'package:pet_care/ui/markets/market_screen.dart';
+import 'package:pet_care/ui/pharmacies/pharmacy_screen.dart';
 import 'package:pet_care/ui/trainers/trainers_screen.dart';
 import 'package:pet_care/ui/veterinarian/veterinarian_screen.dart';
 
@@ -21,6 +24,7 @@ class HomeScreen extends StatelessWidget {
         child: Container(
           padding: EdgeInsets.only(top: 50, right: 20, left: 20),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
                 height: deviceData.size.height * 0.05,
@@ -39,45 +43,30 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
               ),
+              Text.rich(TextSpan(
+                  text: 'What are you \nlooking for, ',
+                  style: TextStyle(
+                      color: AppTheme.headLine1Color,
+                      fontFamily: 'Co',
+                      fontSize: 30),
+                  children: <InlineSpan>[
+                    TextSpan(
+                      text: user.name,
+                      style: TextStyle(
+                          color: AppTheme.appDark,
+                          fontSize: 28,
+                          fontFamily: 'Co'),
+                    )
+                  ])),
               Container(
-                height: deviceData.size.height * 0.2,
-                child: Container(
-                  width: deviceData.size.width * 0.8,
-                  child: FittedBox(
-                    fit: BoxFit.fitWidth,
-                    child: Text.rich(
-                      TextSpan(
-                          text: 'What are you \nlooking for, ',
-                          style: Theme.of(context).textTheme.headline1,
-                          children: [
-                            WidgetSpan(
-                              alignment: PlaceholderAlignment.baseline,
-                              baseline: TextBaseline.alphabetic,
-                              child: ConstrainedBox(
-                                constraints: BoxConstraints(maxWidth: 100),
-                                child: Text(
-                                  "",
-                                  // user.name,
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .headline1
-                                      .copyWith(color: Colors.deepOrange),
-                                ),
-                              ),
-                            ),
-                          ]),
-                    ),
-                  ),
-                ),
-              ),
-              Container(
-                padding: EdgeInsets.only(top: 30),
+                padding: EdgeInsets.only(top: 20),
                 child: SizedBox(
                   height: 400,
                   child: Stack(
                     children: [
-                      Align(
-                        alignment: Alignment.topCenter,
+                      Positioned(
+                        left: 5,
+                        top: 10,
                         child: Container(
                           height: 110,
                           width: 110,
@@ -85,8 +74,51 @@ class HomeScreen extends StatelessWidget {
                             borderRadius: BorderRadius.circular(57.5),
                             elevation: _elevation,
                             shadowColor: Colors.black26,
-                            child: Padding(
-                              padding: const EdgeInsets.all(20.0),
+                            child: Container(
+                              padding: EdgeInsets.all(15),
+                              child: Column(
+                                children: [
+                                  InkWell(
+                                    onTap: () {
+                                      Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                MarketScreen()),
+                                      );
+                                    },
+                                    child: Image.asset(
+                                      'assets/images/pet-shop.png',
+                                      height: 50,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Text(
+                                    'Stores',
+                                    style: TextStyle(
+                                        color: AppTheme.headLine1Color,
+                                        fontSize: 14,
+                                        fontFamily: 'Co'),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                        right: 5,
+                        top: 10,
+                        child: Container(
+                          height: 110,
+                          width: 110,
+                          child: Material(
+                            borderRadius: BorderRadius.circular(57.5),
+                            elevation: _elevation,
+                            shadowColor: Colors.black26,
+                            child: Container(
+                              padding: const EdgeInsets.all(15.0),
                               child: Column(
                                 children: [
                                   InkWell(
@@ -98,70 +130,20 @@ class HomeScreen extends StatelessWidget {
                                       );
                                     },
                                     child: Image.asset(
-                                      'assets/images/main_imgs/grooming.png',
-                                      scale: 0.8,
+                                      'assets/images/bath.png',
+                                      height: 50,
                                     ),
                                   ),
-                                  AutoSizeText(
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Text(
                                     'Grooming',
-                                    style: Theme.of(context).textTheme.caption,
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Positioned(
-                        left: 0,
-                        top: 75,
-                        child: Container(
-                          height: 110,
-                          width: 110,
-                          child: Material(
-                            borderRadius: BorderRadius.circular(57.5),
-                            elevation: _elevation,
-                            shadowColor: Colors.black26,
-                            child: Container(
-                              padding: EdgeInsets.all(13),
-                              child: Column(
-                                children: [
-                                  Image.asset(
-                                    'assets/images/main_imgs/dog walking.png',
-                                    scale: 0.8,
-                                  ),
-                                  AutoSizeText(
-                                    'Dog Walking',
-                                    style: Theme.of(context).textTheme.caption,
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Positioned(
-                        right: 0,
-                        top: 75,
-                        child: Container(
-                          height: 110,
-                          width: 110,
-                          child: Material(
-                            borderRadius: BorderRadius.circular(57.5),
-                            elevation: _elevation,
-                            shadowColor: Colors.black26,
-                            child: Container(
-                              padding: const EdgeInsets.all(20.0),
-                              child: Column(
-                                children: [
-                                  Image.asset(
-                                    'assets/images/main_imgs/taxi.png',
-                                    scale: 0.8,
-                                  ),
-                                  AutoSizeText(
-                                    'Pet taxi',
-                                    style: Theme.of(context).textTheme.caption,
-                                  ),
+                                    style: TextStyle(
+                                        color: AppTheme.headLine1Color,
+                                        fontSize: 14,
+                                        fontFamily: 'Co'),
+                                  )
                                 ],
                               ),
                             ),
@@ -170,33 +152,85 @@ class HomeScreen extends StatelessWidget {
                       ),
                       Align(
                         alignment: Alignment.center,
-                        child: Container(
-                          height: 140,
-                          width: 140,
+                        child: Padding(
+                          padding: const EdgeInsets.only(bottom: 40),
+                          child: Container(
+                            height: 140,
+                            width: 140,
+                            child: Material(
+                              borderRadius: BorderRadius.circular(70),
+                              elevation: _elevation,
+                              shadowColor: Colors.black26,
+                              child: Container(
+                                padding: EdgeInsets.all(25),
+                                child: Column(
+                                  children: [
+                                    InkWell(
+                                      onTap: () {
+                                        Navigator.of(context).push(
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  VeterinarianView()),
+                                        );
+                                      },
+                                      child: Image.asset(
+                                        'assets/images/veter.png',
+                                        height: 60,
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Text(
+                                      'Veterinary',
+                                      style: TextStyle(
+                                          color: AppTheme.headLine1Color,
+                                          fontSize: 14,
+                                          fontFamily: 'Co'),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                        left: 5,
+                        bottom: 50,
+                        child: SizedBox(
+                          height: 110,
+                          width: 110,
                           child: Material(
-                            borderRadius: BorderRadius.circular(70),
+                            borderRadius: BorderRadius.circular(57.5),
                             elevation: _elevation,
                             shadowColor: Colors.black26,
-                            child: Container(
-                              padding: EdgeInsets.all(25),
+                            child: Padding(
+                              padding: const EdgeInsets.all(10.0),
                               child: Column(
                                 children: [
-                                  GestureDetector(
+                                  InkWell(
                                     onTap: () {
                                       Navigator.of(context).push(
                                         MaterialPageRoute(
                                             builder: (context) =>
-                                                VeterinarianView()),
+                                                PharmacyScreen()),
                                       );
                                     },
                                     child: Image.asset(
-                                      'assets/images/main_imgs/vet.png',
-                                      scale: 0.6,
+                                      'assets/images/pharmacy.png',
+                                      height: 50,
                                     ),
                                   ),
-                                  AutoSizeText(
-                                    'Veterinary',
-                                    style: Theme.of(context).textTheme.caption,
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Text(
+                                    'Pharmacies',
+                                    style: TextStyle(
+                                        color: AppTheme.headLine1Color,
+                                        fontSize: 14,
+                                        fontFamily: 'Co'),
                                   ),
                                 ],
                               ),
@@ -205,8 +239,8 @@ class HomeScreen extends StatelessWidget {
                         ),
                       ),
                       Positioned(
-                        left: 0,
-                        bottom: 75,
+                        right: 5,
+                        bottom: 50,
                         child: SizedBox(
                           height: 110,
                           width: 110,
@@ -215,62 +249,7 @@ class HomeScreen extends StatelessWidget {
                             elevation: _elevation,
                             shadowColor: Colors.black26,
                             child: Padding(
-                              padding: const EdgeInsets.all(20.0),
-                              child: Column(
-                                children: [
-                                  Image.asset(
-                                    'assets/images/main_imgs/date.png',
-                                    scale: 0.8,
-                                  ),
-                                  AutoSizeText(
-                                    'Pet date',
-                                    style: Theme.of(context).textTheme.caption,
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Positioned(
-                        right: 0,
-                        bottom: 75,
-                        child: SizedBox(
-                          height: 110,
-                          width: 110,
-                          child: Material(
-                            borderRadius: BorderRadius.circular(57.5),
-                            elevation: _elevation,
-                            shadowColor: Colors.black26,
-                            child: Padding(
-                              padding: const EdgeInsets.all(20.0),
-                              child: Column(
-                                children: [
-                                  Image.asset(
-                                    'assets/images/main_imgs/adoption.png',
-                                    scale: 0.8,
-                                  ),
-                                  AutoSizeText(
-                                    'Adoption',
-                                    style: Theme.of(context).textTheme.caption,
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Align(
-                        alignment: Alignment.bottomCenter,
-                        child: SizedBox(
-                          height: 110,
-                          width: 110,
-                          child: Material(
-                            borderRadius: BorderRadius.circular(57.5),
-                            elevation: _elevation,
-                            shadowColor: Colors.black26,
-                            child: Padding(
-                              padding: const EdgeInsets.all(20.0),
+                              padding: const EdgeInsets.all(15.0),
                               child: Column(
                                 children: [
                                   InkWell(
@@ -282,13 +261,16 @@ class HomeScreen extends StatelessWidget {
                                       );
                                     },
                                     child: Image.asset(
-                                      'assets/images/main_imgs/training.png',
-                                      scale: 0.8,
+                                      'assets/images/dog.png',
+                                      height: 50,
                                     ),
                                   ),
-                                  AutoSizeText(
-                                    'Traning',
-                                    style: Theme.of(context).textTheme.caption,
+                                  Text(
+                                    'Training',
+                                    style: TextStyle(
+                                        color: AppTheme.headLine1Color,
+                                        fontSize: 14,
+                                        fontFamily: 'Co'),
                                   ),
                                 ],
                               ),
