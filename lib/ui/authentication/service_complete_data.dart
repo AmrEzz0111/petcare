@@ -28,9 +28,11 @@ class _PetServiceCompleteDataState extends State<PetServiceCompleteData> {
   File petServiceImage;
   TextEditingController address = TextEditingController();
   TextEditingController phone = TextEditingController();
-  TextEditingController price = TextEditingController(text: '0');
+  TextEditingController price = TextEditingController();
   TextEditingController experience = TextEditingController();
   TextEditingController serviceName = TextEditingController();
+  TextEditingController productPrice = TextEditingController();
+
   StorageTaskSnapshot storageSnapshot;
   String img;
 
@@ -291,7 +293,7 @@ class _PetServiceCompleteDataState extends State<PetServiceCompleteData> {
                               ? Container(
                                   width: 200,
                                   child: TextField(
-                                    controller: serviceName,
+                                    controller: productPrice,
                                     keyboardType: TextInputType.text,
                                     style: TextStyle(
                                         fontWeight: FontWeight.w500,
@@ -318,7 +320,7 @@ class _PetServiceCompleteDataState extends State<PetServiceCompleteData> {
                                   ? Container(
                                       width: 200,
                                       child: TextField(
-                                        controller: price,
+                                        controller: productPrice,
                                         keyboardType: TextInputType.text,
                                         style: TextStyle(
                                             fontWeight: FontWeight.w500,
@@ -357,11 +359,11 @@ class _PetServiceCompleteDataState extends State<PetServiceCompleteData> {
                               Service services = Service();
                               services.serviceName = serviceName.text;
                               services.servicePic = img;
-                              services.price = double.parse(price.text);
+                              services.price = double.parse(productPrice.text);
 
                               petServices = [...petServices, services];
                               serviceName.clear();
-                              price.clear();
+                              productPrice.clear();
                             });
                           },
                           shape: RoundedRectangleBorder(
@@ -472,15 +474,26 @@ class _PetServiceCompleteDataState extends State<PetServiceCompleteData> {
                           child: RaisedButton(
                             color: Color(0xddffffff),
                             onPressed: () async {
-                              PetServices petService = PetServices(
-                                  name: widget.petService.name,
-                                  email: widget.petService.email,
-                                  phone: phone.text,
-                                  address: address.text,
-                                  price: double.parse(price.text),
-                                  yearsOfExp: int.parse(experience.text),
-                                  services: petServices,
-                                  serviceName: widget.userType);
+                              print(price.text);
+                              PetServices petService = PetServices();
+                              price.text == ''
+                                  ? petService = PetServices(
+                                      name: widget.petService.name,
+                                      email: widget.petService.email,
+                                      phone: phone.text,
+                                      address: address.text,
+                                      yearsOfExp: int.parse(experience.text),
+                                      services: petServices,
+                                      serviceName: widget.userType)
+                                  : petService = PetServices(
+                                      name: widget.petService.name,
+                                      email: widget.petService.email,
+                                      phone: phone.text,
+                                      address: address.text,
+                                      price: int.parse(price.text),
+                                      yearsOfExp: int.parse(experience.text),
+                                      services: petServices,
+                                      serviceName: widget.userType);
                               await signUpProv.signUp(widget.petService.email,
                                   widget.password, petService);
                               Navigator.pushAndRemoveUntil(

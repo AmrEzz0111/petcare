@@ -6,6 +6,7 @@ import 'package:pet_care/ui/authentication/doctor-booking-provider.dart';
 import 'package:provider/provider.dart';
 import 'package:table_calendar/table_calendar.dart';
 
+// ignore: must_be_immutable
 class CalenderWidget extends StatefulWidget {
   Doctor d = Doctor();
   CalenderWidget(this.d);

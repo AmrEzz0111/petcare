@@ -7,7 +7,6 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:pet_care/models/doctor_model.dart';
 import 'package:pet_care/models/user_model.dart';
 import 'package:pet_care/models/petServicesModel.dart';
-import 'package:pet_care/ui/authentication/authentication-provider.dart';
 
 class AuthService {
   Future signInEmailAndPassword(

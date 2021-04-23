@@ -63,7 +63,7 @@ class PetServices {
   String name;
   double rate;
   int yearsOfExp;
-  num price;
+  int price;
   List<Service> services;
   String serviceName;
   Location location;
