@@ -187,7 +187,7 @@ class _CalenderWidgetState extends State<CalenderWidget> {
                   );
                 },
               ),
-              headerVisible: false,
+              headerVisible: true,
               onVisibleDaysChanged: (_, __, ___) {
                 setState(() {
                   headerDate = _calendarController.focusedDay;
@@ -201,7 +201,7 @@ class _CalenderWidgetState extends State<CalenderWidget> {
               initialCalendarFormat: CalendarFormat.week,
               headerStyle: HeaderStyle(
                 formatButtonVisible: true,
-                rightChevronPadding: EdgeInsets.fromLTRB(0, 0, 150, 0),
+                rightChevronPadding: EdgeInsets.fromLTRB(0, 0, 20, 0),
                 centerHeaderTitle: false,
                 leftChevronIcon: Icon(Icons.calendar_today_rounded),
               ),
