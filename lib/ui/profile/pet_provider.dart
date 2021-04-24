@@ -7,14 +7,15 @@ import 'package:pet_care/repositories/pet_repository.dart';
 class PetProvider extends ChangeNotifier {
   UserModel user;
   List<Pet> pets;
+  Pet pet;
 
   PetRepository _petRepository = PetRepository();
   PetProvider() {
     getUserPets();
   }
 
-  addPet(UserModel user, Pet pet, File img) async {
-    user.pets.add(await _petRepository.addPet(pet, img));
+  addPet(Pet pet, File img) async {
+    pet = await _petRepository.addPet(pet, img);
     notifyListeners();
   }
 

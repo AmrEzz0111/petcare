@@ -202,7 +202,7 @@ class _CalenderWidgetState extends State<CalenderWidget> {
               initialCalendarFormat: CalendarFormat.week,
               headerStyle: HeaderStyle(
                 formatButtonVisible: true,
-                rightChevronPadding: EdgeInsets.fromLTRB(0, 0, 20, 0),
+                //  rightChevronPadding: EdgeInsets.fromLTRB(0, 0, 20, 0),
                 centerHeaderTitle: false,
                 leftChevronIcon: Icon(Icons.calendar_today_rounded),
               ),

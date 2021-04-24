@@ -489,7 +489,8 @@ class _AddPetDetailsState extends State<AddPetDetails> {
                         friendlyWithKids: ligth4,
                         microchipped: ligth5,
                       );
-                      await petProv.addPet(widget.user, pet, petImage);
+                      await petProv.addPet(pet, petImage);
+                      Navigator.pop(context);
                     },
                     child: Container(
                       height: 50,
