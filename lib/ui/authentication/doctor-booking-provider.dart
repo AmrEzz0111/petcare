@@ -1,6 +1,5 @@
 import 'package:flutter/widgets.dart';
 import 'package:pet_care/models/doctor_model.dart';
-import 'package:pet_care/models/user_model.dart';
 import 'package:pet_care/repositories/dctor-booking-repo.dart';
 import 'package:pet_care/ui/authentication/authentication-provider.dart';
 

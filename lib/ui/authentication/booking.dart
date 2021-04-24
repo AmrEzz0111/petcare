@@ -52,6 +52,7 @@ class _BookingState extends State<Booking> {
                               fit: BoxFit.fill,
                               child: Image.network(
                                 doctor.profilePic,
+                                fit: BoxFit.cover,
                                 height:
                                     MediaQuery.of(context).size.height * 0.8,
                               ),
@@ -85,16 +86,24 @@ class _BookingState extends State<Booking> {
                                             '${doctor.firstName}',
                                             style: TextStyle(
                                                 fontSize: 18,
+                                                fontFamily: 'Co',
                                                 fontWeight: FontWeight.bold),
+                                          ),
+                                          SizedBox(
+                                            height: 5,
                                           ),
                                           Padding(
                                             padding: const EdgeInsets.fromLTRB(
                                                 0, 5, 0, 5),
                                             child: Text('${doctor.specialist}',
                                                 style: TextStyle(
+                                                    fontFamily: 'Co',
                                                     color: Color(0xFFc25e3c),
                                                     fontWeight:
                                                         FontWeight.bold)),
+                                          ),
+                                          SizedBox(
+                                            height: 5,
                                           ),
                                           Padding(
                                             padding: const EdgeInsets.fromLTRB(
@@ -102,8 +111,12 @@ class _BookingState extends State<Booking> {
                                             child: Text(
                                               '${doctor.yearsOfExp} years of experience',
                                               style: TextStyle(
-                                                  color: Colors.black26),
+                                                  fontFamily: 'Co',
+                                                  color: Colors.grey),
                                             ),
+                                          ),
+                                          SizedBox(
+                                            height: 5,
                                           ),
                                           Row(
                                             children: [
@@ -114,20 +127,10 @@ class _BookingState extends State<Booking> {
                                               Text(
                                                 "  \$ ${doctor.price}",
                                                 style: TextStyle(
+                                                  fontFamily: 'Co',
                                                   color: Colors.black54,
                                                 ),
                                               ),
-                                              Text('    '),
-                                              FaIcon(
-                                                FontAwesomeIcons.searchLocation,
-                                                color: Colors.black54,
-                                              ),
-                                              Text(
-                                                '  1.5km',
-                                                style: TextStyle(
-                                                  color: Colors.black54,
-                                                ),
-                                              )
                                             ],
                                           )
                                         ],
@@ -142,9 +145,10 @@ class _BookingState extends State<Booking> {
                                                   const EdgeInsets.fromLTRB(
                                                       20, 30, 20, 30),
                                               child: Text(
-                                                "4.5",
+                                                doctor.rate.toString(),
                                                 style: TextStyle(
                                                     color: Colors.white,
+                                                    fontFamily: 'Co',
                                                     fontSize: 30,
                                                     fontWeight:
                                                         FontWeight.bold),
@@ -154,16 +158,16 @@ class _BookingState extends State<Booking> {
                                                 borderRadius:
                                                     BorderRadius.circular(30)),
                                           ),
-                                          Padding(
-                                            padding: const EdgeInsets.fromLTRB(
-                                                0, 10, 0, 0),
-                                            child: Text(
-                                              "${doctor.reviews.length} reviwes",
-                                              style: TextStyle(
-                                                  fontSize: 10,
-                                                  fontWeight: FontWeight.bold),
-                                            ),
-                                          )
+                                          // Padding(
+                                          //   padding: const EdgeInsets.fromLTRB(
+                                          //       0, 10, 0, 0),
+                                          //   child: Text(
+                                          //     "${doctor.reviews.length} reviwes",
+                                          //     style: TextStyle(
+                                          //         fontSize: 10,
+                                          //         fontWeight: FontWeight.bold),
+                                          //   ),
+                                          // )
                                         ],
                                       )
                                     ],
@@ -189,10 +193,11 @@ class _BookingState extends State<Booking> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Padding(
-                                padding: const EdgeInsets.fromLTRB(0, 5, 0, 5),
+                                padding: const EdgeInsets.fromLTRB(5, 5, 5, 5),
                                 child: Text(
                                   'a verified review ',
-                                  style: TextStyle(color: Colors.black38),
+                                  style: TextStyle(
+                                      color: Colors.black38, fontFamily: 'Co'),
                                 ),
                               ),
                               RatingBar.builder(
@@ -205,7 +210,7 @@ class _BookingState extends State<Booking> {
                                 itemBuilder: (context, _) {
                                   return Icon(
                                     Icons.star,
-                                    color: Color(0xccc25e3c),
+                                    color: Colors.amber,
                                     size: 10,
                                   );
                                 },
@@ -219,6 +224,7 @@ class _BookingState extends State<Booking> {
                                 'view all ${doctor.reviews.length} reviews',
                                 style: TextStyle(
                                     color: Color(0xFFc25e3c),
+                                    fontFamily: 'Co',
                                     fontWeight: FontWeight.bold,
                                     fontSize: 15),
                               )

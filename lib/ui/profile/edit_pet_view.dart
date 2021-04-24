@@ -47,10 +47,9 @@ class _EditPetViewState extends State<EditPetView> {
     birthOfDate = TextEditingController(text: widget.pet.birthOfDate);
     if (widget.pet.gender == 'Male')
       _value = 0;
-    else if (widget.pet.gender == 'Female')
-      _value = 1;
     else
-      _value = 0;
+      _value = 1;
+
     ligth1 = widget.pet.vaccinated;
     ligth2 = widget.pet.friendlyWithDogs;
     ligth3 = widget.pet.friendlyWithCats;
@@ -349,7 +348,7 @@ class _EditPetViewState extends State<EditPetView> {
                         'Vaccinated',
                         style: TextStyle(
                             fontSize: 16,
-                            fontFamily: 'coRegular',
+                            fontFamily: 'Co',
                             color: Colors.black87),
                       ),
                       CupertinoSwitch(
@@ -373,7 +372,7 @@ class _EditPetViewState extends State<EditPetView> {
                         'Friendly with dogs',
                         style: TextStyle(
                             fontSize: 16,
-                            fontFamily: 'coRegular',
+                            fontFamily: 'Co',
                             color: Colors.black87),
                       ),
                       CupertinoSwitch(
@@ -397,7 +396,7 @@ class _EditPetViewState extends State<EditPetView> {
                         'Friendly with cats',
                         style: TextStyle(
                             fontSize: 16,
-                            fontFamily: 'coRegular',
+                            fontFamily: 'Co',
                             color: Colors.black87),
                       ),
                       CupertinoSwitch(
@@ -421,7 +420,7 @@ class _EditPetViewState extends State<EditPetView> {
                         'Friendly with kids',
                         style: TextStyle(
                             fontSize: 16,
-                            fontFamily: 'coRegular',
+                            fontFamily: 'Co',
                             color: Colors.black87),
                       ),
                       CupertinoSwitch(
@@ -445,7 +444,7 @@ class _EditPetViewState extends State<EditPetView> {
                         'Microchipped',
                         style: TextStyle(
                             fontSize: 16,
-                            fontFamily: 'coRegular',
+                            fontFamily: 'Co',
                             color: Colors.black87),
                       ),
                       CupertinoSwitch(

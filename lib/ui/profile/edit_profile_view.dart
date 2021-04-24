@@ -37,10 +37,8 @@ class _EditProfileViewState extends State<EditProfileView> {
     super.initState();
     if (widget.user.gender == 'Male')
       _value = 0;
-    else if (widget.user.gender == 'Female')
-      _value = 1;
     else
-      _value = 0;
+      _value = 1;
   }
 
   @override

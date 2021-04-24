@@ -122,6 +122,10 @@ class PetServices {
             ? List<dynamic>.from(products.map((x) => x.toJson()))
             : List<dynamic>.from(initialProducts.map((x) => x.toJson())),
       };
+
+  @override
+  bool operator ==(Object other) =>
+      other is PetServices && other.id == id && other.name == name;
 }
 
 class Location {

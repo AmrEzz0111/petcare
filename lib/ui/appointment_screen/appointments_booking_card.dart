@@ -29,8 +29,7 @@ class BookingCard extends StatelessWidget {
                         image: DecorationImage(
                             fit: BoxFit.cover,
                             image: NetworkImage(
-                              'https://images.unsplash.com/photo-1603179415710-79d73cdb2003?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
-                            ))),
+                                "https://firebasestorage.googleapis.com/v0/b/pet-care-29230.appspot.com/o/doctors%2Fnabrawy.jpg?alt=media&token=bba15f99-6819-4a22-a236-4c494b12e6fe"))),
                   ),
                   SizedBox(
                     width: 20,
@@ -41,7 +40,7 @@ class BookingCard extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Petrenko Julia',
+                          'Ahmed Elnabrawy',
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
@@ -67,7 +66,7 @@ class BookingCard extends StatelessWidget {
                         Row(
                           children: [
                             RatingBar(
-                              initialRating: 2.0,
+                              initialRating: 4.7,
                               direction: Axis.horizontal,
                               allowHalfRating: true,
                               ignoreGestures: true,
@@ -132,7 +131,7 @@ class BookingCard extends StatelessWidget {
                                       width: 8,
                                     ),
                                     Text(
-                                      '\$15',
+                                      '\$220',
                                       style: TextStyle(
                                           color: Colors.grey[600],
                                           fontFamily: 'Co',

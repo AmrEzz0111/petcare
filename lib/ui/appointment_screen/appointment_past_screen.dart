@@ -21,10 +21,11 @@ class AppointmentPast extends StatelessWidget {
           ),
           Text(
             'No appointments yet',
-            style: Theme.of(context).textTheme.bodyText2,
+            style:
+                TextStyle(fontSize: 18, color: Colors.grey, fontFamily: 'Co'),
           ),
           SizedBox(
-            height: MediaQuery.of(context).size.height * 0.25,
+            height: MediaQuery.of(context).size.height * 0.2,
           ),
           ConstrainedBox(
             constraints: BoxConstraints.tightFor(height: 50),

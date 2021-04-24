@@ -5,7 +5,6 @@ import 'package:pet_care/repositories/pet_features_repository.dart';
 
 class PetGroomingProvider extends ChangeNotifier {
   List<PetServices> groomings;
-  Review review;
   UserModel user;
 
   PetFeaturesRepository _petFeatureRepository = PetFeaturesRepository();
@@ -18,9 +17,11 @@ class PetGroomingProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  addReview(Review review, String serviceName, String serviceID) async {
-    review =
-        await _petFeatureRepository.addReview(review, serviceName, serviceID);
+  addReview(PetServices pets, Review review, String serviceName,
+      String serviceID) async {
+    pets.reviews.add(
+        await _petFeatureRepository.addReview(review, serviceName, serviceID));
+
     notifyListeners();
   }
 }

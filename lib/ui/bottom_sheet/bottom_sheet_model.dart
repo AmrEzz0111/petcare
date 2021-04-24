@@ -60,7 +60,7 @@ class _ShowBottomSheetState extends State<ShowBottomSheet> {
                                     style: TextStyle(
                                         color: Colors.black,
                                         fontSize: 20.0,
-                                        fontFamily: "coRegular",
+                                        fontFamily: "Co",
                                         fontWeight: FontWeight.bold),
                                   ),
                                   IconButton(
@@ -104,7 +104,7 @@ class _ShowBottomSheetState extends State<ShowBottomSheet> {
                                         style: TextStyle(
                                             color: Colors.black,
                                             fontSize: 20.0,
-                                            fontFamily: "coRegular",
+                                            fontFamily: "Co",
                                             fontWeight: FontWeight.bold),
                                       ),
                                       SizedBox(
@@ -115,7 +115,7 @@ class _ShowBottomSheetState extends State<ShowBottomSheet> {
                                         style: TextStyle(
                                           color: AppTheme.appPrimary,
                                           fontSize: 15.0,
-                                          fontFamily: "coRegular",
+                                          fontFamily: "coRegCoular",
                                         ),
                                       ),
                                       SizedBox(
@@ -145,7 +145,7 @@ class _ShowBottomSheetState extends State<ShowBottomSheet> {
                                             style: TextStyle(
                                               color: Colors.black54,
                                               fontSize: 12.0,
-                                              fontFamily: "coRegular",
+                                              fontFamily: "Co",
                                             ),
                                           ),
                                         ],
@@ -162,7 +162,7 @@ class _ShowBottomSheetState extends State<ShowBottomSheet> {
                                     style: TextStyle(
                                       color: Colors.black54,
                                       fontSize: 12.0,
-                                      fontFamily: "coRegular",
+                                      fontFamily: "Co",
                                     ),
                                   ),
                                   Row(
@@ -174,7 +174,7 @@ class _ShowBottomSheetState extends State<ShowBottomSheet> {
                                         style: TextStyle(
                                           color: Colors.black,
                                           fontSize: 18.0,
-                                          fontFamily: "coRegular",
+                                          fontFamily: "Co",
                                         ),
                                       ),
                                       IconButton(
@@ -202,7 +202,7 @@ class _ShowBottomSheetState extends State<ShowBottomSheet> {
                                         style: TextStyle(
                                           color: Colors.black,
                                           fontSize: 18.0,
-                                          fontFamily: "coRegular",
+                                          fontFamily: "Co",
                                         ),
                                       ),
                                     ),
@@ -216,7 +216,7 @@ class _ShowBottomSheetState extends State<ShowBottomSheet> {
                                         style: TextStyle(
                                           color: Colors.grey[400],
                                           fontSize: 18.0,
-                                          fontFamily: "coRegular",
+                                          fontFamily: "Co",
                                         ),
                                       ),
                                     ),
@@ -230,7 +230,7 @@ class _ShowBottomSheetState extends State<ShowBottomSheet> {
                                         style: TextStyle(
                                           color: Colors.white,
                                           fontSize: 18.0,
-                                          fontFamily: "coRegular",
+                                          fontFamily: "Co",
                                         ),
                                       ),
                                     ),
@@ -243,7 +243,7 @@ class _ShowBottomSheetState extends State<ShowBottomSheet> {
                                         style: TextStyle(
                                           color: Colors.black,
                                           fontSize: 18.0,
-                                          fontFamily: "coRegular",
+                                          fontFamily: "Co",
                                         ),
                                       ),
                                     ),
@@ -257,7 +257,7 @@ class _ShowBottomSheetState extends State<ShowBottomSheet> {
                                         style: TextStyle(
                                           color: Colors.grey[400],
                                           fontSize: 18.0,
-                                          fontFamily: "coRegular",
+                                          fontFamily: "Co",
                                         ),
                                       ),
                                     ),
@@ -270,7 +270,7 @@ class _ShowBottomSheetState extends State<ShowBottomSheet> {
                                         style: TextStyle(
                                           color: Colors.black,
                                           fontSize: 18.0,
-                                          fontFamily: "coRegular",
+                                          fontFamily: "Co",
                                         ),
                                       ),
                                     ),
@@ -283,7 +283,7 @@ class _ShowBottomSheetState extends State<ShowBottomSheet> {
                                         style: TextStyle(
                                           color: Colors.black,
                                           fontSize: 18.0,
-                                          fontFamily: "coRegular",
+                                          fontFamily: "Co",
                                         ),
                                       ),
                                     ),
@@ -304,7 +304,7 @@ class _ShowBottomSheetState extends State<ShowBottomSheet> {
                                         style: TextStyle(
                                             color: Colors.black,
                                             fontSize: 20.0,
-                                            fontFamily: "coRegular",
+                                            fontFamily: "Co",
                                             fontWeight: FontWeight.bold),
                                       ),
                                       Text(
@@ -312,7 +312,7 @@ class _ShowBottomSheetState extends State<ShowBottomSheet> {
                                         style: TextStyle(
                                           color: Colors.grey[400],
                                           fontSize: 15.0,
-                                          fontFamily: "coRegular",
+                                          fontFamily: "Co",
                                         ),
                                       ),
                                     ],

@@ -311,6 +311,8 @@ class _GroomingDetailScreenState extends State<GroomingDetailScreen>
                                                                     .currentUser
                                                                     .name);
                                                             groomingProv.addReview(
+                                                                widget
+                                                                    .petService,
                                                                 review,
                                                                 widget
                                                                     .petService
@@ -318,7 +320,8 @@ class _GroomingDetailScreenState extends State<GroomingDetailScreen>
                                                                 widget
                                                                     .petService
                                                                     .id);
-                                                            setState(() {});
+                                                            Navigator.pop(
+                                                                context);
                                                           },
                                                           child: Container(
                                                             height: 50,

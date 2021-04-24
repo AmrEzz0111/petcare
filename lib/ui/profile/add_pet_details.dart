@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:pet_care/colors/style.dart';
 import 'package:pet_care/models/pet_model.dart';
+import 'package:pet_care/models/user_model.dart';
 import 'package:pet_care/ui/profile/pet_provider.dart';
 import 'package:pet_care/widgets/animation_utils.dart';
 import 'package:pet_care/widgets/appBar.dart';
@@ -14,6 +15,9 @@ import 'package:provider/provider.dart';
 import 'package:intl/intl.dart' as date;
 
 class AddPetDetails extends StatefulWidget {
+  final UserModel user;
+
+  const AddPetDetails({Key key, this.user}) : super(key: key);
   @override
   _AddPetDetailsState createState() => _AddPetDetailsState();
 }
@@ -334,7 +338,7 @@ class _AddPetDetailsState extends State<AddPetDetails> {
                         'Vaccinated',
                         style: TextStyle(
                             fontSize: 16,
-                            fontFamily: 'coRegular',
+                            fontFamily: 'Co',
                             color: Colors.black87),
                       ),
                       CupertinoSwitch(
@@ -358,7 +362,7 @@ class _AddPetDetailsState extends State<AddPetDetails> {
                         'Friendly with dogs',
                         style: TextStyle(
                             fontSize: 16,
-                            fontFamily: 'coRegular',
+                            fontFamily: 'Co',
                             color: Colors.black87),
                       ),
                       CupertinoSwitch(
@@ -382,7 +386,7 @@ class _AddPetDetailsState extends State<AddPetDetails> {
                         'Friendly with cats',
                         style: TextStyle(
                             fontSize: 16,
-                            fontFamily: 'coRegular',
+                            fontFamily: 'Co',
                             color: Colors.black87),
                       ),
                       CupertinoSwitch(
@@ -406,7 +410,7 @@ class _AddPetDetailsState extends State<AddPetDetails> {
                         'Friendly with kids',
                         style: TextStyle(
                             fontSize: 16,
-                            fontFamily: 'coRegular',
+                            fontFamily: 'Co',
                             color: Colors.black87),
                       ),
                       CupertinoSwitch(
@@ -430,7 +434,7 @@ class _AddPetDetailsState extends State<AddPetDetails> {
                         'Microchipped',
                         style: TextStyle(
                             fontSize: 16,
-                            fontFamily: 'coRegular',
+                            fontFamily: 'Co',
                             color: Colors.black87),
                       ),
                       CupertinoSwitch(
@@ -485,7 +489,7 @@ class _AddPetDetailsState extends State<AddPetDetails> {
                         friendlyWithKids: ligth4,
                         microchipped: ligth5,
                       );
-                      await petProv.addPet(pet, petImage);
+                      await petProv.addPet(widget.user, pet, petImage);
                     },
                     child: Container(
                       height: 50,

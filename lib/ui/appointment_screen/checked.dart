@@ -31,7 +31,7 @@ class AppointmentChecked extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.white,
-                    fontFamily: "coRegular",
+                    fontFamily: "Co",
                     fontSize: 30.0,
                     fontWeight: FontWeight.w700,
                   ),
@@ -44,7 +44,7 @@ class AppointmentChecked extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.white.withOpacity(0.8),
-                    fontFamily: "coRegular",
+                    fontFamily: "Co",
                     fontSize: 20.0,
                   ),
                 ),
@@ -72,7 +72,7 @@ class AppointmentChecked extends StatelessWidget {
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: Colors.white.withOpacity(0.5),
-                        fontFamily: "coRegular",
+                        fontFamily: "Co",
                         fontSize: 15.0,
                       ),
                     )

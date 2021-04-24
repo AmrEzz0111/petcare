@@ -23,7 +23,7 @@ class SpecialCard extends CustomRaisedButton {
                   style: TextStyle(
                       color: txtColor,
                       fontSize: 15.0,
-                      fontFamily: "coRegular",
+                      fontFamily: "Co",
                       fontWeight: FontWeight.bold),
                 ),
                 Opacity(

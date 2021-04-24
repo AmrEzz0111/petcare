@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:pet_care/models/doctor_model.dart';
-import 'package:pet_care/models/user_model.dart';
 
 class DoctorAndBookingService {
   Future<Doctor> updateDoctor(Doctor user) async {
